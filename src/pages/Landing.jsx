@@ -1,12 +1,14 @@
-import { Component, Suspense, lazy, useEffect, useState } from 'react';
+import { Component, Fragment, Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform, useInView } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n/index.js';
 import tr from '../i18n/tr/landing.json';
 import en from '../i18n/en/landing.json';
 import Section from '../components/Section.jsx';
+import PageCurtain from '../components/PageCurtain.jsx';
 import Card2D from '../cards/Card2D.jsx';
+import FlipCard from '../cards/FlipCard.jsx';
 import './Landing.css';
 
 if (!i18n.hasResourceBundle('tr', 'landing')) {
@@ -15,6 +17,8 @@ if (!i18n.hasResourceBundle('tr', 'landing')) {
 }
 
 const HeroScene = lazy(() => import('../three/HeroScene.jsx'));
+
+const EASE = [0.16, 1, 0.3, 1];
 
 const HANDS = [
   ['highCard', 'As Jd 8c 5h 2s'],
@@ -38,7 +42,9 @@ const VARIANTS = [
   { id: 'shortDeck', playable: false, cards: ['6s', '7s', '8s', '9s'] },
 ];
 
-const FALLBACK_CARDS = ['As', 'Kh', 'Qd', 'Jc', 'Ts', 'back', 'back'];
+const FALLBACK_CARDS = ['Th', 'Jh', 'Qh', 'Kh', 'Ah'];
+const ROMAN = ['I', 'II', 'III'];
+const IDEA_SUITS = ['♠', '♥', '♦'];
 
 function hasWebGL() {
   try {
@@ -63,78 +69,226 @@ class SceneBoundary extends Component {
   }
 }
 
-function CssCards() {
+function useMedia(query) {
+  const [match, setMatch] = useState(() => typeof window !== 'undefined' && window.matchMedia(query).matches);
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    const on = () => setMatch(mq.matches);
+    on();
+    mq.addEventListener('change', on);
+    return () => mq.removeEventListener('change', on);
+  }, [query]);
+  return match;
+}
+
+/** CSS fan used when WebGL is unavailable. */
+function CssFan() {
   return (
-    <div className="landing-hero__css-cards" aria-hidden="true">
+    <div className="landing-fan" aria-hidden="true">
       {FALLBACK_CARDS.map((c, i) => (
-        <div key={i} className={`landing-float landing-float--${i}`}>
-          <Card2D card={c === 'back' ? 'As' : c} faceUp={c !== 'back'} size="lg" />
+        <div key={c} className="landing-fan__card" style={{ '--i': i - 2 }}>
+          <Card2D card={c} faceUp size="lg" />
         </div>
       ))}
     </div>
   );
 }
 
-const WIDE_QUERY = '(min-width: 900px)';
-
-function useIsWide() {
-  const [wide, setWide] = useState(() => typeof window !== 'undefined' && window.matchMedia(WIDE_QUERY).matches);
-  useEffect(() => {
-    const mq = window.matchMedia(WIDE_QUERY);
-    const on = () => setWide(mq.matches);
-    mq.addEventListener('change', on);
-    return () => mq.removeEventListener('change', on);
-  }, []);
-  return wide;
-}
-
-function HeroVisual() {
+function HeroVisual({ progress, active }) {
   const reduced = useReducedMotion();
-  const wide = useIsWide();
+  const wide = useMedia('(min-width: 900px)');
   const [webgl] = useState(() => typeof window !== 'undefined' && hasWebGL());
-  const fallback = <CssCards />;
+  const fallback = <CssFan />;
   return (
     <div className="landing-hero__visual" aria-hidden="true">
       {webgl ? (
         <SceneBoundary fallback={fallback}>
-          <Suspense fallback={fallback}>
-            <HeroScene reducedMotion={!!reduced} offsetX={wide ? 2.2 : 0} />
+          <Suspense fallback={null}>
+            <HeroScene reducedMotion={!!reduced} offsetX={wide ? 2.5 : 0} progress={progress} compact={!wide} active={active} />
           </Suspense>
         </SceneBoundary>
       ) : (
         fallback
       )}
-      <div className="landing-hero__overlay" />
     </div>
   );
 }
 
-const stagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
-};
-const rise = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
-};
-
-function Hand({ cards }) {
+/** Headline that rises word by word out of a mask. */
+function MaskedTitle({ text, className, delay = 0 }) {
+  const reduce = useReducedMotion();
+  const words = String(text).split(' ');
   return (
-    <div className="landing-hand">
-      {cards.split(' ').map((c, i) => (
-        <Card2D key={i} card={c} size="sm" className="landing-hand__card" />
+    <h1 className={className} aria-label={text}>
+      {words.map((w, i) => (
+        <Fragment key={i}>
+        <span className="landing-mask" aria-hidden="true">
+          <motion.span
+            className="landing-mask__word"
+            initial={reduce ? false : { y: '110%', rotate: 4 }}
+            animate={{ y: '0%', rotate: 0 }}
+            transition={{ duration: 1.1, ease: EASE, delay: delay + i * 0.07 }}
+          >
+            {w}
+          </motion.span>
+        </span>
+        {i < words.length - 1 ? ' ' : ''}
+        </Fragment>
       ))}
-    </div>
+    </h1>
+  );
+}
+
+function Hero() {
+  const { t } = useTranslation('landing');
+  const { t: tc } = useTranslation('common');
+  const reduce = useReducedMotion();
+  const ref = useRef(null);
+  const inView = useInView(ref, { margin: '0px 0px 0px 0px' });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
+  const copyY = useTransform(scrollYProgress, [0, 0.7], [0, -140]);
+  const copyOpacity = useTransform(scrollYProgress, [0, 0.45, 0.7], [1, 0.6, 0]);
+  const glyphY = useTransform(scrollYProgress, [0, 1], [0, 260]);
+  const glyphRotate = useTransform(scrollYProgress, [0, 1], [-8, 6]);
+  const veil = useTransform(scrollYProgress, [0.35, 0.95], [0, 1]);
+  const after = { initial: reduce ? false : { opacity: 0, y: 18 }, animate: { opacity: 1, y: 0 } };
+
+  return (
+    <header ref={ref} className={`landing-hero${reduce ? ' landing-hero--still' : ''}`}>
+      <div className="landing-hero__stage">
+        <div className="landing-hero__spot" aria-hidden="true" />
+        <motion.div className="landing-hero__glyph" style={reduce ? undefined : { y: glyphY, rotate: glyphRotate }} aria-hidden="true">
+          ♠
+        </motion.div>
+        <HeroVisual progress={scrollYProgress} active={inView} />
+        <div className="landing-hero__shade" aria-hidden="true" />
+        <div className="landing-hero__sweep" aria-hidden="true" />
+
+        <div className="container landing-hero__inner">
+          <motion.div className="landing-hero__copy" style={reduce ? undefined : { y: copyY, opacity: copyOpacity }}>
+            <motion.p className="eyebrow" {...after} transition={{ duration: 0.8, ease: EASE, delay: 0.15 }}>
+              {t('hero.eyebrow')}
+            </motion.p>
+            <MaskedTitle text={t('hero.title')} className="h1 landing-hero__title" delay={0.25} />
+            <motion.p className="lead landing-hero__lead" {...after} transition={{ duration: 0.9, ease: EASE, delay: 0.85 }}>
+              {t('hero.lead')}
+            </motion.p>
+            <motion.div className="landing-hero__ctas" {...after} transition={{ duration: 0.9, ease: EASE, delay: 1 }}>
+              <Link to="/basics" className="btn btn--primary">
+                {tc('cta.startLearning')}
+              </Link>
+              <Link to="/play/holdem" className="btn btn--ghost">
+                {tc('cta.playNow')}
+              </Link>
+            </motion.div>
+            <motion.p className="landing-hero__note" {...after} transition={{ duration: 0.9, ease: EASE, delay: 1.15 }}>
+              {t('hero.note')}
+            </motion.p>
+          </motion.div>
+        </div>
+
+        <span className="landing-hero__scroll" aria-hidden="true">
+          {t('hero.scroll')}
+        </span>
+        <motion.div className="landing-hero__veil" style={reduce ? { opacity: 0 } : { opacity: veil }} aria-hidden="true" />
+      </div>
+    </header>
+  );
+}
+
+function RankRow({ name, cards, index }) {
+  const ref = useRef(null);
+  const shown = useInView(ref, { once: true, amount: 0.6 });
+  const reduce = useReducedMotion();
+  const top = index === HANDS.length - 1;
+  return (
+    <li ref={ref} className={`landing-rank${top ? ' landing-rank--top' : ''}${shown ? ' is-shown' : ''}`} style={{ '--strength': (index + 1) / HANDS.length }}>
+      <span className="landing-rank__num">{index + 1}</span>
+      <span className="landing-rank__hand">
+        {cards.split(' ').map((c, i) => (
+          <FlipCard key={c} card={c} shown={shown} delay={reduce ? 0 : 0.1 + i * 0.075} />
+        ))}
+      </span>
+      <span className="landing-rank__name">{name}</span>
+      <span className="landing-rank__meter" aria-hidden="true">
+        <span />
+      </span>
+    </li>
+  );
+}
+
+/** Pointer-tracked tilt + spotlight; pure transform/opacity work. */
+function useTilt() {
+  const reduce = useReducedMotion();
+  const onPointerMove = (e) => {
+    if (reduce || e.pointerType === 'touch') return;
+    const el = e.currentTarget;
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+    el.style.setProperty('--mx', `${x * 100}%`);
+    el.style.setProperty('--my', `${y * 100}%`);
+    el.style.setProperty('--ry', `${(x - 0.5) * 8}deg`);
+    el.style.setProperty('--rx', `${(0.5 - y) * 6}deg`);
+  };
+  const onPointerLeave = (e) => {
+    const el = e.currentTarget;
+    el.style.setProperty('--ry', '0deg');
+    el.style.setProperty('--rx', '0deg');
+  };
+  return { onPointerMove, onPointerLeave };
+}
+
+function VariantTile({ v, index }) {
+  const { t } = useTranslation('landing');
+  const tilt = useTilt();
+  const n = v.cards.length;
+  return (
+    <motion.div
+      className={`landing-variant-wrap landing-variant-wrap--${index}`}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.9, ease: EASE, delay: (index % 3) * 0.08 }}
+    >
+      <Link to={`/variants/${v.id}`} className="landing-variant" {...tilt}>
+        <div className="landing-variant__felt" aria-hidden="true">
+          <div className="landing-variant__cards">
+            {v.cards.map((c, i) => (
+              <span key={i} className="landing-variant__card" style={{ '--k': i - (n - 1) / 2 }}>
+                <Card2D card={c === 'back' ? 'As' : c} faceUp={c !== 'back'} size={index === 0 ? 'lg' : 'sm'} />
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="landing-variant__body">
+          <div className="landing-variant__head">
+            <h3 className="h3">{t(`variants.items.${v.id}.name`)}</h3>
+            {v.playable && <span className="badge landing-variant__badge">{t('variants.playable')}</span>}
+          </div>
+          <p>{t(`variants.items.${v.id}.desc`)}</p>
+          <span className="landing-variant__more">{t('variants.learn')}</span>
+        </div>
+        <span className="landing-variant__spot" aria-hidden="true" />
+      </Link>
+    </motion.div>
   );
 }
 
 export default function Landing() {
   const { t } = useTranslation('landing');
   const { t: tc } = useTranslation('common');
+  const reduce = useReducedMotion();
   const panels = t('what.panels', { returnObjects: true });
   const steps = t('path.steps', { returnObjects: true });
   const stepLinks = ['/basics', '/variants', '/play/holdem'];
-  const panelIcons = ['♠', '♥', '◎'];
+
+  const item = (i) => ({
+    initial: reduce ? false : { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.35 },
+    transition: { duration: 0.9, ease: EASE, delay: i * 0.1 },
+  });
 
   return (
     <motion.div
@@ -144,102 +298,70 @@ export default function Landing() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.35 }}
     >
-      <header className="landing-hero">
-        <HeroVisual />
-        <div className="container landing-hero__inner">
-          <motion.div className="landing-hero__copy" variants={stagger} initial="hidden" animate="show">
-            <motion.p className="eyebrow" variants={rise}>{t('hero.eyebrow')}</motion.p>
-            <motion.h1 className="h1 landing-hero__title" variants={rise}>{t('hero.title')}</motion.h1>
-            <motion.p className="lead landing-hero__lead" variants={rise}>{t('hero.lead')}</motion.p>
-            <motion.div className="landing-hero__ctas" variants={rise}>
-              <Link to="/basics" className="btn btn--primary">{tc('cta.startLearning')}</Link>
-              <Link to="/play/holdem" className="btn btn--ghost">{tc('cta.playNow')}</Link>
-            </motion.div>
-            <motion.p className="landing-hero__note" variants={rise}>{t('hero.note')}</motion.p>
-          </motion.div>
-        </div>
-        <span className="landing-hero__scroll" aria-hidden="true">{t('hero.scroll')}</span>
-      </header>
+      <PageCurtain />
+      <Hero />
 
       <Section id="what" eyebrow={t('what.eyebrow')} title={t('what.title')} lead={t('what.lead')} className="landing-what">
-        <motion.div
-          className="grid-3 landing-what__grid"
-          variants={stagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <ol className="landing-ideas" role="list">
           {Array.isArray(panels) &&
             panels.map((p, i) => (
-              <motion.article key={i} className="panel landing-what__panel" variants={rise}>
-                <span className={`landing-what__icon${i === 1 ? ' is-red' : ''}`} aria-hidden="true">{panelIcons[i]}</span>
-                <h3 className="h3">{p.title}</h3>
-                <p>{p.text}</p>
-              </motion.article>
+              <motion.li key={i} className="landing-idea" {...item(i)}>
+                <span className={`landing-idea__suit${i === 1 || i === 2 ? ' is-red' : ''}`} aria-hidden="true">
+                  {IDEA_SUITS[i]}
+                </span>
+                <div>
+                  <h3 className="h3">{p.title}</h3>
+                  <p>{p.text}</p>
+                </div>
+              </motion.li>
             ))}
-        </motion.div>
+        </ol>
       </Section>
 
-      <Section id="ranks" eyebrow={t('ranks.eyebrow')} title={t('ranks.title')} lead={t('ranks.lead')} className="landing-ranks">
+      <Section id="ranks" eyebrow={t('ranks.eyebrow')} title={t('ranks.title')} lead={t('ranks.leadList')} className="landing-ranks">
         <div className="landing-ranks__scale" aria-hidden="true">
           <span>{t('ranks.weak')}</span>
           <span className="landing-ranks__bar" />
           <span>{t('ranks.strong')}</span>
         </div>
-        <ol className="landing-ranks__strip">
+        <ol className="landing-ranks__list">
           {HANDS.map(([key, cards], i) => (
-            <li key={key} className="landing-ranks__item">
-              <span className="landing-ranks__num">{i + 1}</span>
-              <Hand cards={cards} />
-              <span className="landing-ranks__name">{tc(`hands.${key}`)}</span>
-            </li>
+            <RankRow key={key} name={tc(`hands.${key}`)} cards={cards} index={i} />
           ))}
         </ol>
         <Link to="/basics#hands" className="btn btn--ghost btn--sm landing-ranks__link">
-          {t('ranks.link')} &rarr;
+          {t('ranks.link')}
         </Link>
       </Section>
 
       <Section id="path" eyebrow={t('path.eyebrow')} title={t('path.title')} className="landing-path">
-        <motion.ol
-          className="landing-path__steps"
-          variants={stagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <ol className="landing-path__steps">
           {Array.isArray(steps) &&
             steps.map((s, i) => (
-              <motion.li key={i} className="landing-path__step" variants={rise}>
-                <span className="landing-path__num">{String(i + 1).padStart(2, '0')}</span>
+              <motion.li key={i} className="landing-path__step" {...item(i)}>
+                <span className="landing-path__num" aria-hidden="true">
+                  {ROMAN[i]}
+                </span>
                 <h3 className="h3">{s.title}</h3>
                 <p>{s.text}</p>
-                <Link to={stepLinks[i]} className="landing-path__link">{s.link} &rarr;</Link>
+                <Link to={stepLinks[i]} className="landing-path__link">
+                  {s.link}
+                </Link>
               </motion.li>
             ))}
-        </motion.ol>
+        </ol>
       </Section>
 
       <Section id="variants" eyebrow={t('variants.eyebrow')} title={t('variants.title')} lead={t('variants.lead')} className="landing-variants">
         <div className="landing-variants__grid">
-          {VARIANTS.map((v) => (
-            <Link key={v.id} to={`/variants/${v.id}`} className="landing-variant">
-              <div className="landing-variant__cards" aria-hidden="true">
-                {v.cards.map((c, i) => (
-                  <Card2D key={i} card={c === 'back' ? 'As' : c} faceUp={c !== 'back'} size="sm" className="landing-variant__card" />
-                ))}
-              </div>
-              <div className="landing-variant__head">
-                <h3 className="h3">{t(`variants.items.${v.id}.name`)}</h3>
-                {v.playable && <span className="badge landing-variant__badge">{t('variants.playable')}</span>}
-              </div>
-              <p>{t(`variants.items.${v.id}.desc`)}</p>
-              <span className="landing-variant__more">{t('variants.learn')} &rarr;</span>
-            </Link>
+          {VARIANTS.map((v, i) => (
+            <VariantTile key={v.id} v={v} index={i} />
           ))}
         </div>
         <div className="landing-variants__all">
-          <Link to="/variants" className="btn btn--ghost btn--sm">{t('variants.all')} &rarr;</Link>
+          <Link to="/variants" className="btn btn--ghost btn--sm">
+            {t('variants.all')}
+          </Link>
         </div>
       </Section>
 
@@ -247,17 +369,23 @@ export default function Landing() {
         <div className="container">
           <motion.div
             className="landing-final__band"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={reduce ? false : { opacity: 0, y: 40, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 1, ease: EASE }}
           >
-            <div className="landing-final__suits" aria-hidden="true">{'♠ ♥ ♦ ♣'}</div>
-            <h2 className="h2">{t('final.title')}</h2>
-            <p className="lead">{t('final.lead')}</p>
-            <div className="landing-final__ctas">
-              <Link to="/basics" className="btn btn--primary">{tc('cta.startLearning')}</Link>
-              <Link to="/play/holdem" className="btn btn--ghost">{t('final.secondary')}</Link>
+            <div className="landing-final__inner">
+              <span className="landing-final__chip" aria-hidden="true" />
+              <h2 className="h2">{t('final.title')}</h2>
+              <p className="lead">{t('final.lead')}</p>
+              <div className="landing-final__ctas">
+                <Link to="/basics" className="btn btn--primary">
+                  {tc('cta.startLearning')}
+                </Link>
+                <Link to="/play/holdem" className="btn btn--ghost">
+                  {t('final.secondary')}
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>

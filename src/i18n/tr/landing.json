@@ -31,7 +31,8 @@
     "lead": "Pokerde her şey bu sıralamaya dayanır. Sağa doğru ilerledikçe el güçlenir.",
     "weak": "Zayıf",
     "strong": "Güçlü",
-    "link": "Elleri detaylı öğren"
+    "link": "Elleri detaylı öğren",
+    "leadList": "Pokerde her şey bu sıralamaya dayanır. Listede ilerledikçe eller güçlenir; en altta en güçlü el durur."
   },
   "path": {
     "eyebrow": "Öğrenme yolu",
@@ -62,12 +63,30 @@
     "learn": "Öğren",
     "all": "Tüm varyantlar",
     "items": {
-      "holdem": { "name": "Texas Hold'em", "desc": "2 kapalı kart + 5 ortak kart. Dünyanın en popüler pokeri." },
-      "omaha": { "name": "Omaha", "desc": "4 kapalı kart, tam 2'sini kullanmak zorundasın. Daha büyük eller." },
-      "sevenCardStud": { "name": "Seven Card Stud", "desc": "Ortak kart yok; bazı kartların açık dağıtılır. Klasik ve sabırlı." },
-      "fiveCardDraw": { "name": "Five Card Draw", "desc": "5 kart al, istemediklerini değiştir. En sade poker." },
-      "razz": { "name": "Razz", "desc": "Stud'un tersi: en düşük el kazanır. A-2-3-4-5 en iyisi." },
-      "shortDeck": { "name": "Short Deck", "desc": "2'ler ile 5'ler çıkarılmış 36 kartlık deste. Flush, full house'u yener." }
+      "holdem": {
+        "name": "Texas Hold'em",
+        "desc": "2 kapalı kart + 5 ortak kart. Dünyanın en popüler pokeri."
+      },
+      "omaha": {
+        "name": "Omaha",
+        "desc": "4 kapalı kart, tam 2'sini kullanmak zorundasın. Daha büyük eller."
+      },
+      "sevenCardStud": {
+        "name": "Seven Card Stud",
+        "desc": "Ortak kart yok; bazı kartların açık dağıtılır. Klasik ve sabırlı."
+      },
+      "fiveCardDraw": {
+        "name": "Five Card Draw",
+        "desc": "5 kart al, istemediklerini değiştir. En sade poker."
+      },
+      "razz": {
+        "name": "Razz",
+        "desc": "Stud'un tersi: en düşük el kazanır. A-2-3-4-5 en iyisi."
+      },
+      "shortDeck": {
+        "name": "Short Deck",
+        "desc": "2'ler ile 5'ler çıkarılmış 36 kartlık deste. Flush, full house'u yener."
+      }
     }
   },
   "final": {

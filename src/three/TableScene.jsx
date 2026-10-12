@@ -1,5 +1,6 @@
 import { Component, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Environment, Lightformer } from '@react-three/drei';
 import * as THREE from 'three';
 import CardMesh from './CardMesh.jsx';
 import FeltTable, { TABLE_RX, TABLE_RZ } from './FeltTable.jsx';
@@ -59,37 +60,63 @@ class GLBoundary extends Component {
 
 // ---------------------------------------------------------------- cards
 
-function TableCard({ card, faceUp, pos, tilt = 0, scale, delay = 0 }) {
+const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+const FLIGHT = 0.62;
+
+/**
+ * A card that flies from the shoe to its spot: eased glide, a low arc and a spin that
+ * settles as it lands. Later moves (fold to muck, draw lift) reuse the same flight.
+ */
+function TableCard({ card, faceUp, pos, tilt = 0, scale, delay = 0, spin = 1 }) {
   const ref = useRef();
   const [shown, setShown] = useState(false);
-  const born = useRef(null);
   const goal = useRef({ pos, tilt, scale });
   goal.current = { pos, tilt, scale };
+  const flight = useRef(null);
+  const clock = useRef(0);
 
   useEffect(() => {
-    const id = setTimeout(() => setShown(true), reducedMotion() ? 0 : delay * 1000 + 260);
+    const id = setTimeout(() => setShown(true), reducedMotion() ? 0 : (delay + FLIGHT * 0.8) * 1000);
     return () => clearTimeout(id);
   }, [delay]);
 
-  useFrame((state, dt) => {
+  useFrame((_, dt) => {
     const g = ref.current;
     if (!g) return;
-    if (born.current === null) born.current = state.clock.elapsedTime;
     const { pos: p, tilt: tl, scale: s } = goal.current;
     if (reducedMotion()) {
       g.position.set(p[0], p[1], p[2]);
-      g.rotation.x = tl;
+      g.rotation.set(tl, 0, 0);
       g.scale.setScalar(s);
       return;
     }
-    if (state.clock.elapsedTime - born.current < delay) return;
-    const k = 1 - Math.exp(-8 * Math.min(dt, 0.1));
-    g.position.x += (p[0] - g.position.x) * k;
-    g.position.y += (p[1] - g.position.y) * k;
-    g.position.z += (p[2] - g.position.z) * k;
-    g.rotation.x += (tl - g.rotation.x) * k;
-    const sc = g.scale.x + (s - g.scale.x) * k;
-    g.scale.setScalar(sc);
+    clock.current += Math.min(dt, 0.1);
+    if (clock.current < delay) return;
+    let f = flight.current;
+    if (!f || f.to[0] !== p[0] || f.to[1] !== p[1] || f.to[2] !== p[2] || f.tilt !== tl || f.scale !== s) {
+      f = flight.current = {
+        from: [g.position.x, g.position.y, g.position.z],
+        fromTilt: g.rotation.x,
+        fromScale: g.scale.x,
+        fromSpin: f ? g.rotation.y : spin * 1.4,
+        to: p,
+        tilt: tl,
+        scale: s,
+        t: 0,
+        arc: f ? 0.25 : 0.55,
+      };
+    }
+    if (f.t >= 1) return;
+    f.t = Math.min(1, f.t + Math.min(dt, 0.1) / FLIGHT);
+    const e = easeOutCubic(f.t);
+    g.position.set(
+      f.from[0] + (p[0] - f.from[0]) * e,
+      f.from[1] + (p[1] - f.from[1]) * e + Math.sin(Math.PI * Math.min(1, f.t * 1.15)) * f.arc * (1 - f.t * 0.4),
+      f.from[2] + (p[2] - f.from[2]) * e
+    );
+    g.rotation.x = f.fromTilt + (tl - f.fromTilt) * e;
+    g.rotation.y = f.fromSpin * (1 - e);
+    g.scale.setScalar(f.fromScale + (s - f.fromScale) * e);
   });
 
   return (
@@ -134,14 +161,14 @@ function CameraRig({ n, onLayout }) {
   const { camera, size } = useThree();
   useLayoutEffect(() => {
     const aspect = size.width / Math.max(1, size.height);
-    const elev = (aspect < 1 ? 66 : aspect < 1.4 ? 60 : 54) * (Math.PI / 180);
+    const elev = (aspect < 0.8 ? 78 : aspect < 1 ? 68 : aspect < 1.4 ? 60 : 54) * (Math.PI / 180);
     const look = new THREE.Vector3(0, 0, aspect < 1 ? 0.35 : 0.3);
     const dir = new THREE.Vector3(0, Math.sin(elev), Math.cos(elev));
     const pts = [
-      [-(TABLE_RX + 0.75), 0, 0],
-      [TABLE_RX + 0.75, 0, 0],
-      [0, 0, -(TABLE_RZ + 0.75)],
-      [0, 0, TABLE_RZ + 1.0],
+      [-(TABLE_RX + 0.95), 0, 0],
+      [TABLE_RX + 0.95, 0, 0],
+      [0, 0, -(TABLE_RZ + 0.95)],
+      [0, 0, TABLE_RZ + 1.15],
     ].map((a) => new THREE.Vector3(...a));
     const v = new THREE.Vector3();
     const fits = (d) => {
@@ -239,7 +266,7 @@ function Deck() {
 
 // ---------------------------------------------------------------- scene
 
-function Scene({ game, drawSelection, onLayout }) {
+function Scene({ game, drawSelection, onLayout, quality }) {
   const n = game.players.length;
   const complete = game.phase === PHASE.COMPLETE;
 
@@ -267,22 +294,30 @@ function Scene({ game, drawSelection, onLayout }) {
   return (
     <>
       <CameraRig n={n} onLayout={onLayout} />
-      <ambientLight intensity={0.55} />
-      <hemisphereLight args={['#fff5e0', '#0a1713', 0.35]} />
-      <directionalLight
-        position={[2.5, 9, 4]}
-        intensity={1.5}
-        castShadow
+      <ambientLight intensity={0.18} />
+      <hemisphereLight args={['#ffe9c8', '#1a0508', 0.35]} />
+      {/* the pool of light over the felt; everything past the rail falls off into the room */}
+      <spotLight
+        position={[0.4, 9, 2.4]}
+        angle={0.62}
+        penumbra={0.75}
+        intensity={120}
+        decay={2}
+        color="#ffe3b8"
+        castShadow={quality === 'high'}
         shadow-mapSize={[1024, 1024]}
-        shadow-camera-left={-6}
-        shadow-camera-right={6}
-        shadow-camera-top={4}
-        shadow-camera-bottom={-4}
         shadow-bias={-0.0004}
+        shadow-radius={6}
       />
-      <pointLight position={[0, 3.2, 0]} intensity={6} distance={9} color="#ffe2a8" />
+      <pointLight position={[0, 2.6, 0.6]} intensity={5} distance={7} color="#ffd9a0" />
+      <pointLight position={[-6, 1.5, -3]} intensity={10} distance={12} color="#b3202f" />
+      <Environment resolution={64} frames={1}>
+        <Lightformer form="rect" intensity={1.6} color="#ffe6bf" position={[0, 6, 0]} rotation={[HALF_PI, 0, 0]} scale={[8, 4, 1]} />
+        <Lightformer form="rect" intensity={0.6} color="#b3202f" position={[-6, 1, 0]} rotation={[0, HALF_PI, 0]} scale={[6, 2, 1]} />
+        <Lightformer form="rect" intensity={0.5} color="#fff0d8" position={[6, 1, 2]} rotation={[0, -HALF_PI, 0]} scale={[6, 2, 1]} />
+      </Environment>
 
-      <FeltTable />
+      <FeltTable quality={quality} />
       <Deck />
 
       {seatCards.map((c) => (
@@ -307,21 +342,24 @@ function Scene({ game, drawSelection, onLayout }) {
 
 /** The 3D table. Pure renderer over the game state; seat labels are DOM, positioned via `onLayout`. */
 export default function TableScene({ game, drawSelection = [], onLayout, onFail }) {
+  const [quality] = useState(() => (typeof window !== 'undefined' && window.matchMedia?.('(min-width: 720px)').matches ? 'high' : 'low'));
   if (!game) return null;
   return (
     <GLBoundary onFail={onFail}>
       <Canvas
         className="table3d"
         style={{ position: 'absolute', inset: 0 }}
-        dpr={[1, 1.5]}
-        shadows
+        dpr={quality === 'high' ? [1, 1.75] : [1, 1.25]}
+        shadows={quality === 'high' ? 'soft' : false}
         camera={{ fov: 38, near: 0.1, far: 100, position: [0, 8, 6] }}
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
         onCreated={({ gl }) => {
           gl.setClearColor(0x000000, 0);
+          gl.toneMapping = THREE.ACESFilmicToneMapping;
+          gl.toneMappingExposure = 1;
         }}
       >
-        <Scene game={game} drawSelection={drawSelection} onLayout={onLayout} />
+        <Scene game={game} drawSelection={drawSelection} onLayout={onLayout} quality={quality} />
       </Canvas>
     </GLBoundary>
   );

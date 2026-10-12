@@ -15,8 +15,8 @@ export const TEXTURE_W = 512;
 export const TEXTURE_H = 717;
 
 const FONT = {
-  display: "'Fraunces', Georgia, serif",
-  body: "'DM Sans', system-ui, sans-serif",
+  display: "'Bodoni Moda', Didot, Georgia, serif",
+  body: "'Hanken Grotesk', system-ui, sans-serif",
 };
 
 const pathCache = {};
@@ -172,8 +172,8 @@ function paint(canvas, key) {
 function hookFonts() {
   if (fontsHooked || typeof document === 'undefined' || !document.fonts) return;
   fontsHooked = true;
-  // Redraw once the display font is ready so card indices use Fraunces.
-  document.fonts.load("600 48px 'Fraunces'").then(() => document.fonts.ready).then(() => {
+  // Redraw once the display font is ready so card indices use the display face.
+  Promise.all([document.fonts.load("600 48px 'Bodoni Moda'"), document.fonts.load("700 48px 'Hanken Grotesk'")]).then(() => document.fonts.ready).then(() => {
     textureCache.forEach((tex, key) => {
       paint(tex.image, key);
       tex.needsUpdate = true;

@@ -25,6 +25,7 @@ import CoachPanel from '../components/CoachPanel.jsx';
 import GameLog from '../components/GameLog.jsx';
 import HandSummary from '../components/HandSummary.jsx';
 import './Play.css';
+import PageCurtain from '../components/PageCurtain.jsx';
 
 if (!i18n.hasResourceBundle('tr', 'play')) {
   i18n.addResourceBundle('tr', 'play', tr);
@@ -132,6 +133,16 @@ function SetupPanel({ notPlayable }) {
   );
 }
 
+/** Half extents (px) of a seat on the flat table; mirrors the card overlap in PlayerSeat.css. */
+function seatExtent(human, count, compact) {
+  const w = human ? 64 : 44;
+  const show = human ? 0.5 : 0.38;
+  const cardsW = count > 0 ? w * (1 + show * (count - 1)) : 0;
+  const plateW = compact ? 96 : 116;
+  const h = (count > 0 ? w * 1.4 + 4 : 0) + 42 + 24;
+  return { hw: Math.ceil(Math.max(cardsW, plateW) / 2) + 6, hh: Math.ceil(h / 2) + 4 };
+}
+
 function Seats({ game, positions, showCards }) {
   const n = game.players.length;
   const complete = game.phase === PHASE.COMPLETE;
@@ -139,6 +150,13 @@ function Seats({ game, positions, showCards }) {
   if (complete && game.result) for (const w of game.result.winners) won[w.playerIdx] = w.amount;
   return game.players.map((p, i) => {
     const [x, y] = positions?.[i] || seatPercent(i, n);
+    const cards = showCards ? visibleCards(game, 0, p) : null;
+    // Keep the whole seat inside the stage: on the flat table that includes its cards.
+    const { hw, hh } = seatExtent(p.isHuman, showCards ? cards.length : 0, n > 4);
+    const style = {
+      left: `clamp(${hw}px, ${x}%, calc(100% - ${hw}px))`,
+      top: `clamp(${hh}px, ${y}%, calc(100% - ${hh}px))`,
+    };
     return (
       <PlayerSeat
         key={i}
@@ -149,10 +167,10 @@ function Seats({ game, positions, showCards }) {
         isSb={game.sbIdx === i && !complete}
         isBb={game.bbIdx === i && !complete}
         won={won[i] || 0}
-        cards={showCards ? visibleCards(game, 0, p) : null}
+        cards={cards}
         showCards={showCards}
         compact={n > 4}
-        style={{ left: `${x}%`, top: `${y}%` }}
+        style={style}
       />
     );
   });
@@ -232,6 +250,7 @@ export default function Play() {
 
   return (
     <motion.div className="page play" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}>
+      <PageCurtain />
       <div className={`play__layout${sideOpen ? '' : ' play__layout--wide'}`}>
         <div className="play__main">
           <div className="play__toolbar">

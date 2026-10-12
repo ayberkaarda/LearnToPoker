@@ -7,32 +7,38 @@
   gap: 4px;
   pointer-events: none;
   z-index: 2;
-  transition: opacity 0.3s var(--ease);
+  transition: opacity var(--dur-m) var(--ease);
 }
 
+/* Cards overlap so only the index shows; Play.jsx seatExtent() mirrors these numbers. */
 .seat__cards {
   display: flex;
-  gap: 2px;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
-.seat__cards--n5 .card2d + .card2d,
-.seat__cards--n7 .card2d + .card2d {
-  margin-left: -18px;
+.seat__cards .card2d + .card2d {
+  margin-left: -27px;
+}
+
+.seat--human .seat__cards .card2d + .card2d {
+  margin-left: -32px;
 }
 
 .seat__plate {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 5px 12px 5px 5px;
-  background: rgba(10, 23, 19, 0.86);
-  border: 1px solid var(--border);
+  gap: 9px;
+  padding: 5px 14px 5px 5px;
+  background:
+    linear-gradient(180deg, rgba(244, 236, 220, 0.06), transparent 60%),
+    rgba(14, 11, 10, 0.88);
+  border: 1px solid rgba(244, 236, 220, 0.12);
   border-radius: 999px;
-  box-shadow: var(--shadow-s, 0 6px 18px rgba(0, 0, 0, 0.35));
+  box-shadow: inset 0 1px 0 rgba(244, 236, 220, 0.08), 0 10px 24px -8px rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(6px);
-  min-width: 112px;
-  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  min-width: 116px;
+  transition: border-color var(--dur-m) var(--ease), box-shadow var(--dur-m) var(--ease);
 }
 
 .seat__avatar {
@@ -42,30 +48,34 @@
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: var(--surface-2);
+  background: radial-gradient(circle at 35% 30%, #3a2b25, #1a1311);
+  border: 1px solid rgba(201, 164, 92, 0.35);
   color: var(--gold-2);
   font-family: var(--font-display);
-  font-weight: 600;
+  font-style: italic;
+  font-weight: 500;
   flex: none;
 }
 
 .seat--human .seat__avatar {
-  background: var(--gold);
-  color: var(--bg);
+  background: radial-gradient(circle at 35% 30%, var(--gold-2), var(--gold));
+  border-color: rgba(255, 240, 210, 0.6);
+  color: #1b1206;
 }
 
 .seat__dealer {
   position: absolute;
-  right: -6px;
-  bottom: -4px;
-  width: 17px;
-  height: 17px;
+  right: -7px;
+  bottom: -5px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: #f6f1e4;
+  background: var(--cream);
   color: #1a1a1a;
-  font: 700 10px/17px var(--font-body);
+  font: 700 10px/18px var(--font-body);
+  font-style: normal;
   text-align: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 1.5px var(--gold), 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .seat__info {
@@ -76,7 +86,7 @@
 .seat__name {
   font-weight: 600;
   font-size: 0.86rem;
-  color: var(--text);
+  color: var(--cream);
   white-space: nowrap;
   display: flex;
   gap: 6px;
@@ -84,15 +94,17 @@
 }
 
 .seat__pers {
-  font-size: 0.68rem;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.74rem;
+  font-weight: 400;
   color: var(--muted);
-  text-transform: lowercase;
 }
 
 .seat__stack {
   font-variant-numeric: tabular-nums;
   font-size: 0.8rem;
+  font-weight: 500;
   color: var(--gold-2);
 }
 
@@ -101,58 +113,74 @@
   gap: 4px;
   flex-wrap: wrap;
   justify-content: center;
-  min-height: 18px;
+  min-height: 20px;
 }
 
 .seat__tag {
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  padding: 2px 7px;
-  border-radius: 999px;
-  background: rgba(20, 38, 31, 0.92);
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(14, 11, 10, 0.92);
   border: 1px solid var(--border);
   color: var(--muted);
   white-space: nowrap;
+  animation: seat-tag-in 0.45s var(--ease) both;
+}
+
+@keyframes seat-tag-in {
+  from { opacity: 0; transform: translateY(-4px) scale(0.92); }
 }
 
 .seat__tag--act {
-  color: var(--text);
+  color: var(--cream);
 }
 
 .seat__tag--fold { color: var(--muted); }
 .seat__tag--bet,
 .seat__tag--raise,
-.seat__tag--allin { color: var(--gold-2); border-color: rgba(214, 171, 76, 0.4); }
-.seat__tag--won { background: var(--gold); color: var(--bg); border-color: transparent; }
-.seat__tag--status { color: var(--red); }
+.seat__tag--allin { color: var(--gold-2); border-color: rgba(201, 164, 92, 0.45); }
+.seat__tag--won { background: linear-gradient(180deg, var(--gold-2), var(--gold)); color: #1b1206; border-color: transparent; }
+.seat__tag--status { color: var(--red-2); border-color: rgba(216, 57, 74, 0.35); }
 
+/* the player to act gets a slow brass halo */
 .seat--turn .seat__plate {
   border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(214, 171, 76, 0.25), 0 0 28px rgba(240, 207, 122, 0.35);
+  box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.22), 0 0 30px rgba(228, 200, 138, 0.35);
+  animation: seat-turn 1.8s var(--ease) infinite alternate;
+}
+
+@keyframes seat-turn {
+  to { box-shadow: 0 0 0 5px rgba(201, 164, 92, 0.12), 0 0 44px rgba(228, 200, 138, 0.5); }
 }
 
 .seat--folded {
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
 .seat--won .seat__plate {
   border-color: var(--gold-2);
+  box-shadow: 0 0 0 1px var(--gold-2), 0 0 36px rgba(228, 200, 138, 0.45);
 }
 
 .seat--compact .seat__plate {
-  min-width: 0;
-  padding-right: 9px;
+  min-width: 96px;
+  padding-right: 10px;
 }
 
 @media (max-width: 640px) {
-  .seat__plate { min-width: 0; gap: 6px; padding-right: 9px; }
+  .seat__plate { gap: 6px; padding-right: 10px; }
   .seat__avatar { width: 26px; height: 26px; font-size: 0.8rem; }
   .seat__name { font-size: 0.76rem; }
   .seat__pers { display: none; }
-  .seat__cards .card2d + .card2d { margin-left: -22px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .seat { transition: none; }
+  .seat,
+  .seat__tag,
+  .seat--turn .seat__plate {
+    transition: none;
+    animation: none;
+  }
 }
