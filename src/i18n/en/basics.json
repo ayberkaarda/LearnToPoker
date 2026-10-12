@@ -1,0 +1,346 @@
+{
+  "hero": {
+    "eyebrow": "Before your first hand",
+    "title": "Poker basics",
+    "lead": "Meet the cards, understand the table and take your first seat with confidence. No poker knowledge needed.",
+    "progress": "Section {{current}} / {{total}}",
+    "nav": "Jump to a section"
+  },
+  "sections": [
+    {
+      "id": "intro",
+      "label": "Start"
+    },
+    {
+      "id": "deck",
+      "label": "Cards"
+    },
+    {
+      "id": "hands",
+      "label": "Hand rankings"
+    },
+    {
+      "id": "actions",
+      "label": "Actions"
+    },
+    {
+      "id": "blinds",
+      "label": "Blinds and pot"
+    },
+    {
+      "id": "flow",
+      "label": "Hand flow"
+    },
+    {
+      "id": "position",
+      "label": "Position"
+    },
+    {
+      "id": "quiz",
+      "label": "Quiz"
+    },
+    {
+      "id": "next",
+      "label": "Next step"
+    }
+  ],
+  "deck": {
+    "eyebrow": "01 / Meet the cards",
+    "title": "52 cards, four suits",
+    "lead": "A standard deck has no jokers. Each suit has the same 13 ranks; no suit beats another.",
+    "suits": [
+      "Spades",
+      "Hearts",
+      "Diamonds",
+      "Clubs"
+    ],
+    "ranks": "Ranks: 2, 3, 4, 5, 6, 7, 8, 9, 10, J (jack), Q (queen), K (king), A (ace).",
+    "ace": "An ace is usually highest. It can also be lowest in A–2–3–4–5. Q–K–A–2–3 is not a straight.",
+    "reveal": "Reveal cards",
+    "reset": "Hide cards"
+  },
+  "ladder": {
+    "eyebrow": "02 / Compare strength",
+    "title": "The best five cards win",
+    "lead": "The list runs from weakest to strongest. Tap a hand to see its cards and what makes it strong.",
+    "hint": "These are probabilities for a random five-card hand. Hold’em probabilities for the best five of seven cards differ. Royal flush is counted separately from other straight flushes here.",
+    "cards": "Example hand",
+    "rarity": "Probability",
+    "expand": "Show example",
+    "collapse": "Hide example",
+    "items": [
+      {
+        "name": "High card",
+        "description": "With no combination, compare the highest card, then the next cards if tied.",
+        "rarity": "50.1177%"
+      },
+      {
+        "name": "One pair",
+        "description": "Two cards of the same rank. The higher pair wins; equal pairs compare the other cards (kickers).",
+        "rarity": "42.2569%"
+      },
+      {
+        "name": "Two pair",
+        "description": "Two different pairs. Compare the higher pair, then the lower pair, then the remaining card.",
+        "rarity": "4.7539%"
+      },
+      {
+        "name": "Three of a kind",
+        "description": "Three cards of the same rank. The higher triple wins; compare the remaining cards if tied.",
+        "rarity": "2.1128%"
+      },
+      {
+        "name": "Straight",
+        "description": "Five consecutive ranks, with any suits. The top card decides; A–2–3–4–5 is the lowest straight.",
+        "rarity": "0.3925%"
+      },
+      {
+        "name": "Flush",
+        "description": "Five cards of one suit, not necessarily consecutive. Compare from the highest card down.",
+        "rarity": "0.1965%"
+      },
+      {
+        "name": "Full house",
+        "description": "Three of a kind plus a pair. Compare the triple first, then the pair.",
+        "rarity": "0.1441%"
+      },
+      {
+        "name": "Four of a kind",
+        "description": "Four cards of the same rank. Compare their rank, then the fifth card if tied.",
+        "rarity": "0.0240%"
+      },
+      {
+        "name": "Straight flush",
+        "description": "Five consecutive cards of one suit. The highest card decides.",
+        "rarity": "0.00139%"
+      },
+      {
+        "name": "Royal flush",
+        "description": "10–J–Q–K–A of one suit. The strongest hand; no hand beats it.",
+        "rarity": "0.000154%"
+      }
+    ]
+  },
+  "actions": {
+    "eyebrow": "03 / Your turn",
+    "title": "Six actions, one decision",
+    "lead": "When your turn comes in a betting round, act according to the current bet and your chips.",
+    "play": "Replay scene",
+    "pot": "Pot",
+    "items": [
+      {
+        "key": "check",
+        "name": "Check",
+        "meaning": "Pass your turn without betting.",
+        "when": "Available when there is no outstanding bet for you to match.",
+        "scene": "0 chips"
+      },
+      {
+        "key": "bet",
+        "name": "Bet",
+        "meaning": "Make the first bet of this round.",
+        "when": "Available when nobody has bet yet.",
+        "scene": "+10 chips"
+      },
+      {
+        "key": "call",
+        "name": "Call",
+        "meaning": "Match the current bet.",
+        "when": "If an opponent put in 10 and you put in 0, you pay 10.",
+        "scene": "+10 chips"
+      },
+      {
+        "key": "raise",
+        "name": "Raise",
+        "meaning": "Increase the current bet.",
+        "when": "If the bet is 10 and you raise the total to 30, others must respond to the new amount.",
+        "scene": "10 → 30"
+      },
+      {
+        "key": "fold",
+        "name": "Fold",
+        "meaning": "Leave this hand.",
+        "when": "Use it when you do not want to continue. Chips already committed stay in the pot.",
+        "scene": "Cards turn down"
+      },
+      {
+        "key": "allin",
+        "name": "All-in",
+        "meaning": "Commit all your remaining chips.",
+        "when": "You put in your entire stack (the chips in front of you). Extra bets can create a separate side pot; you can only win pots you contributed to.",
+        "scene": "All chips"
+      }
+    ]
+  },
+  "blinds": {
+    "eyebrow": "04 / Read the table",
+    "title": "Blinds, antes and the pot",
+    "lead": "The pot is the total of all chips committed to this hand. Forced payments get the action started.",
+    "dealer": "Dealer (D)",
+    "small": "Small blind (SB)",
+    "big": "Big blind (BB)",
+    "rotate": "Move to the next hand",
+    "seat": "Seat {{number}}",
+    "notes": [
+      "The dealer button marks the dealer position and moves one seat clockwise for each new hand.",
+      "At a six-player table, the player to the dealer’s left pays the small blind; the next pays the big blind. Example: SB 5, BB 10.",
+      "An ante is an extra forced payment before the hand, when the rules require it. Everyone may pay, or in some games the big blind pays for the table.",
+      "Blinds and antes enter the pot. If everyone folds, the remaining player wins without showing cards."
+    ],
+    "potExample": "Example: SB 5 + BB 10 = a starting pot of 15 chips (no ante)."
+  },
+  "flow": {
+    "eyebrow": "05 / The story of a hand",
+    "title": "Hold’em: two cards to showdown",
+    "lead": "You have two private cards and five community cards that everyone can use. Choose your best five from these seven; you do not have to use both private cards.",
+    "hole": "Your private cards",
+    "board": "Community cards",
+    "next": "Next stage",
+    "restart": "Start again",
+    "steps": [
+      {
+        "name": "Preflop",
+        "text": "Everyone receives two private cards. The first betting round starts to the left of the big blind."
+      },
+      {
+        "name": "Flop",
+        "text": "Three community cards are revealed. Betting starts with the first remaining player to the dealer’s left."
+      },
+      {
+        "name": "Turn",
+        "text": "The fourth community card is revealed, followed by another betting round."
+      },
+      {
+        "name": "River",
+        "text": "The fifth and final community card is revealed. The final betting round follows."
+      },
+      {
+        "name": "Showdown",
+        "text": "If at least two players remain, hands are compared. The best five-card hand wins the pot. Identical hands split the pot. In this example, you have two aces and two kings."
+      }
+    ]
+  },
+  "position": {
+    "eyebrow": "06 / Acting order is information",
+    "title": "Acting later means knowing more",
+    "lead": "Position is when you make your decision relative to the other players in a betting round. It changes with the dealer button.",
+    "items": [
+      {
+        "name": "Early position",
+        "text": "You act before most players. You have less information because you have not seen their decisions."
+      },
+      {
+        "name": "Middle position",
+        "text": "You see some decisions, but players remain behind you. Consider both the bets ahead and the players still to act."
+      },
+      {
+        "name": "Late position",
+        "text": "You act after seeing many other decisions. The dealer (button) acts last after the flop when still in the hand."
+      }
+    ],
+    "note": "Preflop, the big blind has the last initial decision (a raise may send action around again). After the flop, the blind positions act early."
+  },
+  "quizSection": {
+    "eyebrow": "07 / Test yourself",
+    "title": "Ready for your first hand?",
+    "lead": "Eight quick questions. Wrong answers help you learn too; read the explanation for each one."
+  },
+  "quiz": [
+    {
+      "q": "How many cards are in a standard poker deck?",
+      "options": [
+        "36",
+        "52",
+        "54"
+      ],
+      "answer": 1,
+      "explain": "A standard deck without jokers has four suits × 13 ranks: 52 cards."
+    },
+    {
+      "q": "Which hand wins?",
+      "options": [
+        "One pair",
+        "Two pair"
+      ],
+      "hands": [
+        "As Ad 8c 5h 2s",
+        "Ks Kd 4c 4h 9s"
+      ],
+      "answer": 1,
+      "explain": "Two pair beats one pair, even a pair of aces."
+    },
+    {
+      "q": "Which hand wins?",
+      "options": [
+        "Straight",
+        "Flush"
+      ],
+      "hands": [
+        "9s Th Jd Qc Ks",
+        "2h 5h 8h Jh Ah"
+      ],
+      "answer": 1,
+      "explain": "A flush ranks above a straight."
+    },
+    {
+      "q": "Which hand wins?",
+      "options": [
+        "Full house",
+        "Four of a kind"
+      ],
+      "hands": [
+        "Qs Qh Qd 7c 7h",
+        "9s 9h 9d 9c As"
+      ],
+      "answer": 1,
+      "explain": "Four of a kind beats a full house, regardless of the triple or kicker rank."
+    },
+    {
+      "q": "There is no outstanding bet. How can you continue without committing chips?",
+      "options": [
+        "Call",
+        "Check",
+        "Raise"
+      ],
+      "answer": 1,
+      "explain": "Check passes your turn without adding chips when no bet needs matching."
+    },
+    {
+      "q": "There is no ante; SB pays 5 and BB pays 10. What is the starting pot?",
+      "options": [
+        "5",
+        "10",
+        "15"
+      ],
+      "answer": 2,
+      "explain": "The pot is the sum of contributions: 5 + 10 = 15."
+    },
+    {
+      "q": "Which is a valid straight?",
+      "options": [
+        "Q–K–A–2–3",
+        "A–2–3–4–5",
+        "2–4–6–8–10"
+      ],
+      "answer": 1,
+      "explain": "The ace can act low in the lowest straight, but cannot bridge high ranks to low ranks in the middle."
+    },
+    {
+      "q": "What is the dealer button’s advantage after the flop in Hold’em?",
+      "options": [
+        "Always gets better cards",
+        "Acts last when still in the hand",
+        "Never pays blinds"
+      ],
+      "answer": 1,
+      "explain": "Acting later lets you see other players’ decisions. It does not change your cards."
+    }
+  ],
+  "next": {
+    "eyebrow": "Your next step",
+    "title": "You know your way around the table",
+    "lead": "Explore poker variants or try what you learned in a Hold’em hand.",
+    "variants": "Explore poker variants",
+    "play": "Play Hold’em"
+  }
+}

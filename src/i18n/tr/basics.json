@@ -1,0 +1,346 @@
+{
+  "hero": {
+    "eyebrow": "İlk elinden önce",
+    "title": "Pokerin temelleri",
+    "lead": "Kartları tanı, masada neler olduğunu anla ve ilk eline güvenle başla. Önceden poker bilmen gerekmiyor.",
+    "progress": "Bölüm {{current}} / {{total}}",
+    "nav": "Bölümlere git"
+  },
+  "sections": [
+    {
+      "id": "intro",
+      "label": "Başlangıç"
+    },
+    {
+      "id": "deck",
+      "label": "Kartlar"
+    },
+    {
+      "id": "hands",
+      "label": "El sıralaması"
+    },
+    {
+      "id": "actions",
+      "label": "Aksiyonlar"
+    },
+    {
+      "id": "blinds",
+      "label": "Blind ve pot"
+    },
+    {
+      "id": "flow",
+      "label": "Elin akışı"
+    },
+    {
+      "id": "position",
+      "label": "Pozisyon"
+    },
+    {
+      "id": "quiz",
+      "label": "Quiz"
+    },
+    {
+      "id": "next",
+      "label": "Sonraki adım"
+    }
+  ],
+  "deck": {
+    "eyebrow": "01 / Kartları tanı",
+    "title": "52 kart, dört renk",
+    "lead": "Standart destede joker yoktur. Her renkte aynı 13 değer bulunur; renklerin birbirine üstünlüğü yoktur.",
+    "suits": [
+      "Maça",
+      "Kupa",
+      "Karo",
+      "Sinek"
+    ],
+    "ranks": "Değerler: 2, 3, 4, 5, 6, 7, 8, 9, 10, J (vale), Q (kız), K (papaz), A (as).",
+    "ace": "As genellikle en yüksektir. A–2–3–4–5 sırasında en düşük değer olarak da kullanılabilir. Q–K–A–2–3 bir sıra değildir.",
+    "reveal": "Kartları aç",
+    "reset": "Kartları kapat"
+  },
+  "ladder": {
+    "eyebrow": "02 / Gücü karşılaştır",
+    "title": "En iyi beş kart kazanır",
+    "lead": "Liste en zayıftan en güçlüye ilerler. Bir ele dokun: örnek kartları ve neden güçlü olduğunu gör.",
+    "hint": "Beş kartlık rastgele bir elin olasılıklarıdır; Hold’em’de yedi karttan seçilen en iyi beş kartın olasılıkları farklıdır. Royal flush burada straight flush’tan ayrı sayılır.",
+    "cards": "Örnek el",
+    "rarity": "Olasılık",
+    "expand": "Örneği aç",
+    "collapse": "Örneği kapat",
+    "items": [
+      {
+        "name": "Yüksek kart",
+        "description": "Hiçbir kombinasyon yoksa en yüksek kart karşılaştırılır; eşitse sonraki kartlara bakılır.",
+        "rarity": "%50,1177"
+      },
+      {
+        "name": "Bir çift",
+        "description": "Aynı değerde iki kart. Büyük çift kazanır; eşit çiftlerde kalan kartlar (kicker) karşılaştırılır.",
+        "rarity": "%42,2569"
+      },
+      {
+        "name": "İki çift",
+        "description": "İki ayrı çift. Önce büyük çift, sonra küçük çift, ardından kalan kart karşılaştırılır.",
+        "rarity": "%4,7539"
+      },
+      {
+        "name": "Üçlü",
+        "description": "Aynı değerde üç kart. Büyük üçlü kazanır; eşitse kalan kartlara bakılır.",
+        "rarity": "%2,1128"
+      },
+      {
+        "name": "Straight (sıra)",
+        "description": "Ardışık beş değer. Renkler farklı olabilir. En üst kart belirleyicidir; A–2–3–4–5 en küçük sıradır.",
+        "rarity": "%0,3925"
+      },
+      {
+        "name": "Flush (renk)",
+        "description": "Aynı renkten beş kart. Sıra olmaları gerekmez; en yüksek karttan başlayarak karşılaştırılır.",
+        "rarity": "%0,1965"
+      },
+      {
+        "name": "Full house",
+        "description": "Bir üçlü ve bir çift. Önce üçlünün, sonra çiftin değeri karşılaştırılır.",
+        "rarity": "%0,1441"
+      },
+      {
+        "name": "Dörtlü",
+        "description": "Aynı değerde dört kart. Dörtlünün değeri, eşitlikte beşinci kart belirleyicidir.",
+        "rarity": "%0,0240"
+      },
+      {
+        "name": "Straight flush",
+        "description": "Aynı renkte ardışık beş kart. En yüksek kart kazanır.",
+        "rarity": "%0,00139"
+      },
+      {
+        "name": "Royal flush",
+        "description": "Aynı renkte 10–J–Q–K–A. En güçlü eldir; hiçbir el onu geçemez.",
+        "rarity": "%0,000154"
+      }
+    ]
+  },
+  "actions": {
+    "eyebrow": "03 / Sıra sende",
+    "title": "Altı aksiyon, tek karar",
+    "lead": "Bahis turunda sıra sana geldiğinde, önündeki bahse ve fişlerine göre hareket edersin.",
+    "play": "Sahneyi oynat",
+    "pot": "Pot",
+    "items": [
+      {
+        "key": "check",
+        "name": "Check",
+        "meaning": "Bahis koymadan sırayı geçir.",
+        "when": "Bu turda karşılaman gereken bahis yoksa kullanılır.",
+        "scene": "0 fiş"
+      },
+      {
+        "key": "bet",
+        "name": "Bet",
+        "meaning": "Bu turdaki ilk bahsi koy.",
+        "when": "Henüz kimse bahis yapmadıysa kullanılır.",
+        "scene": "+10 fiş"
+      },
+      {
+        "key": "call",
+        "name": "Call",
+        "meaning": "Mevcut bahsi eşitle.",
+        "when": "Rakibin 10 koyduysa ve sen 0 koyduysan 10 ödersin.",
+        "scene": "+10 fiş"
+      },
+      {
+        "key": "raise",
+        "name": "Raise",
+        "meaning": "Mevcut bahsi artır.",
+        "when": "Bahis 10 iken toplamı 30’a çıkarırsan, diğerleri yeni miktarı karşılamalıdır.",
+        "scene": "10 → 30"
+      },
+      {
+        "key": "fold",
+        "name": "Fold",
+        "meaning": "Bu elden çekil.",
+        "when": "Devam etmek istemiyorsan kullanılır. Önceden koyduğun fişler potta kalır.",
+        "scene": "Kartlar kapanır"
+      },
+      {
+        "key": "allin",
+        "name": "All-in",
+        "meaning": "Kalan tüm fişlerini ortaya koy.",
+        "when": "Tüm stack’ini (önündeki fişleri) yatırırsın. Fazla bahisler için ayrı side pot oluşabilir; yalnızca katkıda bulunduğun potları kazanabilirsin.",
+        "scene": "Tüm fişler"
+      }
+    ]
+  },
+  "blinds": {
+    "eyebrow": "04 / Masayı oku",
+    "title": "Blind, ante ve pot",
+    "lead": "Pot, bu elde ortaya konan tüm fişlerin toplamıdır. Zorunlu ödemeler oyunun başlamasını sağlar.",
+    "dealer": "Dealer (D)",
+    "small": "Small blind (SB)",
+    "big": "Big blind (BB)",
+    "rotate": "Bir sonraki ele geç",
+    "seat": "Koltuk {{number}}",
+    "notes": [
+      "Dealer butonu dağıtıcı konumunu gösterir; her yeni elde saat yönünde bir koltuk ilerler.",
+      "Altı kişilik masada dealer’ın solundaki oyuncu small blind, onun solundaki big blind öder. Örnek: SB 5, BB 10.",
+      "Ante, kurallarda varsa el başlamadan yapılan ek zorunlu ödemedir. Herkes ödeyebilir; bazı oyunlarda big blind herkes adına öder.",
+      "Blind ve ante fişleri pota girer. Herkes fold ederse kalan oyuncu kartlarını göstermeden potu kazanır."
+    ],
+    "potExample": "Örnek: SB 5 + BB 10 = başlangıç potu 15 fiş (ante yok)."
+  },
+  "flow": {
+    "eyebrow": "05 / Bir elin hikâyesi",
+    "title": "Hold’em: iki karttan showdown’a",
+    "lead": "Sana özel iki kart ve herkesin kullanabildiği beş ortak kart vardır. Bu yedi karttan en iyi beşini seçersin; elindeki iki kartı kullanmak zorunda değilsin.",
+    "hole": "Sana özel kartlar",
+    "board": "Ortak kartlar",
+    "next": "Sonraki aşama",
+    "restart": "Başa dön",
+    "steps": [
+      {
+        "name": "Preflop",
+        "text": "Herkese iki kapalı kart dağıtılır. İlk bahis turu big blind’ın solundan başlar."
+      },
+      {
+        "name": "Flop",
+        "text": "Üç ortak kart açılır. Bahis turu, dealer’ın solundaki oyunda kalan ilk oyuncudan başlar."
+      },
+      {
+        "name": "Turn",
+        "text": "Dördüncü ortak kart açılır ve yeni bir bahis turu oynanır."
+      },
+      {
+        "name": "River",
+        "text": "Beşinci ve son ortak kart açılır. Son bahis turu oynanır."
+      },
+      {
+        "name": "Showdown",
+        "text": "En az iki oyuncu kaldıysa kartlar karşılaştırılır. En iyi beş kartlık el potu kazanır. Tam eşitlikte pot paylaşılır. Bu örnekte iki as ve iki papazın var."
+      }
+    ]
+  },
+  "position": {
+    "eyebrow": "06 / Sıra bilgidir",
+    "title": "Son konuşan daha çok şey bilir",
+    "lead": "Pozisyon, bahis turunda diğer oyunculara göre ne zaman karar verdiğindir. Dealer butonuna göre değişir.",
+    "items": [
+      {
+        "name": "Erken pozisyon",
+        "text": "Çoğu oyuncudan önce hareket edersin. Onların kararlarını henüz görmediğin için daha az bilgin vardır."
+      },
+      {
+        "name": "Orta pozisyon",
+        "text": "Bazı kararları görürsün; arkanda hâlâ oyuncular vardır. Hem önceki bahisleri hem sonraki oyuncuları düşün."
+      },
+      {
+        "name": "Geç pozisyon",
+        "text": "Birçok oyuncunun kararını görerek hareket edersin. Dealer (button), flop sonrası oyunda kaldığında en son hareket eder."
+      }
+    ],
+    "note": "Preflop’ta big blind son karar yerindedir (bahis artırılırsa sıra yeniden dönebilir). Flop’tan sonra blind konumları erken hareket eder."
+  },
+  "quizSection": {
+    "eyebrow": "07 / Kendini dene",
+    "title": "İlk eline hazır mısın?",
+    "lead": "Sekiz kısa soru. Yanlış cevap da öğrenmenin bir parçası; her sorunun açıklamasını oku."
+  },
+  "quiz": [
+    {
+      "q": "Standart poker destesinde kaç kart vardır?",
+      "options": [
+        "36",
+        "52",
+        "54"
+      ],
+      "answer": 1,
+      "explain": "Jokersiz standart deste, dört renk × 13 değerden oluşur: 52 kart."
+    },
+    {
+      "q": "Hangi el kazanır?",
+      "options": [
+        "Bir çift",
+        "İki çift"
+      ],
+      "hands": [
+        "As Ad 8c 5h 2s",
+        "Ks Kd 4c 4h 9s"
+      ],
+      "answer": 1,
+      "explain": "İki çift, as çifti bile olsa tek çifti yener."
+    },
+    {
+      "q": "Hangi el kazanır?",
+      "options": [
+        "Straight (sıra)",
+        "Flush (renk)"
+      ],
+      "hands": [
+        "9s Th Jd Qc Ks",
+        "2h 5h 8h Jh Ah"
+      ],
+      "answer": 1,
+      "explain": "Flush, straight’ten daha güçlüdür."
+    },
+    {
+      "q": "Hangi el kazanır?",
+      "options": [
+        "Full house",
+        "Dörtlü"
+      ],
+      "hands": [
+        "Qs Qh Qd 7c 7h",
+        "9s 9h 9d 9c As"
+      ],
+      "answer": 1,
+      "explain": "Dörtlü, full house’u yener; üçlünün veya kicker’ın yüksek olması bunu değiştirmez."
+    },
+    {
+      "q": "Bu turda karşılaman gereken bahis yok. Fiş koymadan nasıl devam edersin?",
+      "options": [
+        "Call",
+        "Check",
+        "Raise"
+      ],
+      "answer": 1,
+      "explain": "Check, karşılaman gereken bahis yokken sırayı fiş koymadan geçirmektir."
+    },
+    {
+      "q": "Ante yok; SB 5 ve BB 10 ödendi. Başlangıç potu kaç fiştir?",
+      "options": [
+        "5",
+        "10",
+        "15"
+      ],
+      "answer": 2,
+      "explain": "Pot tüm katkıların toplamıdır: 5 + 10 = 15."
+    },
+    {
+      "q": "Aşağıdakilerden hangisi geçerli bir straight’tir?",
+      "options": [
+        "Q–K–A–2–3",
+        "A–2–3–4–5",
+        "2–4–6–8–10"
+      ],
+      "answer": 1,
+      "explain": "As en küçük sırada 1 gibi kullanılabilir; sıranın ortasında yüksekten düşüğe köprü olamaz."
+    },
+    {
+      "q": "Hold’em’de flop’tan sonra dealer butonunun avantajı nedir?",
+      "options": [
+        "Her zaman daha iyi kart alır",
+        "Oyunda kaldığında en son hareket eder",
+        "Blind ödemez"
+      ],
+      "answer": 1,
+      "explain": "Geç hareket etmek, diğer oyuncuların kararlarını görmeni sağlar. Kart gücünü değiştirmez."
+    }
+  ],
+  "next": {
+    "eyebrow": "Sıradaki adım",
+    "title": "Artık masayı tanıyorsun",
+    "lead": "Poker türlerini keşfet ya da öğrendiklerini bir Hold’em elinde dene.",
+    "variants": "Poker türlerini keşfet",
+    "play": "Hold’em oyna"
+  }
+}

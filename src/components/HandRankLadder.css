@@ -1,0 +1,22 @@
+.handrank-ladder { width: 100%; min-width: 0; }
+.handrank-ladder-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
+.handrank-ladder-row { border-bottom: 1px solid var(--border); transition: background .2s; }
+.handrank-ladder-row--open { background: var(--surface); }
+.handrank-ladder-toggle { display: flex; align-items: center; gap: 16px; width: 100%; min-height: 64px; padding: 14px 18px; border: 0; background: transparent; color: var(--text); text-align: left; cursor: pointer; font: inherit; }
+.handrank-ladder-toggle:hover { background: var(--surface-2); }
+.handrank-ladder-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: -3px; }
+.handrank-ladder-number { color: var(--gold); font-size: .8rem; font-variant-numeric: tabular-nums; }
+.handrank-ladder-name { flex: 1; font-family: var(--font-display); font-size: 1.2rem; }
+.handrank-ladder-sign { color: var(--gold); font-size: 1.5rem; }
+.handrank-ladder-detail { overflow: hidden; }
+.handrank-ladder-detail-inner { padding: 4px 18px 22px; }
+.handrank-ladder-cards { display: flex; gap: 7px; flex-wrap: wrap; }
+.handrank-ladder-description { color: var(--text); max-width: 65ch; line-height: 1.7; margin: 16px 0 8px; }
+.handrank-ladder-rarity, .handrank-ladder-note { color: var(--muted); font-size: .85rem; line-height: 1.6; }
+.handrank-ladder-rarity { margin: 0; }
+.handrank-ladder-rarity strong { color: var(--gold-2); font-weight: 500; }
+.handrank-ladder-note { margin: 18px 0 0; max-width: 80ch; }
+.handrank-ladder--compact .handrank-ladder-toggle { min-height: 46px; padding: 10px 12px; gap: 12px; }
+.handrank-ladder--compact .handrank-ladder-name { font-size: 1rem; }
+.handrank-ladder--compact .handrank-ladder-detail-inner { padding: 2px 12px 16px; }
+@media (prefers-reduced-motion: reduce) { .handrank-ladder-row { transition: none; } }
