@@ -73,10 +73,12 @@
 }
 
 .vcard__family {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.90rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: var(--font-display);
+  font-style: italic;
   color: var(--muted);
 }
 
@@ -103,8 +105,8 @@
 }
 
 .vcard__badge--play {
-  border-color: rgba(98, 196, 138, 0.55);
-  background: rgba(62, 160, 104, 0.14);
+  border-color: rgba(150, 190, 140, 0.55);
+  background: rgba(120, 158, 112, 0.14);
   color: #9fe6bb;
 }
 
@@ -153,3 +155,39 @@
 .vcard:hover .vcard__more span {
   transform: translateX(4px);
 }
+
+/* ---- Salon Noir layer: the icon is a little playing card that gets picked up on hover */
+.vcard {
+  border-radius: var(--radius-l);
+  background:
+    radial-gradient(ellipse 80% 60% at 100% 0%, rgba(122, 24, 38, 0.18), transparent 70%),
+    linear-gradient(180deg, rgba(244, 236, 220, 0.03), transparent 45%),
+    var(--surface);
+  transition: border-color var(--dur-m) var(--ease), box-shadow var(--dur-m) var(--ease);
+}
+.vcard::before { height: 1px; background: linear-gradient(90deg, transparent, var(--gold-2), transparent); }
+.vcard__link { padding: 26px 26px 24px; gap: 12px; }
+.vcard__icon {
+  width: 46px;
+  height: 64px;
+  border-radius: 6px;
+  background: linear-gradient(160deg, #fbf6ea, #ede2cb);
+  color: var(--black, #16110f);
+  font-size: 1.5rem;
+  font-weight: 500;
+  transform: rotate(-7deg);
+  transform-origin: 50% 100%;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 10px 22px -8px rgba(0, 0, 0, 0.8);
+  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
+}
+.vcard:hover .vcard__icon,
+.vcard:focus-within .vcard__icon {
+  transform: rotate(3deg) translateY(-6px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 18px 30px -10px rgba(0, 0, 0, 0.9), 0 0 24px -6px rgba(228, 200, 138, 0.5);
+}
+.vcard__name { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.02em; color: var(--cream); }
+.vcard__badge--play { border-color: rgba(150, 190, 140, 0.45); background: rgba(120, 158, 112, 0.1); color: #b9dcae; }
+.vcard__chip { border-radius: 4px; color: var(--muted); }
+.vcard__pip { width: 7px; height: 7px; border-radius: 0; transform: rotate(45deg); }
+.vcard__pip.is-on { background: var(--red-2); border-color: var(--red-2); box-shadow: 0 0 8px rgba(216, 57, 74, 0.6); }
+@media (prefers-reduced-motion: reduce) { .vcard__icon { transition: none; } }

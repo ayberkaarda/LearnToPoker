@@ -1,0 +1,24 @@
+.flipcard {
+  display: inline-block;
+  perspective: 700px;
+  transition: transform var(--dur-m) var(--ease);
+}
+
+.flipcard__inner {
+  position: relative;
+  display: block;
+  transform-style: preserve-3d;
+}
+
+.flipcard__face,
+.flipcard__back {
+  display: block;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flipcard__back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}

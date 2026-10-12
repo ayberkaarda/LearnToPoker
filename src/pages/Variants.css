@@ -35,7 +35,7 @@
 }
 
 .variants-hero__suits .is-red {
-  color: rgba(200, 55, 62, 0.12);
+  color: rgba(190, 36, 56, 0.12);
 }
 
 @media (min-width: 900px) {
@@ -138,3 +138,15 @@
 .variants-empty {
   color: var(--muted);
 }
+
+/* ---- Salon Noir layer */
+.variants-hero { background: radial-gradient(ellipse 50% 80% at 85% 20%, rgba(122, 24, 38, 0.3), transparent 70%); }
+.variants-hero__title { font-size: clamp(3rem, 8.4vw, 6.6rem); line-height: 0.94; letter-spacing: -0.04em; }
+.variants-hero__suits { font-size: 9rem; color: transparent; -webkit-text-stroke: 1px rgba(201, 164, 92, 0.22); top: 24px; }
+.variants-hero__suits .is-red { color: transparent; -webkit-text-stroke-color: rgba(216, 57, 74, 0.4); }
+.variants-hero__suits span { display: inline-block; animation: variants-float 7s var(--ease) infinite alternate; }
+.variants-hero__suits span:nth-child(2) { animation-delay: -2s; }
+.variants-hero__suits span:nth-child(3) { animation-delay: -4s; }
+.variants-hero__suits span:nth-child(4) { animation-delay: -6s; }
+@keyframes variants-float { to { transform: translateY(-14px) rotate(4deg); } }
+@media (prefers-reduced-motion: reduce) { .variants-hero__suits span { animation: none; } }

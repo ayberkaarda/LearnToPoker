@@ -2,7 +2,7 @@
   position: relative;
   margin-top: 48px;
   padding: 56px 0 32px;
-  background: linear-gradient(180deg, transparent, rgba(5, 12, 10, 0.65) 40%);
+  background: linear-gradient(180deg, transparent, rgba(6, 5, 5, 0.65) 40%);
   border-top: 1px solid var(--border);
 }
 
@@ -66,10 +66,12 @@
 }
 
 .footer-col__title {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-size: 0.90rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: var(--font-display);
+  font-style: italic;
   color: var(--gold);
 }
 

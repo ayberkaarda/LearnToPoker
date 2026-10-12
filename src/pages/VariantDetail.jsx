@@ -10,6 +10,7 @@ import Quiz from '../components/Quiz.jsx';
 import { FAMILY_ICONS, SIMILAR_PLAYABLE, getVariantMeta } from '../content/variants.js';
 import { getWalkthrough } from '../content/walkthroughs.js';
 import './VariantDetail.css';
+import PageCurtain from '../components/PageCurtain.jsx';
 
 if (!i18n.hasResourceBundle('tr', 'variants')) {
   i18n.addResourceBundle('tr', 'variants', tr);
@@ -65,6 +66,7 @@ export default function VariantDetail() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.35 }}
     >
+      <PageCurtain />
       <header className="vdetail-hero">
         <div className="container vdetail-hero__inner">
           <Link to="/variants" className="vdetail-hero__back">

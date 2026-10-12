@@ -8,16 +8,16 @@ export const CARD_H = 350;
 export const CARD_R = 16;
 
 export const COLORS = {
-  face: '#fbf7ee',
-  faceEdge: '#d9cfb8',
-  red: '#c8373e',
-  black: '#17181a',
-  gold: '#c9a046',
-  goldLight: '#e6c374',
-  backOuter: '#f3ecdc',
-  back: '#11392a',
-  backDeep: '#0b2a1f',
-  courtFill: '#f4ecda',
+  face: '#f8f2e5',
+  faceEdge: '#d8ccb2',
+  red: '#b3202f',
+  black: '#16110f',
+  gold: '#b8924c',
+  goldLight: '#e2c584',
+  backOuter: '#f1e8d5',
+  back: '#15100e',
+  backDeep: '#3a0a12',
+  courtFill: '#f3e9d4',
 };
 
 // Suit outlines drawn in a 100 × 100 box, centred on (50, 50).
@@ -88,14 +88,14 @@ export function faceLayout(card, variant = 'full') {
   const items = [];
 
   if (variant === 'mini') {
-    items.push({ k: 'text', text: label, x: 24, y: 104, size: label === '10' ? 80 : 98, weight: 700, anchor: 'start', color, font: 'display', spacing: label === '10' ? -6 : 0 });
+    items.push({ k: 'text', text: label, x: 24, y: 104, size: label === '10' ? 80 : 98, weight: 700, anchor: 'start', color, font: 'body', spacing: label === '10' ? -6 : 0 });
     items.push({ k: 'suit', suit, x: 62, y: 148, s: 56, color });
     items.push({ k: 'suit', suit, x: 160, y: 262, s: 124, color });
     return items;
   }
 
   const corner = [
-    { k: 'text', text: label, x: 32, y: 60, size: label === '10' ? 40 : 48, weight: 600, anchor: 'middle', color, font: 'display', spacing: label === '10' ? -3 : 0 },
+    { k: 'text', text: label, x: 32, y: 60, size: label === '10' ? 38 : 46, weight: 700, anchor: 'middle', color, font: 'body', spacing: label === '10' ? -3 : 0 },
     { k: 'suit', suit, x: 32, y: 86, s: 28, color },
   ];
   items.push(...corner);

@@ -1,40 +1,67 @@
+/*
+  Salon Noir — warm black lacquer, oxblood felt, cream card stock, restrained brass.
+  Names are part of the shared contract; values are free to change.
+*/
 :root {
-  --bg: #0a1713;
-  --bg-2: #0f201b;
-  --surface: #14261f;
-  --surface-2: #1b3129;
-  --border: rgba(240, 228, 200, 0.12);
-  --border-gold: rgba(214, 171, 76, 0.35);
+  /* depth: warm blacks, never neutral grey */
+  --bg: #0b0908;
+  --bg-2: #120f0d;
+  --surface: #191513;
+  --surface-2: #231d1a;
+  --border: rgba(236, 222, 196, 0.1);
+  --border-gold: rgba(201, 164, 92, 0.32);
 
-  --text: #f1e8d6;
-  --muted: #a8a08c;
-  --gold: #d6ab4c;
-  --gold-2: #f0cf7a;
-  --red: #c8373e;
-  --felt: #1f5b3f;
-  --felt-2: #2a7350;
+  /* ink */
+  --text: #efe6d4;
+  --muted: #a69c8b;
+  --cream: #f4ecdc;
 
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-  --shadow-s: 0 6px 18px rgba(0, 0, 0, 0.35);
+  /* accents: brass for craft, crimson for heat */
+  --gold: #c9a45c;
+  --gold-2: #e4c88a;
+  --red: #b3202f;
+  --red-2: #d8394a;
+  --oxblood: #3a0a12;
 
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
+  /* table */
+  --felt: #4a0f17;
+  --felt-2: #6e1722;
+  --rail: #17100d;
 
-  --radius-s: 8px;
-  --radius-m: 14px;
-  --radius-l: 24px;
+  /* light: shadows are tinted warm, highlights are brass */
+  --shadow: 0 30px 80px -20px rgba(4, 2, 1, 0.75), 0 12px 24px -12px rgba(4, 2, 1, 0.6);
+  --shadow-s: 0 8px 20px -6px rgba(4, 2, 1, 0.6);
+  --glow: 0 0 0 1px rgba(201, 164, 92, 0.35), 0 0 40px -6px rgba(228, 200, 138, 0.35);
+  --sheen: linear-gradient(105deg, transparent 35%, rgba(255, 240, 210, 0.16) 48%, transparent 62%);
 
-  --container: 1180px;
+  --font-display: 'Bodoni Moda', 'Didot', 'Bodoni 72', Georgia, serif;
+  --font-body: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --radius-s: 6px;
+  --radius-m: 12px;
+  --radius-l: 28px;
+
+  --container: 1240px;
   --gutter: 16px;
-  --nav-h: 64px;
+  --nav-h: 68px;
 
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* motion: one entrance curve, one "deal" curve, one press curve */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-deal: cubic-bezier(0.2, 0.9, 0.25, 1.05);
+  --ease-press: cubic-bezier(0.3, 0, 0.2, 1);
+  --dur-s: 0.22s;
+  --dur-m: 0.5s;
+  --dur-l: 0.9s;
+
+  --z-nav: 50;
+  --z-overlay: 60;
+  --z-curtain: 80;
 
   color-scheme: dark;
 }
 
 @media (min-width: 768px) {
   :root {
-    --gutter: 28px;
+    --gutter: 32px;
   }
 }

@@ -31,7 +31,8 @@
     "lead": "Everything in poker rests on this order. Hands get stronger as you move right.",
     "weak": "Weak",
     "strong": "Strong",
-    "link": "Learn the hands in detail"
+    "link": "Learn the hands in detail",
+    "leadList": "Everything in poker rests on this order. Hands get stronger as you move down the list, with the strongest at the end."
   },
   "path": {
     "eyebrow": "Learning path",
@@ -62,12 +63,30 @@
     "learn": "Learn",
     "all": "All variants",
     "items": {
-      "holdem": { "name": "Texas Hold'em", "desc": "2 hidden cards + 5 shared cards. The world's most popular poker." },
-      "omaha": { "name": "Omaha", "desc": "4 hidden cards, you must use exactly 2. Bigger hands." },
-      "sevenCardStud": { "name": "Seven Card Stud", "desc": "No shared cards; some of yours are dealt face up. Classic and patient." },
-      "fiveCardDraw": { "name": "Five Card Draw", "desc": "Get 5 cards, swap the ones you don't want. The simplest poker." },
-      "razz": { "name": "Razz", "desc": "Stud in reverse: the lowest hand wins. A-2-3-4-5 is the best." },
-      "shortDeck": { "name": "Short Deck", "desc": "A 36-card deck with 2s through 5s removed. Flush beats full house." }
+      "holdem": {
+        "name": "Texas Hold'em",
+        "desc": "2 hidden cards + 5 shared cards. The world's most popular poker."
+      },
+      "omaha": {
+        "name": "Omaha",
+        "desc": "4 hidden cards, you must use exactly 2. Bigger hands."
+      },
+      "sevenCardStud": {
+        "name": "Seven Card Stud",
+        "desc": "No shared cards; some of yours are dealt face up. Classic and patient."
+      },
+      "fiveCardDraw": {
+        "name": "Five Card Draw",
+        "desc": "Get 5 cards, swap the ones you don't want. The simplest poker."
+      },
+      "razz": {
+        "name": "Razz",
+        "desc": "Stud in reverse: the lowest hand wins. A-2-3-4-5 is the best."
+      },
+      "shortDeck": {
+        "name": "Short Deck",
+        "desc": "A 36-card deck with 2s through 5s removed. Flush beats full house."
+      }
     }
   },
   "final": {

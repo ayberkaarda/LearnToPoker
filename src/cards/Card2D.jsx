@@ -31,8 +31,8 @@ export function cardLabel(card, t) {
 }
 
 const FONT = {
-  display: "'Fraunces', Georgia, serif",
-  body: "'DM Sans', system-ui, sans-serif",
+  display: "'Bodoni Moda', Didot, Georgia, serif",
+  body: "'Hanken Grotesk', system-ui, sans-serif",
 };
 
 function renderItem(it, i) {

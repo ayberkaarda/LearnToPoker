@@ -81,3 +81,73 @@
 @media (prefers-reduced-motion: reduce) {
   .basics-page *, .basics-page *::before, .basics-page *::after { animation: none !important; scroll-behavior: auto !important; }
 }
+
+/* ---------------------------------------------------------------- Salon Noir layer */
+.basics-hero {
+  background:
+    radial-gradient(ellipse 50% 70% at 85% 30%, rgba(122, 24, 38, 0.32), transparent 70%),
+    linear-gradient(180deg, transparent, var(--bg-2));
+  overflow: hidden;
+}
+.basics-hero .container { position: relative; }
+.basics-hero .section-head .h2 { font-size: clamp(3rem, 8vw, 6.2rem); line-height: 0.95; letter-spacing: -0.04em; }
+
+.basics-hero__aces { display: flex; justify-content: center; margin: 8px 0 36px; }
+.basics-hero__ace { margin-left: -38px; }
+.basics-hero__ace:first-child { margin-left: 0; }
+.basics-hero__ace--0 { transform: rotate(-12deg) translateY(10px); }
+.basics-hero__ace--1 { transform: rotate(-4deg); }
+.basics-hero__ace--2 { transform: rotate(4deg); }
+.basics-hero__ace--3 { transform: rotate(12deg) translateY(10px); }
+.basics-hero__aces:hover .basics-hero__ace--0 { transform: rotate(-18deg) translate(-14px, 14px); }
+.basics-hero__aces:hover .basics-hero__ace--1 { transform: rotate(-6deg) translate(-4px, -6px); }
+.basics-hero__aces:hover .basics-hero__ace--2 { transform: rotate(6deg) translate(4px, -6px); }
+.basics-hero__aces:hover .basics-hero__ace--3 { transform: rotate(18deg) translate(14px, 14px); }
+@media (min-width: 900px) {
+  .basics-hero__aces { position: absolute; right: var(--gutter); top: -40px; margin: 0; }
+  .basics-hero__aces .card2d--lg { width: 118px; }
+  .basics-hero__ace { margin-left: -52px; }
+}
+
+.basics-progress-panel { margin-top: 48px; max-width: none; }
+.basics-progress-label { font-family: var(--font-display); font-style: italic; font-size: 1rem; margin-bottom: 10px; }
+.basics-progress { height: 2px; border-radius: 0; background: rgba(244, 236, 220, 0.08); }
+.basics-progress > span { background: linear-gradient(90deg, var(--gold), var(--red-2)); box-shadow: 0 0 12px rgba(216, 57, 74, 0.6); }
+
+/* chapter index reads like a table of contents */
+.basics-section-nav { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 0; margin-top: 28px; border-top: 1px solid var(--border); }
+.basics-section-nav a { position: relative; gap: 12px; align-items: baseline; padding: 14px 6px 14px 0; border: 0; border-bottom: 1px solid var(--border); border-radius: 0; font-size: .92rem; color: var(--muted); transition: color var(--dur-s) var(--ease), padding var(--dur-m) var(--ease); }
+.basics-section-nav a span { font-family: var(--font-display); font-style: italic; font-size: 1.05rem; color: var(--gold); min-width: 1.6em; }
+.basics-section-nav a[aria-current], .basics-section-nav a:hover { background: transparent; color: var(--cream); padding-left: 8px; }
+.basics-section-nav a[aria-current]::before { content: ''; position: absolute; left: -2px; top: 50%; width: 6px; height: 6px; margin-top: -3px; background: var(--red-2); transform: rotate(45deg); box-shadow: 0 0 10px rgba(216, 57, 74, .8); }
+
+.basics-suit { padding: 28px 16px; transition: transform var(--dur-m) var(--ease), border-color var(--dur-m) var(--ease); }
+.basics-suit:hover { transform: translateY(-6px); border-color: rgba(201, 164, 92, .4); }
+.basics-suit span { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--cream); }
+
+.basics-note { border-left: 1px solid var(--gold); background: linear-gradient(90deg, rgba(201, 164, 92, .06), transparent 70%); font-size: .98rem; }
+
+.basics-mini-pot { background: radial-gradient(circle at 40% 35%, var(--felt-2), var(--felt)); border-color: rgba(201, 164, 92, .4); color: var(--cream); font-family: var(--font-display); font-style: italic; box-shadow: 0 10px 24px -8px rgba(0, 0, 0, .8); }
+.basics-chip { border: 0; height: 12px; background: repeating-linear-gradient(90deg, var(--red) 0 5px, var(--cream) 5px 7px); box-shadow: 0 2px 0 #5a0c16, 0 4px 8px rgba(0, 0, 0, .5); }
+.basics-action-scene--check .basics-chip { background: repeating-linear-gradient(90deg, #2a2320 0 5px, var(--muted) 5px 7px); }
+.basics-action-scene { background: radial-gradient(ellipse 70% 90% at 50% 100%, rgba(122, 24, 38, .25), transparent 70%); border-radius: var(--radius-s) var(--radius-s) 0 0; }
+.basics-replay { transition: transform .6s var(--ease), border-color var(--dur-s) var(--ease); }
+.basics-replay:hover { transform: rotate(-200deg); border-color: var(--gold); }
+.basics-action { transition: transform var(--dur-m) var(--ease), border-color var(--dur-m) var(--ease); }
+.basics-action:hover { transform: translateY(-4px); border-color: rgba(201, 164, 92, .35); }
+
+.basics-table-felt { fill: var(--felt); stroke: var(--gold); stroke-width: 1.5; filter: drop-shadow(0 0 0 #160e0b) drop-shadow(0 12px 18px rgba(0, 0, 0, .6)); }
+.basics-table-seat { fill: #1a1311; stroke: rgba(201, 164, 92, .3); }
+.basics-table-pot, .basics-table-value { font-family: var(--font-display); font-style: italic; }
+
+.basics-card-table { background: radial-gradient(ellipse 70% 90% at 50% 40%, var(--felt-2), var(--felt) 60%, #22060b); box-shadow: inset 0 0 50px rgba(0, 0, 0, .55), 0 0 0 2px rgba(201, 164, 92, .55), 0 0 0 9px #22140e, 0 24px 40px -20px rgba(0, 0, 0, .9); }
+.basics-card-label { font-family: var(--font-display); font-style: italic; font-size: 1rem; color: var(--gold-2); }
+.basics-timeline button { transition: border-color var(--dur-s) var(--ease), color var(--dur-s) var(--ease), background var(--dur-s) var(--ease); }
+.basics-timeline button span { font-family: var(--font-display); font-style: italic; }
+.basics-timeline button[aria-current] span { background: var(--gold); color: #1b1206; border-color: var(--gold); }
+
+.basics-position-dots span { height: 2px; }
+.basics-position-dots .basics-position-dot--active { background: linear-gradient(90deg, var(--gold), var(--gold-2)); box-shadow: 0 0 8px rgba(228, 200, 138, .5); }
+.basics-note-number { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; padding-top: 0; }
+
+.basics-next { background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(122, 24, 38, .3), transparent 70%), var(--bg-2); }

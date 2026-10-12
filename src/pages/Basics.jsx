@@ -9,7 +9,9 @@ import Section from '../components/Section.jsx';
 import Quiz from '../components/Quiz.jsx';
 import HandRankLadder from '../components/HandRankLadder.jsx';
 import Card2D from '../cards/Card2D.jsx';
+import FlipCard from '../cards/FlipCard.jsx';
 import './Basics.css';
+import PageCurtain from '../components/PageCurtain.jsx';
 
 if (!i18n.hasResourceBundle('tr', 'basics')) i18n.addResourceBundle('tr', 'basics', tr);
 if (!i18n.hasResourceBundle('en', 'basics')) i18n.addResourceBundle('en', 'basics', en);
@@ -73,7 +75,9 @@ export default function Basics() {
   const buttonPoint = seats[dealer];
   return (
     <motion.div ref={pageRef} className="page basics-page" initial={{ opacity: 0, y: reduced ? 0 : 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: reduced ? 0 : 0.35 }}>
+      <PageCurtain />
       <Section id="intro" className="basics-hero" {...sectionProps('hero')}>
+        <div className="basics-hero__aces" aria-hidden="true">{suits.map((suit, index) => <FlipCard key={suit} card={`A${suit}`} size="lg" delay={0.35 + index * 0.12} className={`basics-hero__ace basics-hero__ace--${index}`} />)}</div>
         <motion.div className="basics-progress-panel" {...reveal}>
           <p className="basics-progress-label">{t('hero.progress', { current: current + 1, total: sections.length })} <span>{sections[current].label}</span></p>
           <div className="basics-progress" role="progressbar" aria-label={t('hero.title')} aria-valuemin={1} aria-valuemax={sections.length} aria-valuenow={current + 1} aria-valuetext={sections[current].label}><motion.span animate={{ width: `${((current + 1) / sections.length) * 100}%` }} transition={{ duration: reduced ? 0 : 0.3 }} /></div>

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../i18n/index.js';
 import tr from '../i18n/tr/basics.json';
 import en from '../i18n/en/basics.json';
-import Card2D from '../cards/Card2D.jsx';
+import FlipCard from '../cards/FlipCard.jsx';
 import './HandRankLadder.css';
 
 if (!i18n.hasResourceBundle('tr', 'basics')) i18n.addResourceBundle('tr', 'basics', tr);
@@ -43,7 +43,7 @@ export default function HandRankLadder({ compact = false }) {
                   <motion.div id={panelId} className="handrank-ladder-detail" initial={{ height: reduced ? 'auto' : 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: reduced ? 'auto' : 0, opacity: 0 }} transition={{ duration: reduced ? 0 : 0.25 }}>
                     <div className="handrank-ladder-detail-inner">
                       <div className="handrank-ladder-cards" role="group" aria-label={t('ladder.cards')}>
-                        {examples[index].map((card, cardIndex) => <motion.div key={card} initial={{ opacity: 0, y: reduced ? 0 : 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0 : 0.2, delay: reduced ? 0 : cardIndex * 0.04 }}><Card2D card={card} faceUp size="sm" /></motion.div>)}
+                        {examples[index].map((card, cardIndex) => <FlipCard key={card} card={card} size="sm" delay={0.08 + cardIndex * 0.07} />)}
                       </div>
                       <p className="handrank-ladder-description">{item.description}</p>
                       <p className="handrank-ladder-rarity">{t('ladder.rarity')}: <strong>{item.rarity}</strong></p>

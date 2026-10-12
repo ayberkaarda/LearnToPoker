@@ -79,7 +79,7 @@
 .glog__item--bet .glog__icon,
 .glog__item--raise .glog__icon,
 .glog__item--allin .glog__icon {
-  background: rgba(214, 171, 76, 0.2);
+  background: rgba(201, 164, 92, 0.2);
   color: var(--gold-2);
 }
 

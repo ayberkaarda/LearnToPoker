@@ -8,6 +8,7 @@ import Section from '../components/Section.jsx';
 import VariantCard from '../components/VariantCard.jsx';
 import { VARIANTS } from '../content/variants.js';
 import './Variants.css';
+import PageCurtain from '../components/PageCurtain.jsx';
 
 if (!i18n.hasResourceBundle('tr', 'variants')) {
   i18n.addResourceBundle('tr', 'variants', tr);
@@ -37,6 +38,7 @@ export default function Variants() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.35 }}
     >
+      <PageCurtain />
       <header className="variants-hero">
         <div className="container">
           <div className="variants-hero__suits" aria-hidden="true">

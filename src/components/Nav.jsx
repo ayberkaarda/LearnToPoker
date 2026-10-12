@@ -104,12 +104,12 @@ export default function Nav() {
               {NAV_LINKS.map((l, i) => (
                 <motion.div
                   key={l.key}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.04 * i + 0.05, duration: 0.3 }}
+                  initial={{ opacity: 0, y: 28 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.06 * i + 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <NavLink to={l.to} end={l.end} className={drawerLinkClass}>
-                    <span className="nav-drawer__index">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="nav-drawer__index">{'♠♥♦♣♠'[i]}</span>
                     {t(`nav.${l.key}`)}
                   </NavLink>
                 </motion.div>

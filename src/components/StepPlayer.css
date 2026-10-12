@@ -42,11 +42,11 @@
   z-index: -1;
   border-radius: 120px;
   background:
-    radial-gradient(ellipse 70% 60% at 50% 45%, var(--felt-2) 0%, var(--felt) 55%, #153f2c 100%);
-  border: 10px solid #2a1c12;
+    radial-gradient(ellipse 70% 60% at 50% 45%, var(--felt-2) 0%, var(--felt) 55%, #22060b 100%);
+  border: 10px solid #160e0b;
   box-shadow:
-    0 0 0 1px rgba(214, 171, 76, 0.35),
-    inset 0 0 0 2px rgba(214, 171, 76, 0.18),
+    0 0 0 1px rgba(201, 164, 92, 0.35),
+    inset 0 0 0 2px rgba(201, 164, 92, 0.18),
     inset 0 14px 40px rgba(0, 0, 0, 0.35),
     var(--shadow);
 }
@@ -96,13 +96,15 @@
   display: inline-block;
   padding: 4px 12px;
   border-radius: 999px;
-  background: rgba(10, 23, 19, 0.55);
+  background: rgba(11, 10, 9, 0.55);
   border: 1px solid var(--border-gold);
   color: var(--gold-2);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.90rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: var(--font-display);
+  font-style: italic;
 }
 
 .sp__board {
@@ -129,16 +131,18 @@
   gap: 8px;
   padding: 4px 12px 4px 6px;
   border-radius: 999px;
-  background: rgba(10, 23, 19, 0.5);
+  background: rgba(11, 10, 9, 0.5);
   font-size: 0.85rem;
 }
 
 .sp__pot-label {
   color: var(--muted);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: none;
+  font-family: var(--font-display);
+  font-style: italic;
+  letter-spacing: 0;
+  font-size: 0.90rem;
 }
 
 .sp__pot-value {
@@ -158,10 +162,12 @@
 }
 
 .sp__discards-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 0.90rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: var(--font-display);
+  font-style: italic;
   color: var(--muted);
 }
 
@@ -186,7 +192,7 @@
   height: 14px;
   border-radius: 50%;
   background: var(--red);
-  border: 3px dashed #f1e8d6;
+  border: 3px dashed #efe6d4;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
 }
 
@@ -242,7 +248,7 @@
   gap: 8px;
   padding: 4px 12px;
   border-radius: 999px;
-  background: rgba(10, 23, 19, 0.82);
+  background: rgba(11, 10, 9, 0.82);
   border: 1px solid var(--border);
   font-size: 0.82rem;
   white-space: nowrap;
@@ -311,10 +317,12 @@
 }
 
 .sp-folded {
-  font-size: 0.68rem;
+  font-size: 0.90rem;
   color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  text-transform: none;
+  font-family: var(--font-display);
+  font-style: italic;
+  letter-spacing: 0;
 }
 
 .sp-seat.is-folded .sp-seat__cards {
@@ -324,19 +332,19 @@
 
 .sp-seat.is-actor .sp-seat__plate {
   border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(214, 171, 76, 0.22);
+  box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.22);
   animation: sp-pulse 1.6s ease-in-out infinite;
 }
 
 .sp-seat.is-winner .sp-seat__plate {
   border-color: var(--gold-2);
-  background: linear-gradient(180deg, rgba(240, 207, 122, 0.28), rgba(10, 23, 19, 0.85));
-  box-shadow: 0 0 22px rgba(240, 207, 122, 0.35);
+  background: linear-gradient(180deg, rgba(228, 200, 138, 0.28), rgba(11, 10, 9, 0.85));
+  box-shadow: 0 0 22px rgba(228, 200, 138, 0.35);
 }
 
 @keyframes sp-pulse {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(214, 171, 76, 0.22); }
-  50% { box-shadow: 0 0 0 6px rgba(214, 171, 76, 0.08); }
+  0%, 100% { box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.22); }
+  50% { box-shadow: 0 0 0 6px rgba(201, 164, 92, 0.08); }
 }
 
 /* ---------- Cards ---------- */
@@ -359,14 +367,14 @@
 .sp-card.is-hl .sp-card__svg {
   filter:
     drop-shadow(0 0 0.5px var(--gold-2))
-    drop-shadow(0 0 6px rgba(240, 207, 122, 0.85));
+    drop-shadow(0 0 6px rgba(228, 200, 138, 0.85));
 }
 
 .sp-card.is-private .sp-card__inner::after {
   content: '';
   position: absolute;
   inset: -3px;
-  border: 1.5px dashed rgba(240, 207, 122, 0.75);
+  border: 1.5px dashed rgba(228, 200, 138, 0.75);
   border-radius: 5px;
   pointer-events: none;
 }
@@ -408,10 +416,12 @@
 .sp__count {
   display: block;
   margin-bottom: 6px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.90rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: var(--font-display);
+  font-style: italic;
   color: var(--gold);
 }
 
@@ -455,7 +465,7 @@
 
 .sp__btn:not(:disabled):hover {
   border-color: var(--gold);
-  background: rgba(214, 171, 76, 0.1);
+  background: rgba(201, 164, 92, 0.1);
 }
 
 .sp__btn:disabled {
@@ -505,7 +515,7 @@
 }
 
 .sp__dot.is-done::before {
-  background: rgba(214, 171, 76, 0.55);
+  background: rgba(201, 164, 92, 0.55);
 }
 
 .sp__dot.is-active::before {

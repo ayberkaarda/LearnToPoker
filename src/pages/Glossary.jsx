@@ -5,6 +5,7 @@ import i18n from '../i18n/index.js';
 import tr from '../i18n/tr/glossary.json';
 import en from '../i18n/en/glossary.json';
 import './Glossary.css';
+import PageCurtain from '../components/PageCurtain.jsx';
 
 if (!i18n.hasResourceBundle('tr', 'glossary')) i18n.addResourceBundle('tr', 'glossary', tr);
 if (!i18n.hasResourceBundle('en', 'glossary')) i18n.addResourceBundle('en', 'glossary', en);
@@ -12,7 +13,7 @@ if (!i18n.hasResourceBundle('en', 'glossary')) i18n.addResourceBundle('en', 'glo
 const categoryKeys = ['betting', 'cards', 'hands', 'table', 'variants', 'strategy'];
 
 export default function Glossary() {
-  const { t } = useTranslation('glossary');
+  const { t, i18n: i18nInstance } = useTranslation('glossary');
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState([]);
   const rawTerms = t('terms', { returnObjects: true });
@@ -21,14 +22,14 @@ export default function Glossary() {
   const categories = rawCategories && typeof rawCategories === 'object' ? rawCategories : {};
   const filtered = useMemo(() => {
     const needle = query.trim().toLocaleLowerCase();
-    const translations = ['tr', 'en'].map((language) => i18n.getResource(language, 'glossary', 'terms') || []);
+    const translations = ['tr', 'en'].map((language) => i18nInstance.getResource(language, 'glossary', 'terms') || []);
     return terms.filter((item, index) => {
       const searchable = translations.map((list) => list[index]).filter(Boolean)
         .map((entry) => `${entry.term} ${entry.definition} ${entry.example || ''}`).join(' ');
       return (!selected.length || selected.includes(item.category)) &&
         (!needle || searchable.toLocaleLowerCase().includes(needle));
     });
-  }, [terms, query, selected]);
+  }, [terms, query, selected, i18nInstance]);
   const grouped = filtered.reduce((groups, item) => {
     const letter = item.term.charAt(0).toLocaleUpperCase();
     (groups[letter] ||= []).push(item);
@@ -40,6 +41,7 @@ export default function Glossary() {
 
   return (
     <motion.div className="page glossary-page" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}>
+      <PageCurtain />
       <section className="section">
         <div className="container">
           <header className="glossary-header">
