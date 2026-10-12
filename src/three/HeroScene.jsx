@@ -3,14 +3,15 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Environment, Lightformer } from '@react-three/drei';
 import * as THREE from 'three';
 import CardMesh from './CardMesh.jsx';
+import { getCardTexture } from '../cards/drawCardFace.js';
+import { FORMATIONS, TRANSITION, STAGGER, easeInOutCubic } from './heroFormations.js';
 
 /*
-  The hero is a single shot: a royal flush is dealt into a fan under a warm key light,
-  falling card backs and out-of-focus light drift behind it, and scrolling pulls the
-  hand apart toward the camera as the page moves on.
+  The hero: a royal flush is dealt into a fan under a warm key light, then the hand keeps
+  moving through a cycle of formations (see heroFormations.js) while falling card backs and
+  out-of-focus light drift behind it. Scrolling pulls the hand apart toward the camera.
 */
 
-const HAND = ['Th', 'Jh', 'Qh', 'Kh', 'Ah'];
 const BACKS = [
   { x: 2.6, y: 1.8, z: -3.4, s: 0.9, spin: 0.35 },
   { x: -2.2, y: -0.4, z: -4.6, s: 0.85, spin: -0.28 },
@@ -152,52 +153,158 @@ function Bokeh({ count, progress, still }) {
 
 // ---------------------------------------------------------------- the hand
 
-function fanSlot(i) {
-  const a = (i - 2) * 0.2;
-  const R = 3.2;
-  return { x: Math.sin(a) * R, y: Math.cos(a) * R - R, z: i * 0.035, rz: -a };
-}
+const TAU = Math.PI * 2;
+const POSE_KEYS = ['x', 'y', 'z', 'rx', 'ry', 'rz'];
+const DEAL_DURATION = 1.05;
+const DEAL_STAGGER = 0.13;
+const edgeStock = new THREE.MeshStandardMaterial({ color: '#e9dfc9', roughness: 0.75, metalness: 0 });
+const cardStock = (map) =>
+  new THREE.MeshPhysicalMaterial({ map, roughness: 0.55, metalness: 0, clearcoat: 0.35, clearcoatRoughness: 0.3, transparent: true, alphaTest: 0.5 });
+const copyPose = (to, from) => {
+  for (const k of POSE_KEYS) to[k] = from[k];
+  return to;
+};
 
-function HandCard({ card, index, progress, still, start }) {
-  const ref = useRef();
-  const glow = useRef();
-  const slot = useMemo(() => fanSlot(index), [index]);
-  const dir = index - 2;
+/*
+  The hand cycles through FORMATIONS forever. One frame loop drives every card: each
+  formation change snapshots where the cards are, then each card eases (with a small
+  stagger) from its snapshot to the formation's live pose. Faces are swapped only while
+  a card shows its back, so the hand on display changes without anything popping.
+  Scroll progress is layered on top of whatever pose the card is in.
+*/
+function Hand({ count, progress, still, width }) {
+  const groups = useRef([]);
+  const glows = useRef([]);
+  const sim = useRef(null);
+  const { camera } = useThree();
+
+  const mats = useMemo(() => {
+    const back = cardStock(getCardTexture('back'));
+    const fronts = Array.from({ length: count }, (_, i) => cardStock(getCardTexture(FORMATIONS[0].pose(i, count, 0, width).card)));
+    return { back, fronts };
+  }, [count, width]);
+  useEffect(
+    () => () => {
+      mats.back.dispose();
+      mats.fronts.forEach((m) => m.dispose());
+    },
+    [mats]
+  );
+  const materials = useMemo(() => mats.fronts.map((f) => [edgeStock, edgeStock, edgeStock, edgeStock, f, mats.back]), [mats]);
+  const scratch = useMemo(() => ({ normal: new THREE.Vector3(), toCam: new THREE.Vector3(), pos: new THREE.Vector3() }), []);
 
   useFrame((state) => {
-    const g = ref.current;
-    if (!g) return;
     const t = state.clock.elapsedTime;
-    if (start.current === null) start.current = t;
-    // deal-in: each card slides off the deck below and settles with a little overshoot
-    const local = still ? 1 : clamp01((t - start.current - 0.25 - index * 0.13) / 1.05);
-    const e = still ? 1 : easeOutBack(local);
+    let s = sim.current;
+    if (!s || s.count !== count || s.width !== width) {
+      // first frame: deal the royal flush up from below (or just show it when motion is reduced)
+      s = sim.current = {
+        count,
+        width,
+        k: 0,
+        start: t + 0.25,
+        dealing: true,
+        offsets: new Array(count).fill(0),
+        snap: Array.from({ length: count }, (_, i) => {
+          const dir = i - (count - 1) / 2;
+          const slot = FORMATIONS[0].pose(i, count, 0, width);
+          return { x: 0, y: -3.6, z: slot.z, rx: -1.1, ry: slot.ry + 0.18 * dir * 0.6, rz: 0 };
+        }),
+        cur: Array.from({ length: count }, () => ({ x: 0, y: -3.6, z: 0, rx: 0, ry: 0, rz: 0 })),
+        shown: Array.from({ length: count }, (_, i) => FORMATIONS[0].pose(i, count, 0, width).card),
+      };
+    }
+
+    if (still) {
+      // reduced motion: the static fan; the cycle restarts from it when motion comes back
+      s.k = 0;
+      s.start = t - TRANSITION - STAGGER * count;
+      s.dealing = false;
+      s.offsets.fill(0);
+      for (let i = 0; i < count; i++) copyPose(s.snap[i], FORMATIONS[0].pose(i, count, 0, width));
+    } else if (t - s.start >= FORMATIONS[s.k].hold + TRANSITION + STAGGER * (count - 1)) {
+      // next formation: snapshot, then pick the 2π turn count that keeps each card's spin short
+      s.k = (s.k + 1) % FORMATIONS.length;
+      s.start = t;
+      s.dealing = false;
+      for (let i = 0; i < count; i++) {
+        copyPose(s.snap[i], s.cur[i]);
+        const target = FORMATIONS[s.k].pose(i, count, 0, width);
+        let off = TAU * Math.round((s.snap[i].ry - target.ry) / TAU);
+        // a card whose face is about to change must show its back on the way
+        if (target.card !== s.shown[i] && Math.cos(s.snap[i].ry) > 0 && Math.cos(target.ry) > 0) {
+          off += target.ry + off >= s.snap[i].ry ? TAU : -TAU;
+        }
+        s.offsets[i] = off;
+      }
+    }
+
+    const f = FORMATIONS[s.k];
+    const tl = Math.max(0, t - s.start);
     const p = read(progress);
-    // scroll: the fan opens, then cards peel away toward the camera
     const spread = 1 + easeOutExpo(clamp01(p * 1.4)) * 0.55;
     const fly = clamp01((p - 0.25) / 0.75);
-    const idle = still ? 0 : Math.sin(t * 0.8 + index * 0.7) * 0.035;
 
-    const tx = slot.x * spread + fly * (2 + dir * 1.2);
-    const ty = slot.y + idle + fly * (1.8 - Math.abs(dir) * 0.6);
-    const tz = slot.z + fly * (2.6 + Math.abs(dir) * 0.4);
-    g.position.set(tx * e, -3.6 + (ty + 3.6) * e, tz);
-    g.rotation.set(
-      (1 - e) * -1.1 + fly * -0.5,
-      (1 - e) * 0.6 * dir * 0.3 + fly * dir * 0.35,
-      slot.rz * spread * e + fly * dir * 0.25
-    );
-    if (glow.current) glow.current.material.opacity = (0.16 + Math.sin(t * 1.4 + index) * 0.04) * e * (1 - fly);
+    for (let i = 0; i < count; i++) {
+      const g = groups.current[i];
+      if (!g) continue;
+      const target = f.pose(i, count, still ? 0 : tl, width);
+      target.ry += s.offsets[i];
+      let e;
+      if (still) e = 1;
+      else if (s.dealing) e = easeOutBack(clamp01((t - s.start - i * DEAL_STAGGER) / DEAL_DURATION));
+      else e = easeInOutCubic(clamp01((tl - i * STAGGER) / TRANSITION));
+      const c = s.cur[i];
+      const a = s.snap[i];
+      for (const k of POSE_KEYS) c[k] = a[k] + (target[k] - a[k]) * e;
+
+      // scroll exit on top of the current pose: the hand opens, then peels toward the camera
+      const dir = ((i - (count - 1) / 2) * 4) / Math.max(1, count - 1);
+      const idle = still ? 0 : Math.sin(t * 0.8 + i * 0.7) * 0.035;
+      g.position.set(
+        c.x * spread + fly * (2 + dir * 1.2),
+        c.y + idle + fly * (1.8 - Math.abs(dir) * 0.6),
+        c.z + fly * (2.6 + Math.abs(dir) * 0.4)
+      );
+      g.rotation.set(c.rx + fly * -0.5, c.ry + fly * dir * 0.35, c.rz * spread + fly * dir * 0.25);
+
+      // which way the face points relative to the camera (1 = straight at it, -1 = away)
+      g.updateWorldMatrix(true, false);
+      scratch.normal.setFromMatrixColumn(g.matrixWorld, 2).normalize();
+      scratch.pos.setFromMatrixPosition(g.matrixWorld);
+      scratch.toCam.copy(camera.position).sub(scratch.pos).normalize();
+      const facing = scratch.normal.dot(scratch.toCam);
+
+      // swap the face only while it is turned away from the camera
+      if (s.shown[i] !== target.card && (still || facing < 0)) {
+        mats.fronts[i].map = getCardTexture(target.card);
+        s.shown[i] = target.card;
+      }
+
+      const glow = glows.current[i];
+      if (glow) {
+        const settled = s.dealing ? clamp01(e) : 1;
+        // the halo sits behind the face; fade it out when the back is toward the camera
+        const behind = clamp01(facing * 3);
+        glow.material.opacity = (0.16 + Math.sin(t * 1.4 + i) * 0.04) * settled * behind * (1 - fly);
+      }
+    }
   });
 
   return (
-    <group ref={ref} position={[0, -3.6, slot.z]}>
-      <mesh ref={glow} position={[0, 0, -0.05]} scale={[1.9, 2.3, 1]}>
-        <planeGeometry args={[1, 1]} />
-        <meshBasicMaterial map={glowTexture()} color="#f0c27a" transparent opacity={0} depthWrite={false} blending={THREE.AdditiveBlending} toneMapped={false} />
-      </mesh>
-      <CardMesh card={card} faceUp castShadow={false} />
-    </group>
+    <>
+      {materials.map((m, i) => (
+        <group key={i} ref={(el) => (groups.current[i] = el)} position={[0, -3.6, 0]}>
+          <mesh ref={(el) => (glows.current[i] = el)} position={[0, 0, -0.05]} scale={[1.9, 2.3, 1]}>
+            <planeGeometry args={[1, 1]} />
+            <meshBasicMaterial map={glowTexture()} color="#f0c27a" transparent opacity={0} depthWrite={false} blending={THREE.AdditiveBlending} toneMapped={false} side={THREE.DoubleSide} />
+          </mesh>
+          <mesh material={m}>
+            <boxGeometry args={[1, 1.4, 0.02]} />
+          </mesh>
+        </group>
+      ))}
+    </>
   );
 }
 
@@ -258,7 +365,6 @@ function Rig({ children, still, progress, wide }) {
 }
 
 function Scene({ reducedMotion, offsetX, progress, compact }) {
-  const start = useRef(null);
   const backs = compact ? BACKS.slice(0, 3) : BACKS;
   const handY = compact ? 1.75 : 0.55;
   const handScale = compact ? 0.66 : 1.12;
@@ -279,9 +385,7 @@ function Scene({ reducedMotion, offsetX, progress, compact }) {
             <meshBasicMaterial map={glowTexture()} color="#7a1826" transparent opacity={0.55} depthWrite={false} blending={THREE.AdditiveBlending} toneMapped={false} />
           </mesh>
           <group position={[0, handY, 0]} scale={handScale}>
-            {HAND.map((c, i) => (
-              <HandCard key={c} card={c} index={i} progress={progress} still={reducedMotion} start={start} />
-            ))}
+            <Hand count={compact ? 5 : 7} progress={progress} still={reducedMotion} width={compact ? 0.72 : 1} />
           </group>
           {backs.map((cfg, i) => (
             <FallingBack key={i} cfg={cfg} index={i} still={reducedMotion} progress={progress} />
