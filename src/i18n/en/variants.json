@@ -161,7 +161,7 @@
         "This is the reference game: every other variant on this site is explained by comparing it to Hold'em.",
         "Only 2 private cards, so hands are weaker on average than in Omaha. Top pair often wins.",
         "No-limit betting: a single all-in can decide the hand at any moment.",
-        "There is no draw and no split pot. One high hand takes it all."
+        "There is no high/low split like in Hi-Lo; tied hands share the pot equally."
       ],
       "tips": [
         "Play fewer hands, but play them firmly. Most beginners call far too often.",
@@ -200,7 +200,7 @@
         "The structure is the same as Hold'em: blinds, then preflop, flop, turn and river, with 5 community cards.",
         "The golden rule: your final hand uses EXACTLY 2 of your hole cards and EXACTLY 3 board cards. Never more, never fewer.",
         "So four hearts on the board plus one heart in your hand is NOT a flush. You need two hearts in your hand.",
-        "Likewise, a pair on the board plus one matching card in your hand is not three of a kind: you would need two matching cards in hand.",
+        "For example, with A-A-9 on the board and A-7 in your hand, you can use A and 7 with A-A-9 from the board to make three of a kind.",
         "Omaha is usually played pot-limit: the most you can bet or raise is the size of the pot (counting your call first).",
         "Straights, flushes and full houses are common, so a single pair rarely wins.",
         "At showdown, each player shows the best legal 2 + 3 combination; the best hand wins."
@@ -237,7 +237,7 @@
         { "q": "The board is A♥ K♥ 8♥ 4♥ 2♣ and you hold Q♥ J♠ T♠ 9♦. Do you have a flush?", "options": ["Yes, a queen-high flush", "Yes, an ace-high flush", "No, you need two hearts in your hand", "Only if another heart comes"], "answer": 2, "explain": "With only one heart in your hand you can use at most one heart. Three board hearts + one hand heart = four hearts, not a flush." },
         { "q": "The board is 7♣ 7♦ 7♥ K♠ 2♦. Which hand is best?", "options": ["A♠ A♦ Q♣ J♣", "7♠ 3♣ 4♦ 5♥", "K♣ K♦ 9♠ 8♠", "2♠ 2♥ 6♣ 5♣"], "answer": 1, "hands": ["As Ad Qc Jc", "7s 3c 4d 5h", "Kc Kd 9s 8s", "2s 2h 6c 5c"], "explain": "7♠ plus any second card, with 7♣ 7♦ 7♥ from the board, is four of a kind. Two hole cards + three board cards, perfectly legal. K-K only makes kings full of sevens." },
         { "q": "In pot-limit, what is the largest raise you can make?", "options": ["Any amount", "Double the last bet", "The size of the pot after you have called", "Exactly the big blind"], "answer": 2, "explain": "First imagine you call; the pot at that moment is the maximum you can raise on top." },
-        { "q": "The board is 9♠ 8♦ 3♣ 3♥ K♦ and you hold 3♠ A♣ A♦ Q♥. What is your best hand?", "options": ["Full house, threes full of aces", "Three of a kind (threes)", "Two pair, aces and threes", "One pair of aces"], "answer": 1, "explain": "3♠ + A with 3♣ 3♥ K♦ gives three threes. A full house would need 3♠ A♣ A♦, which is three hole cards: not allowed." }
+        { "q": "The board is 9♠ 8♦ 3♣ 3♥ K♦ and you hold 3♠ A♣ A♦ Q♥. What is your best hand?", "options": ["Full house, aces full of threes", "Three of a kind (threes)", "Two pair, aces and threes", "One pair of aces"], "answer": 0, "explain": "Use A♣ A♦ and 3♣ 3♥ K♦ from the board to make aces full of threes, using exactly 2 hole cards and 3 board cards." }
       ]
     },
     "omahaHiLo": {
@@ -445,7 +445,7 @@
         "The ace is ALWAYS high. A-2-3-4-5 is not a straight here, but an ace-high hand, which is bad.",
         "Straights and flushes count against you: 7-6-5-4-3 is a straight and loses to almost everything.",
         "The best possible hand: 7-5-4-3-2 of at least two suits, called \"number one\".",
-        "Pairs are bad: any hand with a pair loses to any hand without one.",
+        "Any unpaired hand without a straight or flush beats every paired hand.",
         "Each player gets 5 cards. There are three draws and four betting rounds.",
         "Blinds start the pot. Fixed-limit: small bet in the first two rounds, big bet in the last two.",
         "Compare from the highest card down: 8-6-5-4-3 beats 8-7-4-3-2 because 6 is lower than 7.",

@@ -246,6 +246,6 @@
     "notes": "Coach notes",
     "newHand": "New hand",
     "close": "Look at the table",
-    "rebuy": "Rebuy 1000 chips"
+    "rebuy": "Rebuy ({{amount}})"
   }
 }

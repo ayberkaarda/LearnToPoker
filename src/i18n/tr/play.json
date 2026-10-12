@@ -246,6 +246,6 @@
     "notes": "Koç notları",
     "newHand": "Yeni el",
     "close": "Masaya bak",
-    "rebuy": "Yeniden 1000 çip al"
+    "rebuy": "Yeniden al ({{amount}})"
   }
 }

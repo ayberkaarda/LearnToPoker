@@ -161,7 +161,7 @@
         "Bu, referans oyundur: sitedeki diğer tüm çeşitler Hold'em ile karşılaştırılarak anlatılır.",
         "Sadece 2 gizli kart olduğu için eller ortalamada Omaha'dan zayıftır. Top pair çoğu zaman kazanır.",
         "No-limit bahis: tek bir all-in eli her an bitirebilir.",
-        "Draw (kart değiştirme) ve bölünen pot yoktur. Potun tamamını tek bir yüksek el alır."
+        "Hi-Lo gibi yüksek/düşük bölüşümü yoktur; eşit ellerde pot eşit paylaşılır."
       ],
       "tips": [
         "Daha az el oyna ama oynadığını kararlı oyna. Yeni başlayanların çoğu fazla call yapar.",
@@ -200,7 +200,7 @@
         "Yapı Hold'em ile aynıdır: blind'lar, ardından preflop, flop, turn ve river; 5 ortak kart.",
         "Altın kural: son elin gizli kartlarından TAM OLARAK 2'sini ve ortak kartlardan TAM OLARAK 3'ünü kullanır. Ne fazla, ne eksik.",
         "Yani board'da dört kupa ve elinde bir kupa varsa bu floş DEĞİLDİR. Elinde iki kupa olması gerekir.",
-        "Aynı şekilde board'daki bir çift ve elindeki tek eş kart üçlü yapmaz: elinde iki eş kart gerekir.",
+        "Örneğin board'da A-A-9 varken elinde A-7 varsa, A ve 7 ile board'dan A-A-9 kullanıp üçlü yaparsın.",
         "Omaha genelde pot-limit oynanır: yapabileceğin en büyük bet ya da raise, potun büyüklüğü kadardır (önce call ettiğin varsayılarak).",
         "Kent, floş ve full house sık görülür; tek bir çift nadiren kazanır.",
         "Showdown'da herkes kurallara uygun en iyi 2 + 3 kombinasyonunu gösterir; en iyi el kazanır."
@@ -237,7 +237,7 @@
         { "q": "Board: A♥ K♥ 8♥ 4♥ 2♣, elinde Q♥ J♠ T♠ 9♦ var. Floşun var mı?", "options": ["Evet, kız floşu", "Evet, as floşu", "Hayır, elinde iki kupa olmalı", "Sadece bir kupa daha gelirse"], "answer": 2, "explain": "Elinde tek kupa varsa en fazla bir kupa kullanabilirsin. Board'dan üç kupa + elden bir kupa = dört kupa; floş değil." },
         { "q": "Board: 7♣ 7♦ 7♥ K♠ 2♦. Hangi el en iyisi?", "options": ["A♠ A♦ Q♣ J♣", "7♠ 3♣ 4♦ 5♥", "K♣ K♦ 9♠ 8♠", "2♠ 2♥ 6♣ 5♣"], "answer": 1, "hands": ["As Ad Qc Jc", "7s 3c 4d 5h", "Kc Kd 9s 8s", "2s 2h 6c 5c"], "explain": "7♠ ve herhangi ikinci bir kart, board'daki 7♣ 7♦ 7♥ ile dörtlü (four of a kind) yapar. İki gizli + üç ortak kart, tamamen kurallara uygun. K-K sadece papazların yedili full house'unu yapar." },
         { "q": "Pot-limit'te yapabileceğin en büyük raise nedir?", "options": ["İstediğin miktar", "Son bahsin iki katı", "Call ettikten sonraki pot kadar", "Tam olarak big blind kadar"], "answer": 2, "explain": "Önce call ettiğini düşün; o anki pot, üstüne ekleyebileceğin en yüksek miktardır." },
-        { "q": "Board: 9♠ 8♦ 3♣ 3♥ K♦, elinde 3♠ A♣ A♦ Q♥ var. En iyi elin ne?", "options": ["Full house, üçlüler ve aslar", "Üçlü (üç tane 3)", "İki çift, aslar ve üçlüler", "Tek as çifti"], "answer": 1, "explain": "3♠ + bir as, 3♣ 3♥ K♦ ile üç tane 3 yapar. Full house için 3♠ A♣ A♦ gerekirdi; bu üç gizli kart demek ve yasak." }
+        { "q": "Board: 9♠ 8♦ 3♣ 3♥ K♦, elinde 3♠ A♣ A♦ Q♥ var. En iyi elin ne?", "options": ["Full house, üçlüler ve aslar", "Üçlü (üç tane 3)", "İki çift, aslar ve üçlüler", "Tek as çifti"], "answer": 0, "explain": "A♣ A♦ ve board'dan 3♣ 3♥ K♦ kullanarak aslar dolusu üçlü yaparsın: tam 2 gizli ve 3 ortak kart." }
       ]
     },
     "omahaHiLo": {
@@ -445,7 +445,7 @@
         "As HER ZAMAN yüksektir. A-2-3-4-5 burada kent değil, as yüksek bir eldir; yani kötüdür.",
         "Kent ve floş aleyhine sayılır: 7-6-5-4-3 bir kenttir ve neredeyse her şeye kaybeder.",
         "Mümkün olan en iyi el: en az iki farklı renkten 7-5-4-3-2; buna \"number one\" denir.",
-        "Çiftler kötüdür: çiftli her el, çiftsiz her ele kaybeder.",
+        "Çiftsiz, straight ve flush olmayan her el, çiftli her elden iyidir.",
         "Her oyuncu 5 kart alır. Üç draw ve dört bahis turu vardır.",
         "Blind'lar potu başlatır. Fixed-limit: ilk iki turda küçük bahis, son iki turda büyük bahis.",
         "En büyük karttan aşağı karşılaştırılır: 8-6-5-4-3, 8-7-4-3-2'yi yener çünkü 6, 7'den küçüktür.",
