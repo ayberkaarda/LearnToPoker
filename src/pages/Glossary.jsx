@@ -1,16 +1,24 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
+import i18n from '../i18n/index.js';
+import tr from '../i18n/tr/glossary.json';
+import en from '../i18n/en/glossary.json';
 import './Glossary.css';
+
+if (!i18n.hasResourceBundle('tr', 'glossary')) i18n.addResourceBundle('tr', 'glossary', tr);
+if (!i18n.hasResourceBundle('en', 'glossary')) i18n.addResourceBundle('en', 'glossary', en);
 
 const categoryKeys = ['betting', 'cards', 'hands', 'table', 'variants', 'strategy'];
 
 export default function Glossary() {
-  const { t, i18n } = useTranslation('glossary');
+  const { t } = useTranslation('glossary');
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState([]);
-  const terms = t('terms', { returnObjects: true });
-  const categories = t('categories', { returnObjects: true });
+  const rawTerms = t('terms', { returnObjects: true });
+  const terms = Array.isArray(rawTerms) ? rawTerms : [];
+  const rawCategories = t('categories', { returnObjects: true });
+  const categories = rawCategories && typeof rawCategories === 'object' ? rawCategories : {};
   const filtered = useMemo(() => {
     const needle = query.trim().toLocaleLowerCase();
     const translations = ['tr', 'en'].map((language) => i18n.getResource(language, 'glossary', 'terms') || []);
@@ -20,7 +28,7 @@ export default function Glossary() {
       return (!selected.length || selected.includes(item.category)) &&
         (!needle || searchable.toLocaleLowerCase().includes(needle));
     });
-  }, [terms, query, selected, i18n]);
+  }, [terms, query, selected]);
   const grouped = filtered.reduce((groups, item) => {
     const letter = item.term.charAt(0).toLocaleUpperCase();
     (groups[letter] ||= []).push(item);

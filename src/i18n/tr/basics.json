@@ -1,6 +1,6 @@
 {
   "hero": {
-    "eyebrow": "İlk elinden önce",
+    "eyebrow": "01 / İlk elinden önce",
     "title": "Pokerin temelleri",
     "lead": "Kartları tanı, masada neler olduğunu anla ve ilk eline güvenle başla. Önceden poker bilmen gerekmiyor.",
     "progress": "Bölüm {{current}} / {{total}}",
@@ -45,7 +45,7 @@
     }
   ],
   "deck": {
-    "eyebrow": "01 / Kartları tanı",
+    "eyebrow": "02 / Kartları tanı",
     "title": "52 kart, dört renk",
     "lead": "Standart destede joker yoktur. Her renkte aynı 13 değer bulunur; renklerin birbirine üstünlüğü yoktur.",
     "suits": [
@@ -60,7 +60,7 @@
     "reset": "Kartları kapat"
   },
   "ladder": {
-    "eyebrow": "02 / Gücü karşılaştır",
+    "eyebrow": "03 / Gücü karşılaştır",
     "title": "En iyi beş kart kazanır",
     "lead": "Liste en zayıftan en güçlüye ilerler. Bir ele dokun: örnek kartları ve neden güçlü olduğunu gör.",
     "hint": "Beş kartlık rastgele bir elin olasılıklarıdır; Hold’em’de yedi karttan seçilen en iyi beş kartın olasılıkları farklıdır. Royal flush burada straight flush’tan ayrı sayılır.",
@@ -72,57 +72,57 @@
       {
         "name": "Yüksek kart",
         "description": "Hiçbir kombinasyon yoksa en yüksek kart karşılaştırılır; eşitse sonraki kartlara bakılır.",
-        "rarity": "%50,1177"
+        "rarity": "%50"
       },
       {
         "name": "Bir çift",
         "description": "Aynı değerde iki kart. Büyük çift kazanır; eşit çiftlerde kalan kartlar (kicker) karşılaştırılır.",
-        "rarity": "%42,2569"
+        "rarity": "%42"
       },
       {
         "name": "İki çift",
         "description": "İki ayrı çift. Önce büyük çift, sonra küçük çift, ardından kalan kart karşılaştırılır.",
-        "rarity": "%4,7539"
+        "rarity": "%4,8"
       },
       {
         "name": "Üçlü",
         "description": "Aynı değerde üç kart. Büyük üçlü kazanır; eşitse kalan kartlara bakılır.",
-        "rarity": "%2,1128"
+        "rarity": "%2,1"
       },
       {
         "name": "Straight (sıra)",
         "description": "Ardışık beş değer. Renkler farklı olabilir. En üst kart belirleyicidir; A–2–3–4–5 en küçük sıradır.",
-        "rarity": "%0,3925"
+        "rarity": "%0,39"
       },
       {
         "name": "Flush (renk)",
         "description": "Aynı renkten beş kart. Sıra olmaları gerekmez; en yüksek karttan başlayarak karşılaştırılır.",
-        "rarity": "%0,1965"
+        "rarity": "%0,20"
       },
       {
         "name": "Full house",
         "description": "Bir üçlü ve bir çift. Önce üçlünün, sonra çiftin değeri karşılaştırılır.",
-        "rarity": "%0,1441"
+        "rarity": "%0,14"
       },
       {
         "name": "Dörtlü",
         "description": "Aynı değerde dört kart. Dörtlünün değeri, eşitlikte beşinci kart belirleyicidir.",
-        "rarity": "%0,0240"
+        "rarity": "%0,024"
       },
       {
         "name": "Straight flush",
         "description": "Aynı renkte ardışık beş kart. En yüksek kart kazanır.",
-        "rarity": "%0,00139"
+        "rarity": "%0,0014"
       },
       {
         "name": "Royal flush",
         "description": "Aynı renkte 10–J–Q–K–A. En güçlü eldir; hiçbir el onu geçemez.",
-        "rarity": "%0,000154"
+        "rarity": "%0,00015"
       }
     ]
   },
   "actions": {
-    "eyebrow": "03 / Sıra sende",
+    "eyebrow": "04 / Sıra sende",
     "title": "Altı aksiyon, tek karar",
     "lead": "Bahis turunda sıra sana geldiğinde, önündeki bahse ve fişlerine göre hareket edersin.",
     "play": "Sahneyi oynat",
@@ -173,7 +173,7 @@
     ]
   },
   "blinds": {
-    "eyebrow": "04 / Masayı oku",
+    "eyebrow": "05 / Masayı oku",
     "title": "Blind, ante ve pot",
     "lead": "Pot, bu elde ortaya konan tüm fişlerin toplamıdır. Zorunlu ödemeler oyunun başlamasını sağlar.",
     "dealer": "Dealer (D)",
@@ -190,7 +190,7 @@
     "potExample": "Örnek: SB 5 + BB 10 = başlangıç potu 15 fiş (ante yok)."
   },
   "flow": {
-    "eyebrow": "05 / Bir elin hikâyesi",
+    "eyebrow": "06 / Bir elin hikâyesi",
     "title": "Hold’em: iki karttan showdown’a",
     "lead": "Sana özel iki kart ve herkesin kullanabildiği beş ortak kart vardır. Bu yedi karttan en iyi beşini seçersin; elindeki iki kartı kullanmak zorunda değilsin.",
     "hole": "Sana özel kartlar",
@@ -221,7 +221,7 @@
     ]
   },
   "position": {
-    "eyebrow": "06 / Sıra bilgidir",
+    "eyebrow": "07 / Sıra bilgidir",
     "title": "Son konuşan daha çok şey bilir",
     "lead": "Pozisyon, bahis turunda diğer oyunculara göre ne zaman karar verdiğindir. Dealer butonuna göre değişir.",
     "items": [
@@ -241,7 +241,7 @@
     "note": "Preflop’ta big blind son karar yerindedir (bahis artırılırsa sıra yeniden dönebilir). Flop’tan sonra blind konumları erken hareket eder."
   },
   "quizSection": {
-    "eyebrow": "07 / Kendini dene",
+    "eyebrow": "08 / Kendini dene",
     "title": "İlk eline hazır mısın?",
     "lead": "Sekiz kısa soru. Yanlış cevap da öğrenmenin bir parçası; her sorunun açıklamasını oku."
   },
@@ -337,7 +337,7 @@
     }
   ],
   "next": {
-    "eyebrow": "Sıradaki adım",
+    "eyebrow": "09 / Sıradaki adım",
     "title": "Artık masayı tanıyorsun",
     "lead": "Poker türlerini keşfet ya da öğrendiklerini bir Hold’em elinde dene.",
     "variants": "Poker türlerini keşfet",

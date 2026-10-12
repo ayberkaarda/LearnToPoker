@@ -1,6 +1,6 @@
 {
   "hero": {
-    "eyebrow": "Before your first hand",
+    "eyebrow": "01 / Before your first hand",
     "title": "Poker basics",
     "lead": "Meet the cards, understand the table and take your first seat with confidence. No poker knowledge needed.",
     "progress": "Section {{current}} / {{total}}",
@@ -45,7 +45,7 @@
     }
   ],
   "deck": {
-    "eyebrow": "01 / Meet the cards",
+    "eyebrow": "02 / Meet the cards",
     "title": "52 cards, four suits",
     "lead": "A standard deck has no jokers. Each suit has the same 13 ranks; no suit beats another.",
     "suits": [
@@ -60,7 +60,7 @@
     "reset": "Hide cards"
   },
   "ladder": {
-    "eyebrow": "02 / Compare strength",
+    "eyebrow": "03 / Compare strength",
     "title": "The best five cards win",
     "lead": "The list runs from weakest to strongest. Tap a hand to see its cards and what makes it strong.",
     "hint": "These are probabilities for a random five-card hand. Hold’em probabilities for the best five of seven cards differ. Royal flush is counted separately from other straight flushes here.",
@@ -72,57 +72,57 @@
       {
         "name": "High card",
         "description": "With no combination, compare the highest card, then the next cards if tied.",
-        "rarity": "50.1177%"
+        "rarity": "50%"
       },
       {
         "name": "One pair",
         "description": "Two cards of the same rank. The higher pair wins; equal pairs compare the other cards (kickers).",
-        "rarity": "42.2569%"
+        "rarity": "42%"
       },
       {
         "name": "Two pair",
         "description": "Two different pairs. Compare the higher pair, then the lower pair, then the remaining card.",
-        "rarity": "4.7539%"
+        "rarity": "4.8%"
       },
       {
         "name": "Three of a kind",
         "description": "Three cards of the same rank. The higher triple wins; compare the remaining cards if tied.",
-        "rarity": "2.1128%"
+        "rarity": "2.1%"
       },
       {
         "name": "Straight",
         "description": "Five consecutive ranks, with any suits. The top card decides; A–2–3–4–5 is the lowest straight.",
-        "rarity": "0.3925%"
+        "rarity": "0.39%"
       },
       {
         "name": "Flush",
         "description": "Five cards of one suit, not necessarily consecutive. Compare from the highest card down.",
-        "rarity": "0.1965%"
+        "rarity": "0.20%"
       },
       {
         "name": "Full house",
         "description": "Three of a kind plus a pair. Compare the triple first, then the pair.",
-        "rarity": "0.1441%"
+        "rarity": "0.14%"
       },
       {
         "name": "Four of a kind",
         "description": "Four cards of the same rank. Compare their rank, then the fifth card if tied.",
-        "rarity": "0.0240%"
+        "rarity": "0.024%"
       },
       {
         "name": "Straight flush",
         "description": "Five consecutive cards of one suit. The highest card decides.",
-        "rarity": "0.00139%"
+        "rarity": "0.0014%"
       },
       {
         "name": "Royal flush",
         "description": "10–J–Q–K–A of one suit. The strongest hand; no hand beats it.",
-        "rarity": "0.000154%"
+        "rarity": "0.00015%"
       }
     ]
   },
   "actions": {
-    "eyebrow": "03 / Your turn",
+    "eyebrow": "04 / Your turn",
     "title": "Six actions, one decision",
     "lead": "When your turn comes in a betting round, act according to the current bet and your chips.",
     "play": "Replay scene",
@@ -173,7 +173,7 @@
     ]
   },
   "blinds": {
-    "eyebrow": "04 / Read the table",
+    "eyebrow": "05 / Read the table",
     "title": "Blinds, antes and the pot",
     "lead": "The pot is the total of all chips committed to this hand. Forced payments get the action started.",
     "dealer": "Dealer (D)",
@@ -190,7 +190,7 @@
     "potExample": "Example: SB 5 + BB 10 = a starting pot of 15 chips (no ante)."
   },
   "flow": {
-    "eyebrow": "05 / The story of a hand",
+    "eyebrow": "06 / The story of a hand",
     "title": "Hold’em: two cards to showdown",
     "lead": "You have two private cards and five community cards that everyone can use. Choose your best five from these seven; you do not have to use both private cards.",
     "hole": "Your private cards",
@@ -221,7 +221,7 @@
     ]
   },
   "position": {
-    "eyebrow": "06 / Acting order is information",
+    "eyebrow": "07 / Acting order is information",
     "title": "Acting later means knowing more",
     "lead": "Position is when you make your decision relative to the other players in a betting round. It changes with the dealer button.",
     "items": [
@@ -241,7 +241,7 @@
     "note": "Preflop, the big blind has the last initial decision (a raise may send action around again). After the flop, the blind positions act early."
   },
   "quizSection": {
-    "eyebrow": "07 / Test yourself",
+    "eyebrow": "08 / Test yourself",
     "title": "Ready for your first hand?",
     "lead": "Eight quick questions. Wrong answers help you learn too; read the explanation for each one."
   },
@@ -337,7 +337,7 @@
     }
   ],
   "next": {
-    "eyebrow": "Your next step",
+    "eyebrow": "09 / Your next step",
     "title": "You know your way around the table",
     "lead": "Explore poker variants or try what you learned in a Hold’em hand.",
     "variants": "Explore poker variants",
