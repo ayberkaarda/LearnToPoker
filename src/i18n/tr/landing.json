@@ -1,0 +1,78 @@
+{
+  "hero": {
+    "eyebrow": "Sıfırdan poker okulu",
+    "title": "Pokeri hiç bilmeden başla, masaya hazır çık.",
+    "lead": "Kartları, elleri ve bahis turlarını adım adım öğren. Sonra sanal rakiplere karşı oyna; her kararında bir koç sana neden doğru ya da yanlış olduğunu anlatsın.",
+    "note": "Ücretsiz · Kayıt yok · Gerçek para yok",
+    "scroll": "Aşağı kaydır"
+  },
+  "what": {
+    "eyebrow": "İlk adım",
+    "title": "Poker nedir?",
+    "lead": "Poker; kart, matematik ve biraz da cesaret oyunudur. Üç basit fikirle başlayalım.",
+    "panels": [
+      {
+        "title": "Amaç",
+        "text": "Elin sonunda en iyi eli yapmak ya da bahis yaparak herkesi elinden vazgeçirmek (fold ettirmek). İkisinden biri olursa ortadaki pot senin."
+      },
+      {
+        "title": "Kartlar",
+        "text": "Standart 52 kartlık deste: 4 renk (maça, kupa, karo, sinek), her renkte 2'den As'a 13 kart. En iyi 5 kartlık el kazanır."
+      },
+      {
+        "title": "Chip ve pot",
+        "text": "Para yerine chip (fiş) kullanılır. Oyuncuların ortaya koyduğu chip'lerin hepsine pot denir. Her bahis turunda pot büyür."
+      }
+    ]
+  },
+  "ranks": {
+    "eyebrow": "El sıralaması",
+    "title": "Zayıftan güçlüye 10 el",
+    "lead": "Pokerde her şey bu sıralamaya dayanır. Sağa doğru ilerledikçe el güçlenir.",
+    "weak": "Zayıf",
+    "strong": "Güçlü",
+    "link": "Elleri detaylı öğren"
+  },
+  "path": {
+    "eyebrow": "Öğrenme yolu",
+    "title": "Üç adımda masaya otur",
+    "steps": [
+      {
+        "title": "Temeller",
+        "text": "Kartlar, el sıralaması, blind'lar ve bahis turları. Kısa bölümler ve mini testlerle.",
+        "link": "Temellere başla"
+      },
+      {
+        "title": "Varyantlar",
+        "text": "Texas Hold'em, Omaha, Seven Card Stud ve diğerleri: farkları, kuralları ve ipuçları.",
+        "link": "Varyantları keşfet"
+      },
+      {
+        "title": "Oyna",
+        "text": "Botlara karşı gerçek bir masada oyna. Koç her kararında yanında; el bitince sana özet çıkarır.",
+        "link": "Masaya otur"
+      }
+    ]
+  },
+  "variants": {
+    "eyebrow": "Varyantlar",
+    "title": "Tek oyun değil, bir oyun ailesi",
+    "lead": "Hepsi aynı el sıralamasını (ya da tersini) kullanır ama kart dağıtımı ve bahis yapısı değişir.",
+    "playable": "Oynanabilir",
+    "learn": "Öğren",
+    "all": "Tüm varyantlar",
+    "items": {
+      "holdem": { "name": "Texas Hold'em", "desc": "2 kapalı kart + 5 ortak kart. Dünyanın en popüler pokeri." },
+      "omaha": { "name": "Omaha", "desc": "4 kapalı kart, tam 2'sini kullanmak zorundasın. Daha büyük eller." },
+      "sevenCardStud": { "name": "Seven Card Stud", "desc": "Ortak kart yok; bazı kartların açık dağıtılır. Klasik ve sabırlı." },
+      "fiveCardDraw": { "name": "Five Card Draw", "desc": "5 kart al, istemediklerini değiştir. En sade poker." },
+      "razz": { "name": "Razz", "desc": "Stud'un tersi: en düşük el kazanır. A-2-3-4-5 en iyisi." },
+      "shortDeck": { "name": "Short Deck", "desc": "2'ler ile 5'ler çıkarılmış 36 kartlık deste. Flush, full house'u yener." }
+    }
+  },
+  "final": {
+    "title": "İlk elin bir tık uzağında.",
+    "lead": "Temelleri 15 dakikada öğren, sonra hemen bir el oyna.",
+    "secondary": "Önce oynayıp görmek istiyorum"
+  }
+}

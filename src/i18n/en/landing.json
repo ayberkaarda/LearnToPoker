@@ -1,0 +1,78 @@
+{
+  "hero": {
+    "eyebrow": "Poker school from zero",
+    "title": "Start knowing nothing, leave ready for the table.",
+    "lead": "Learn the cards, the hands and the betting rounds step by step. Then play against virtual opponents while a coach explains why each decision was right or wrong.",
+    "note": "Free · No sign-up · No real money",
+    "scroll": "Scroll down"
+  },
+  "what": {
+    "eyebrow": "First step",
+    "title": "What is poker?",
+    "lead": "Poker is a game of cards, math and a bit of nerve. Let's start with three simple ideas.",
+    "panels": [
+      {
+        "title": "The goal",
+        "text": "Make the best hand at the end, or bet so that everyone else gives up (folds). Either way, the pot in the middle is yours."
+      },
+      {
+        "title": "The cards",
+        "text": "A standard 52-card deck: 4 suits (spades, hearts, diamonds, clubs), 13 cards each from 2 to Ace. The best 5-card hand wins."
+      },
+      {
+        "title": "Chips and the pot",
+        "text": "Chips stand in for money. All the chips players put in the middle are called the pot. It grows with every betting round."
+      }
+    ]
+  },
+  "ranks": {
+    "eyebrow": "Hand rankings",
+    "title": "10 hands, weakest to strongest",
+    "lead": "Everything in poker rests on this order. Hands get stronger as you move right.",
+    "weak": "Weak",
+    "strong": "Strong",
+    "link": "Learn the hands in detail"
+  },
+  "path": {
+    "eyebrow": "Learning path",
+    "title": "Three steps to the table",
+    "steps": [
+      {
+        "title": "Basics",
+        "text": "Cards, hand rankings, blinds and betting rounds. Short chapters with mini quizzes.",
+        "link": "Start the basics"
+      },
+      {
+        "title": "Variants",
+        "text": "Texas Hold'em, Omaha, Seven Card Stud and more: differences, rules and tips.",
+        "link": "Explore variants"
+      },
+      {
+        "title": "Play",
+        "text": "Play at a real table against bots. The coach is with you on every decision and sums up each hand.",
+        "link": "Take a seat"
+      }
+    ]
+  },
+  "variants": {
+    "eyebrow": "Variants",
+    "title": "Not one game, a family of games",
+    "lead": "They all use the same hand rankings (or their reverse), but dealing and betting structure change.",
+    "playable": "Playable",
+    "learn": "Learn",
+    "all": "All variants",
+    "items": {
+      "holdem": { "name": "Texas Hold'em", "desc": "2 hidden cards + 5 shared cards. The world's most popular poker." },
+      "omaha": { "name": "Omaha", "desc": "4 hidden cards, you must use exactly 2. Bigger hands." },
+      "sevenCardStud": { "name": "Seven Card Stud", "desc": "No shared cards; some of yours are dealt face up. Classic and patient." },
+      "fiveCardDraw": { "name": "Five Card Draw", "desc": "Get 5 cards, swap the ones you don't want. The simplest poker." },
+      "razz": { "name": "Razz", "desc": "Stud in reverse: the lowest hand wins. A-2-3-4-5 is the best." },
+      "shortDeck": { "name": "Short Deck", "desc": "A 36-card deck with 2s through 5s removed. Flush beats full house." }
+    }
+  },
+  "final": {
+    "title": "Your first hand is one click away.",
+    "lead": "Learn the basics in 15 minutes, then play a hand right away.",
+    "secondary": "I'd rather play first and see"
+  }
+}
