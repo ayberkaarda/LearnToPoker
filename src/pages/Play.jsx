@@ -191,6 +191,7 @@ function SetupPanel({ notPlayable }) {
 function Seats({ game, positions, showCards }) {
   const n = game.players.length;
   const complete = game.phase === PHASE.COMPLETE;
+  const showBlinds = !complete && game.phase !== PHASE.IDLE && game.phase !== PHASE.BLINDS;
   const won = {};
   if (complete && game.result) for (const w of game.result.winners) won[w.playerIdx] = w.amount;
   return game.players.map((p, i) => {
@@ -202,8 +203,8 @@ function Seats({ game, positions, showCards }) {
         player={p}
         isTurn={game.awaiting?.playerIdx === i}
         isDealer={game.dealerIdx === i}
-        isSb={game.sbIdx === i && !complete}
-        isBb={game.bbIdx === i && !complete}
+        isSb={game.sbIdx === i && showBlinds}
+        isBb={game.bbIdx === i && showBlinds}
         won={won[i] || 0}
         cards={showCards ? visibleCards(game, 0, p) : null}
         showCards={showCards}
@@ -319,6 +320,16 @@ export default function Play() {
   const variantName = t(`variants.${game?.variantId || config.variantId}`);
   const complete = game?.phase === PHASE.COMPLETE;
   const showSetup = setupOpen || !game;
+  const potDisplayGame = useMemo(() => {
+    if (!game || game.phase !== PHASE.DRAW) return game;
+    return {
+      ...game,
+      variant: {
+        ...game.variant,
+        streets: game.variant.streets.map((street, idx) => idx === game.streetIdx ? { ...street, name: 'draw' } : street),
+      },
+    };
+  }, [game]);
 
   const stageClass = useMemo(() => `play__stage${webgl ? '' : ' play__stage--flat'}`, [webgl]);
 
@@ -363,7 +374,7 @@ export default function Play() {
                 <TableText game={game} />
                 <div className="play__overlay" inert={showSetup ? '' : undefined} aria-hidden={showSetup || undefined}>
                   <div className="play__pot">
-                    <PotDisplay game={game} />
+                    <PotDisplay game={potDisplayGame} />
                   </div>
                   <Seats game={game} positions={seatPos} showCards={false} />
                 </div>
@@ -374,7 +385,7 @@ export default function Play() {
                 <div className="play__felt" aria-hidden="true" />
                 <div className="play__overlay" inert={showSetup ? '' : undefined} aria-hidden={showSetup || undefined}>
                   <div className="play__pot play__pot--center">
-                    <PotDisplay game={game} showBoard />
+                    <PotDisplay game={potDisplayGame} showBoard />
                   </div>
                   <Seats game={game} positions={null} showCards />
                 </div>

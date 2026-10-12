@@ -1,5 +1,6 @@
-import { Suspense, lazy, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Component, Suspense, lazy, useEffect } from 'react';
+import { Link, Routes, Route, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { AnimatePresence } from 'framer-motion';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
@@ -10,6 +11,29 @@ const Variants = lazy(() => import('./pages/Variants.jsx'));
 const VariantDetail = lazy(() => import('./pages/VariantDetail.jsx'));
 const Play = lazy(() => import('./pages/Play.jsx'));
 const Glossary = lazy(() => import('./pages/Glossary.jsx'));
+
+class ErrorBoundary extends Component {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    return this.state.hasError ? this.props.fallback : this.props.children;
+  }
+}
+
+function PageError() {
+  const { t, i18n } = useTranslation('common');
+  const english = i18n.language === 'en';
+  return (
+    <section className="container section" role="alert" style={{ textAlign: 'center' }}>
+      <h1>{t('error.title', { defaultValue: english ? 'Something went wrong' : 'Bir şeyler ters gitti' })}</h1>
+      <Link className="btn btn--primary" to="/">{t('error.home', { defaultValue: english ? 'Return home' : 'Ana sayfaya dön' })}</Link>
+    </section>
+  );
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -29,12 +53,19 @@ function Loading() {
 
 export default function App() {
   const location = useLocation();
+  const { i18n } = useTranslation('common');
+  useEffect(() => {
+    document.title = i18n.language === 'en'
+      ? 'LearnToPoker — Learn Poker from Scratch'
+      : 'LearnToPoker — Sıfırdan Poker Öğren';
+  }, [i18n.language]);
   const isPlay = location.pathname.startsWith('/play');
   return (
     <div className={`app ${isPlay ? 'app--play' : ''}`}>
       <ScrollToTop />
       <Nav />
       <main className="app__main" id="main">
+        <ErrorBoundary key={location.pathname} fallback={<PageError />}>
         <Suspense fallback={<Loading />}>
           <AnimatePresence mode="wait" initial={false}>
             <Routes location={location} key={location.pathname}>
@@ -49,6 +80,7 @@ export default function App() {
             </Routes>
           </AnimatePresence>
         </Suspense>
+        </ErrorBoundary>
       </main>
       {!isPlay && <Footer />}
     </div>

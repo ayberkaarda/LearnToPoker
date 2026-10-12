@@ -16,6 +16,11 @@ export function coachAdvice(state, heroIdx, samples = 300) {
   const handDesc = made ? describeHand(made) : null;
   const pot = totalPot(state.players);
   const reasons = [];
+  const actions = aw?.actions;
+  const { callAmt: toCall, pot: winPot, potOdds } = callPotOdds(state, heroIdx, actions);
+  const fair = 1 / (opponents + 1);
+  reasons.push({ key: 'coach.equity', params: { pct: Math.round(equity * 100), opponents, fair: Math.round(fair * 100) } });
+  reasons.push({ key: 'coach.potOdds', params: { toCall, pot: winPot, pct: Math.round(potOdds * 100) } });
 
   if (aw?.kind === 'draw') {
     const discard = drawAdvice(hero.cards).slice(0, aw.maxDiscard ?? 5);
@@ -23,25 +28,20 @@ export function coachAdvice(state, heroIdx, samples = 300) {
     return { equity, opponents, potOdds: 0, handKey: handDesc?.key, handParams: handDesc?.params, suggestion: { type: 'draw', discard }, reasons, discard };
   }
 
-  const actions = aw?.actions;
-  // pot odds use what hero really pays (short stacks pay less) and only the pot hero can win
-  const { callAmt: toCall, pot: winPot, potOdds } = callPotOdds(state, heroIdx, actions);
-  const fair = 1 / (opponents + 1);
   let suggestion;
 
-  reasons.push({ key: 'coach.equity', params: { pct: Math.round(equity * 100), opponents, fair: Math.round(fair * 100) } });
   if (handDesc) reasons.push({ key: 'coach.youHold', params: { hand: handDesc } });
 
   if (!actions) return { equity, opponents, potOdds, handKey: handDesc?.key, handParams: handDesc?.params, suggestion: null, reasons };
 
   if (actions.bringIn) {
     // stud bring-in: no free check and no fold; post the bring-in or complete to the small bet
-    if (equity > fair + 0.2 && actions.raise) {
+    if (equity >= potOdds && equity > fair + 0.2 && actions.raise) {
       suggestion = { type: 'bet', amount: actions.raise.min };
       reasons.push({ key: 'coach.betForValue', params: {} });
     } else {
       suggestion = { type: 'call' };
-      reasons.push({ key: 'coach.callOk', params: {} });
+      if (equity >= potOdds) reasons.push({ key: 'coach.callOk', params: {} });
     }
   } else if (actions.check) {
     if (equity > fair + 0.2 && actions.raise) {
@@ -52,16 +52,15 @@ export function coachAdvice(state, heroIdx, samples = 300) {
       reasons.push({ key: 'coach.checkFree', params: {} });
     }
   } else {
-    reasons.push({ key: 'coach.potOdds', params: { toCall, pot: winPot, pct: Math.round(potOdds * 100) } });
-    if (equity < potOdds - 0.03 && actions.fold) {
+    if (equity < potOdds && actions.fold) {
       suggestion = { type: 'fold' };
       reasons.push({ key: 'coach.foldBadOdds', params: {} });
-    } else if (equity > fair + 0.25 && actions.raise) {
+    } else if (equity >= potOdds && equity > fair + 0.25 && actions.raise) {
       suggestion = { type: 'raise', amount: sizeBet(actions, pot, state) };
       reasons.push({ key: 'coach.raiseStrong', params: {} });
     } else {
       suggestion = { type: 'call' };
-      reasons.push({ key: 'coach.callOk', params: {} });
+      if (equity >= potOdds) reasons.push({ key: 'coach.callOk', params: {} });
     }
   }
   return { equity, opponents, potOdds, handKey: handDesc?.key, handParams: handDesc?.params, suggestion, reasons };

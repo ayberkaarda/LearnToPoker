@@ -21,6 +21,8 @@ export default function CoachPanel() {
   const currentKey = game ? `${game.handNumber}:${game.log.length}:${game.awaiting?.kind}` : null;
   const fresh = human && advice && adviceKey === currentKey;
   const me = game?.players[0];
+  const noHandKey = game?.variant.type === 'stud' ? 'coachUi.noHandYetStud'
+    : game?.variant.type === 'draw' ? 'coachUi.noHandYetDraw' : 'coachUi.noHandYet';
 
   return (
     <section className={`coach${fresh ? ' coach--live' : ''}`} aria-live="polite">
@@ -75,7 +77,7 @@ export default function CoachPanel() {
                 <Card2D key={c.id} card={c} faceUp size="sm" />
               ))}
             </div>
-            <p className="coach__handname">{advice.handKey ? handText(t, { key: advice.handKey, params: advice.handParams }) : t('coachUi.noHandYet')}</p>
+            <p className="coach__handname">{advice.handKey ? handText(t, { key: advice.handKey, params: advice.handParams }) : t(noHandKey)}</p>
           </div>
 
           <div className="coach__why">

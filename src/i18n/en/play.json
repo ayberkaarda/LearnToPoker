@@ -61,6 +61,7 @@
     "river": "River",
     "predraw": "Before the draw",
     "postdraw": "After the draw",
+    "draw": "Card exchange",
     "third": "Third street",
     "fourth": "Fourth street",
     "fifth": "Fifth street",
@@ -158,6 +159,8 @@
     "potOddsHelp": "The minimum chance to win a call needs.",
     "madeHand": "Your current hand",
     "noHandYet": "You don't have 5 cards yet; your hand takes shape as the board comes out.",
+    "noHandYetStud": "You don't have 5 cards yet; your hand will take shape as new cards are dealt.",
+    "noHandYetDraw": "Your hand will take shape after you swap your cards.",
     "suggestion": "Suggestion",
     "suggest": {
       "fold": "Fold",

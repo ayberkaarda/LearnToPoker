@@ -61,6 +61,7 @@
     "river": "River",
     "predraw": "Değişim öncesi",
     "postdraw": "Değişim sonrası",
+    "draw": "Kart değişimi",
     "third": "3. sokak",
     "fourth": "4. sokak",
     "fifth": "5. sokak",
@@ -158,6 +159,8 @@
     "potOddsHelp": "Call için gereken minimum kazanma şansı.",
     "madeHand": "Şu anki elin",
     "noHandYet": "Henüz 5 kartın yok; elin ortak kartlar açıldıkça şekillenir.",
+    "noHandYetStud": "Henüz 5 kartın yok; yeni kartlar dağıtıldıkça elin netleşecek.",
+    "noHandYetDraw": "Kartlarını değiştirdikten sonra elin netleşecek.",
     "suggestion": "Öneri",
     "suggest": {
       "fold": "Fold et",
