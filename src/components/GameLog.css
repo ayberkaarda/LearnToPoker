@@ -1,0 +1,107 @@
+.glog {
+  padding: 16px;
+  min-height: 0;
+}
+
+.glog__title {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.glog__empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.glog__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.glog__item {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 8px;
+  align-items: start;
+  padding: 7px 9px;
+  border-radius: var(--radius-s);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.glog__item--latest {
+  color: var(--text);
+  background: var(--surface-2);
+  border-color: var(--border);
+  animation: glog-in 0.35s var(--ease);
+}
+
+@keyframes glog-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.glog__icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+.glog__item--handStart .glog__icon {
+  background: #f6f1e4;
+  color: #1a1a1a;
+}
+
+.glog__item--dealHole .glog__icon,
+.glog__item--dealCommunity .glog__icon,
+.glog__item--dealStud .glog__icon {
+  color: var(--gold-2);
+}
+
+.glog__item--bet .glog__icon,
+.glog__item--raise .glog__icon,
+.glog__item--allin .glog__icon {
+  background: rgba(214, 171, 76, 0.2);
+  color: var(--gold-2);
+}
+
+.glog__item--fold .glog__icon {
+  color: var(--red);
+}
+
+.glog__item--showdown .glog__icon {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+.glog__item--note {
+  font-style: italic;
+}
+
+.glog__item--me .glog__text {
+  color: var(--gold-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glog__item--latest {
+    animation: none;
+  }
+}

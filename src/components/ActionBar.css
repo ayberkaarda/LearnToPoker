@@ -1,0 +1,256 @@
+.ab {
+  position: relative;
+  padding: 14px 16px 12px;
+  background: linear-gradient(180deg, rgba(20, 38, 31, 0.92), rgba(15, 32, 27, 0.98));
+  border-top: 1px solid var(--border);
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ab--turn {
+  border-top-color: var(--border-gold, rgba(214, 171, 76, 0.35));
+  box-shadow: 0 -10px 40px rgba(214, 171, 76, 0.08);
+}
+
+.ab__badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--bg);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ab__bet,
+.ab__draw,
+.ab__status {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 16px;
+}
+
+.ab__hint {
+  margin: 0;
+  flex: 1 1 100%;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.ab__hint:empty {
+  display: none;
+}
+
+.ab__note {
+  margin: 0;
+  flex: 1 1 100%;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.ab__buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ab__btn {
+  position: relative;
+  min-width: 96px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font: 600 0.95rem var(--font-body);
+  cursor: pointer;
+  transition: transform 0.15s var(--ease), background 0.2s var(--ease), border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.ab__btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(240, 228, 200, 0.3);
+}
+
+.ab__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.ab__btn--fold {
+  color: #f0b7b9;
+}
+
+.ab__btn--raise {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+}
+
+.ab__btn--raise:hover:not(:disabled) {
+  background: var(--gold-2);
+  border-color: var(--gold-2);
+}
+
+.ab__btn--next {
+  min-width: 150px;
+  font-size: 1rem;
+}
+
+.ab__btn--suggested {
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--gold-2);
+}
+
+.ab__btn--suggested::after {
+  content: '\2605';
+  position: absolute;
+  top: -9px;
+  right: -7px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold-2);
+  color: var(--bg);
+  font-size: 10px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.ab__sizing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ab__presets {
+  display: flex;
+  gap: 6px;
+}
+
+.ab__chip {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font: 600 0.78rem var(--font-body);
+  cursor: pointer;
+}
+
+.ab__chip.is-on,
+.ab__chip:hover {
+  color: var(--gold-2);
+  border-color: rgba(214, 171, 76, 0.5);
+}
+
+.ab__slider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ab__slider input[type='range'] {
+  width: 180px;
+  accent-color: var(--gold);
+}
+
+.ab__amount {
+  min-width: 52px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--gold-2);
+}
+
+.ab__drawcards {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding-top: 12px;
+}
+
+.ab__drawcard {
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: transform 0.2s var(--ease), opacity 0.2s var(--ease);
+}
+
+.ab__drawcard.is-on {
+  transform: translateY(-12px);
+  opacity: 0.6;
+}
+
+.ab__drawcard.is-on::after {
+  content: '\2715';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  color: var(--red);
+  font-weight: 800;
+}
+
+.ab__drawcard.is-suggested::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -9px;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: var(--gold-2);
+}
+
+@media (max-width: 640px) {
+  .ab {
+    padding: 16px 10px 12px;
+  }
+  .ab__btn {
+    min-width: 0;
+    flex: 1 1 auto;
+    padding: 0 12px;
+    font-size: 0.88rem;
+  }
+  .ab__buttons {
+    width: 100%;
+  }
+  .ab__slider input[type='range'] {
+    width: 140px;
+  }
+  .ab__drawcards {
+    gap: 4px;
+  }
+  .ab__drawcard .card2d {
+    width: 52px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ab__btn,
+  .ab__drawcard {
+    transition: none;
+  }
+}

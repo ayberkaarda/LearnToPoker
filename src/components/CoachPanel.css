@@ -1,0 +1,221 @@
+.coach {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.coach--live {
+  background: linear-gradient(180deg, rgba(214, 171, 76, 0.07), transparent 60%), var(--surface);
+}
+
+.coach__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.coach__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--gold-2);
+}
+
+.coach__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px 4px 4px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font: 600 0.76rem var(--font-body);
+  cursor: pointer;
+}
+
+.coach__knob {
+  width: 30px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  position: relative;
+  transition: background 0.2s var(--ease);
+}
+
+.coach__knob::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--muted);
+  transition: transform 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.coach__toggle.is-on {
+  color: var(--text);
+}
+
+.coach__toggle.is-on .coach__knob {
+  background: rgba(214, 171, 76, 0.35);
+}
+
+.coach__toggle.is-on .coach__knob::after {
+  transform: translateX(12px);
+  background: var(--gold-2);
+}
+
+.coach__muted {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.coach__thinking {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.coach__spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(214, 171, 76, 0.25);
+  border-top-color: var(--gold);
+  animation: coach-spin 0.8s linear infinite;
+}
+
+@keyframes coach-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.coach__body {
+  display: grid;
+  gap: 14px;
+}
+
+.coach__label {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.coach__suggest {
+  padding: 10px 12px;
+  border-radius: var(--radius-s);
+  border: 1px solid rgba(214, 171, 76, 0.45);
+  background: rgba(214, 171, 76, 0.1);
+}
+
+.coach__pick {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--gold-2);
+}
+
+.coach__meter-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.84rem;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.coach__meter-row strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.coach__meter-row--sub {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.coach__bar {
+  position: relative;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: visible;
+}
+
+.coach__fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--felt-2), var(--gold));
+  transition: width 0.5s var(--ease);
+}
+
+.coach__mark {
+  position: absolute;
+  top: -4px;
+  width: 3px;
+  height: 18px;
+  margin-left: -1px;
+  border-radius: 2px;
+  background: var(--red);
+  box-shadow: 0 0 0 2px var(--surface);
+}
+
+.coach__mark-key {
+  display: inline-block;
+  width: 3px;
+  height: 10px;
+  background: var(--red);
+  vertical-align: -1px;
+  margin-right: 2px;
+}
+
+.coach__help {
+  margin: 6px 0 0;
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+.coach__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.coach__handname {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.coach__why ul {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coach__spinner {
+    animation: none;
+  }
+  .coach__fill,
+  .coach__knob,
+  .coach__knob::after {
+    transition: none;
+  }
+}
