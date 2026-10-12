@@ -1,0 +1,679 @@
+{
+  "listEyebrow": "Poker çeşitleri",
+  "listTitle": "Tek deste, bir sürü oyun",
+  "listLead": "Hold'em sadece başlangıç. Aşağıdaki her çeşit sıfırdan anlatılıyor: kuralları, Hold'em'den farkları, adım adım oynanan örnek bir el ve kısa bir quiz. \"Oynanabilir\" işaretli olanları hemen botlara karşı deneyebilirsin.",
+  "filterLabel": "Çeşitleri filtrele",
+  "filters": {
+    "all": "Tümü",
+    "playable": "Oynanabilir",
+    "community": "Ortak kartlı",
+    "stud": "Stud",
+    "draw": "Draw (kart değiştirme)"
+  },
+  "families": {
+    "community": "Ortak kartlı",
+    "stud": "Stud",
+    "draw": "Draw",
+    "mixed": "Karma"
+  },
+  "limits": {
+    "no-limit": "No-limit",
+    "pot-limit": "Pot-limit",
+    "fixed-limit": "Fixed-limit",
+    "mixed": "Karma limit"
+  },
+  "difficulty": {
+    "label": "Zorluk",
+    "1": "Kolay",
+    "2": "Orta",
+    "3": "İleri"
+  },
+  "playableBadge": "Oynanabilir",
+  "hiLoBadge": "Bölünen pot",
+  "learnMore": "Öğren",
+  "emptyFilter": "Bu filtreye uyan çeşit yok.",
+  "meta": {
+    "holeCards": "Kendi kartların",
+    "communityCards": "Ortak kartlar",
+    "limit": "Bahis",
+    "family": "Aile",
+    "none": "Yok",
+    "varies": "Değişir"
+  },
+  "detail": {
+    "back": "Tüm çeşitler",
+    "rulesEyebrow": "Kurallar",
+    "rulesTitle": "Nasıl oynanır?",
+    "differencesEyebrow": "Hold'em ile karşılaştırma",
+    "differencesTitle": "Hold'em'den farkları",
+    "walkthroughEyebrow": "Örnek el",
+    "walkthroughLead": "Bir eli baştan sona adım adım izle. Okları, noktaları ya da klavyendeki ← → tuşlarını kullan.",
+    "tipsEyebrow": "İpuçları",
+    "tipsTitle": "Bilmekte fayda var",
+    "quizEyebrow": "Quiz",
+    "quizTitle": "Kendini dene",
+    "quizLead": "Beş kısa soru. Her cevaptan sonra hemen geri bildirim alırsın.",
+    "ctaPlayTitle": "Denemeye hazır mısın?",
+    "ctaPlayLead": "Botlara karşı birkaç el oyna. Koç her kararı sana açıklar.",
+    "ctaSimilarTitle": "Bu çeşit henüz oynanamıyor",
+    "ctaSimilarLead": "Bu çeşidi sitede henüz oynayamazsın ama çok yakın bir akrabasını oynayabilirsin:",
+    "similarCta": "{{name}} oyna",
+    "playCta": "{{name}} oyna"
+  },
+  "playCta": "Oyna",
+  "stepPlayer": {
+    "prev": "Önceki adım",
+    "next": "Sonraki adım",
+    "play": "Otomatik oynat",
+    "pause": "Duraklat",
+    "restart": "Baştan başla",
+    "stepOf": "Adım {{current}} / {{total}}",
+    "goTo": "{{n}}. adıma git",
+    "pot": "Pot",
+    "dealer": "Dealer butonu",
+    "folded": "Fold etti",
+    "stack": "Fiş",
+    "discards": "Atılan kartlar",
+    "privateNote": "Kesikli çerçeve = gizli kart (diğerleri kapalı görür)",
+    "tableLabel": "Örnek el masası"
+  },
+  "actions": {
+    "blinds": "Blind'lar",
+    "ante": "Ante'ler",
+    "deal": "Dağıtım",
+    "preflop": "Preflop",
+    "flop": "Flop",
+    "turn": "Turn",
+    "river": "River",
+    "showdown": "Showdown",
+    "win": "Pot kazanıldı",
+    "split": "Pot bölündü",
+    "bringIn": "Bring-in",
+    "thirdStreet": "3rd street",
+    "fourthStreet": "4th street",
+    "fifthStreet": "5th street",
+    "sixthStreet": "6th street",
+    "seventhStreet": "7th street",
+    "firstBet": "1. bahis turu",
+    "secondBet": "2. bahis turu",
+    "thirdBet": "3. bahis turu",
+    "fourthBet": "4. bahis turu",
+    "draw": "Draw",
+    "discard": "Kart atma",
+    "draw1": "1. draw",
+    "draw2": "2. draw",
+    "draw3": "3. draw",
+    "rotation": "Rotasyon",
+    "gameH": "H · Hold'em",
+    "gameO": "O · Omaha Hi-Lo",
+    "gameR": "R · Razz",
+    "gameS": "S · Stud",
+    "gameE": "E · Stud Eight-or-better"
+  },
+  "acts": {
+    "sb": "Small blind",
+    "bb": "Big blind",
+    "ante": "Ante",
+    "fold": "Fold",
+    "check": "Check",
+    "call": "Call",
+    "bet": "Bet",
+    "raise": "Raise",
+    "allin": "All-in",
+    "complete": "Complete",
+    "bringIn": "Bring-in",
+    "pat": "Pat (değiştirmez)",
+    "draw1": "1 kart çeker",
+    "draw2": "2 kart çeker",
+    "draw3": "3 kart çeker"
+  },
+  "quizUi": {
+    "progress": "Soru {{current}} / {{total}}",
+    "correct": "Doğru!",
+    "wrong": "Tam değil.",
+    "next": "Sonraki soru",
+    "finish": "Puanımı göster",
+    "resultTitle": "Quiz bitti",
+    "score": "{{total}} sorudan {{score}} doğru",
+    "perfect": "Kusursuz! Bu konuyu gerçekten biliyorsun.",
+    "good": "Güzel iş. Kaçırdığın soruların açıklamalarına bir göz at.",
+    "low": "İyi bir başlangıç. Kurallara bir kez daha bak ve tekrar dene.",
+    "restart": "Tekrar dene",
+    "empty": "Henüz soru yok."
+  },
+  "variants": {
+    "holdem": {
+      "name": "Texas Hold'em",
+      "tagline": "Dünyanın en popüler poker oyunu",
+      "summary": "Her oyuncuya iki gizli kart verilir ve masanın ortasındaki beş ortak kartı herkes paylaşır. Bu yedi karttan en iyi beş kartlık eli kurarsın. Öğrenmesi kolay, ustalaşması zor: başlamak için en doğru yer.",
+      "rules": [
+        "Her oyuncuya 2 kart kapalı dağıtılır. Bunlara hole cards (gizli kartlar) denir.",
+        "Her el iki zorunlu bahisle başlar: small blind ve big blind. Dealer butonunun solundaki iki oyuncu bunları koyar.",
+        "Dört bahis turu vardır: preflop, flop, turn ve river.",
+        "Flop'ta ortaya 3 ortak kart açılır. Turn 4. kartı, river ise 5. kartı ekler.",
+        "Ortak kartlar herkesindir. Elin, 2 gizli kartın ve 5 ortak kartın içinden seçtiğin en iyi 5 karttır. İki gizli kartını da, birini ya da hiçbirini kullanabilirsin.",
+        "Sıra sendeyken check (bahis yapmadan geçmek), bet (bahis), call (bahsi eşitlemek), raise (artırmak) ya da fold (eli bırakmak) yapabilirsin.",
+        "No-limit'te istediğin an, önündeki tüm fişlere kadar (all-in) istediğin miktarda bahis yapabilirsin.",
+        "River'dan sonra iki veya daha fazla oyuncu kalırsa showdown olur: en iyi 5 kartlık el potu kazanır.",
+        "Dealer butonu her elden sonra saat yönünde bir koltuk ilerler; böylece blind'ları herkes sırayla öder."
+      ],
+      "differences": [
+        "Bu, referans oyundur: sitedeki diğer tüm çeşitler Hold'em ile karşılaştırılarak anlatılır.",
+        "Sadece 2 gizli kart olduğu için eller ortalamada Omaha'dan zayıftır. Top pair çoğu zaman kazanır.",
+        "No-limit bahis: tek bir all-in eli her an bitirebilir.",
+        "Draw (kart değiştirme) ve bölünen pot yoktur. Potun tamamını tek bir yüksek el alır."
+      ],
+      "tips": [
+        "Daha az el oyna ama oynadığını kararlı oyna. Yeni başlayanların çoğu fazla call yapar.",
+        "Pozisyon önemlidir: son sırada (butonda) oynamak, önce diğerlerinin ne yaptığını görmeni sağlar.",
+        "Her zaman kendine sor: bu board'da şu an mümkün olan en iyi el ne?"
+      ],
+      "walkthrough": {
+        "title": "Ada'nın kupa floşu",
+        "steps": [
+          { "title": "Önce blind'lar", "text": "Dealer butonu Ada'da. Bora (small blind) 1 fiş, Cem (big blind) 2 fiş koyar. Bu zorunlu bahisler sayesinde her elde oynanacak bir pot olur." },
+          { "title": "Herkese iki kart", "text": "Herkese 2 kapalı kart gelir. Ada kartlarına bakar: A♥ K♥. Aynı renkten iki büyük kart, çok güçlü bir başlangıç." },
+          { "title": "Preflop bahis", "text": "Ada 6'ya raise yapar. Bora fold eder ve 1 fişlik small blind'ını kaybeder. Cem 6'yı call eder. İki oyuncu flop'a gider." },
+          { "title": "Flop: K♦ 7♥ 2♥", "text": "Üç ortak kart açılır. Ada'nın artık top pair'i (papaz) ve en iyi kicker'ı (as) var. Ayrıca dört kupası var: bir kupa daha gelirse floş olur." },
+          { "title": "Flop bahsi", "text": "Cem check yapar. Ada, papaz çiftinden değer almak ve potu büyütmek için 8 bet yapar. Cem call eder. Pot artık 29." },
+          { "title": "Turn: 9♠", "text": "Hiçbir şeyi değiştirmeyen bir kart. İkisi de check yapar; river bedavaya gelir." },
+          { "title": "River: 5♥", "text": "Beşinci kupa! Ada'nın en iyi 5 kartı A♥ K♥ 7♥ 5♥ 2♥: as floşu. Kimsede daha iyi bir floş olamaz; buna nut flush denir." },
+          { "title": "River bahsi", "text": "Cem 15 bet yapar. Ada eli büyük ihtimalle en iyisi olduğu için 40'a raise yapar. Cem call eder." },
+          { "title": "Showdown", "text": "Cem Q♠ Q♦ açar: kız çifti. Ada'nın floşu rahatça kazanır. Dikkat: Ada iki gizli kartını ve üç ortak kartı kullandı." },
+          { "title": "Ada 109 kazanır", "text": "Ada potun tamamını alır. Ders: Hold'em'de her zaman eldeki 7 kartın en iyi 5'ini seçersin ve aynı renk eller floşa dönüşebilir." }
+        ]
+      },
+      "quiz": [
+        { "q": "Texas Hold'em'de her oyuncuya kaç gizli kart verilir?", "options": ["2", "3", "4", "5"], "answer": 0, "explain": "İki gizli kart. Diğer beş kart board'da herkesle paylaşılır." },
+        { "q": "Board: K♦ 7♥ 2♥ 9♠ 5♥. Hangi gizli kartlar en iyi eli yapar?", "options": ["Q♠ Q♦", "A♥ 3♣", "7♣ 7♠", "K♣ K♠"], "answer": 3, "hands": ["Qs Qd", "Ah 3c", "7c 7s", "Kc Ks"], "explain": "K♣ K♠ ve board'daki K♦ üç papaz yapar; bu da üç yediliyi yener. A♥ 3♣'te sadece dört kupa var, yani floş yok." },
+        { "q": "River nedir?", "options": ["İlk üç ortak kart", "Dördüncü ortak kart", "Beşinci ve son ortak kart", "Son showdown"], "answer": 2, "explain": "Flop = 3 kart, turn = 4. kart, river = 5. kart. River'dan sonra son bahis turu oynanır." },
+        { "q": "Big blind'ı kim koyar?", "options": ["Dealer", "Dealer'ın hemen solundaki oyuncu", "Dealer'ın solundaki ikinci oyuncu", "Son eli kazanan oyuncu"], "answer": 2, "explain": "Butonun hemen solu small blind, onun solu big blind'dır." },
+        { "q": "İki gizli kartını da kullanmak zorunda mısın?", "options": ["Evet, her zaman ikisini de", "Hayır, 0, 1 ya da 2 gizli kartın her kombinasyonu olur", "Sadece no-limit oyunlarda", "Sadece çiftin varsa"], "answer": 1, "explain": "Hold'em'de 7 kartın en iyi 5'ini alırsın. Board'un kendisi en iyi else board'u oynayabilirsin. Tam olarak iki kart zorunluluğu Omaha'da vardır." }
+      ]
+    },
+    "omaha": {
+      "name": "Omaha",
+      "tagline": "Dört kart var ama tam olarak ikisini kullanmalısın",
+      "summary": "Omaha, iki yerine dört gizli kartla oynanan Hold'em'e benzer. Püf noktası: elin tam olarak iki gizli kartını ve tam olarak üç ortak kartı kullanmak zorundadır. Eller çok daha büyür ve bu tek kural her yeni başlayanı yanıltır.",
+      "rules": [
+        "Her oyuncuya 4 kart kapalı dağıtılır.",
+        "Yapı Hold'em ile aynıdır: blind'lar, ardından preflop, flop, turn ve river; 5 ortak kart.",
+        "Altın kural: son elin gizli kartlarından TAM OLARAK 2'sini ve ortak kartlardan TAM OLARAK 3'ünü kullanır. Ne fazla, ne eksik.",
+        "Yani board'da dört kupa ve elinde bir kupa varsa bu floş DEĞİLDİR. Elinde iki kupa olması gerekir.",
+        "Aynı şekilde board'daki bir çift ve elindeki tek eş kart üçlü yapmaz: elinde iki eş kart gerekir.",
+        "Omaha genelde pot-limit oynanır: yapabileceğin en büyük bet ya da raise, potun büyüklüğü kadardır (önce call ettiğin varsayılarak).",
+        "Kent, floş ve full house sık görülür; tek bir çift nadiren kazanır.",
+        "Showdown'da herkes kurallara uygun en iyi 2 + 3 kombinasyonunu gösterir; en iyi el kazanır."
+      ],
+      "differences": [
+        "2 yerine 4 gizli kart.",
+        "Tam 2 gizli kart + tam 3 ortak kart. Hold'em'de her kombinasyon serbesttir.",
+        "Genelde no-limit yerine pot-limit; en yüksek bahis pot büyüdükçe büyür.",
+        "Kazanan eller çok daha güçlüdür: top pair çoğu zaman az değerlidir.",
+        "Çok daha fazla draw (tamamlanmayı bekleyen el) mümkündür; potlar sık sık üç ve daha fazla oyuncuyla oynanır."
+      ],
+      "tips": [
+        "Her karardan önce gerçekten say: elimden iki, board'dan üç.",
+        "Birlikte çalışan dört kart ara: iki aynı renk çift ya da K-Q-J-T gibi ardışık kartlar.",
+        "Omaha'da mümkün olan en iyi floş ya da kentten daha zayıfını kovalamak pahalıya patlar."
+      ],
+      "walkthrough": {
+        "title": "Tek maça tuzağı",
+        "steps": [
+          { "title": "Blind'lar", "text": "Hold'em ile aynı başlangıç. Buton Ada'da; Bora 1, Cem 2 koyar. Herkes 200 fişle başlar." },
+          { "title": "Herkese dört kart", "text": "Ada'ya A♠ K♥ Q♦ J♣ gelir. Dört büyük kart harika görünür ama hepsi farklı renk. Bunu aklında tut." },
+          { "title": "Preflop", "text": "Ada 6'ya raise yapar. Pot-limit'te en fazla 7'ye çıkabilirdi: 2'yi call ettiğinde pot 5 olur, yani üstüne en fazla 5 ekleyebilir. İki rakip de call eder. Pot: 18." },
+          { "title": "Flop: K♠ 7♠ 2♠", "text": "Üç maça! Ada'da A♠ var; en iyi floşu bekliyor sanmak çok kolay. Ama elinde sadece BİR maça var ve Omaha'da elden iki kart gerekir. Maça floşu asla yapamaz." },
+          { "title": "Flop bahsi", "text": "Ada papaz çiftiyle (K♥ + board'daki K♠) 12 bet yapar. Bora ve Cem call eder. Pot: 54." },
+          { "title": "Turn: T♠", "text": "Artık dört maça var ve A-K-Q-J-T her yerde gibi. Kent mi? Hayır: board'da sadece K ve T var; Ada'nın elinden A, Q ve J'yi, yani üç kart kullanması gerekirdi. Floş yok, kent yok: hâlâ sadece papaz çifti." },
+          { "title": "Ada fold eder", "text": "Bora 40 bet yapar, Cem call eder. Ada elini doğru okur ve fold eder. Pek çok yeni başlayan burada büyük bir pot kaybederdi." },
+          { "title": "River: 4♥", "text": "Bora 50 bet yapar, Cem call eder. Showdown öncesi pot: 234." },
+          { "title": "Showdown", "text": "Bora 9♠ 8♠ açar: elden iki maça + K♠ T♠ 7♠ = papaz floşu. Cem T♣ T♥ açar: board'daki T♠ ile üç onlu. İkisi de tam iki gizli kart kullandı." },
+          { "title": "Bora 234 kazanır", "text": "Floş üçlüyü yener. Ada fişlerini korudu çünkü kuralı hatırladı: elden tam 2, board'dan tam 3." }
+        ]
+      },
+      "quiz": [
+        { "q": "Omaha'da gizli kartlarından kaç tanesini kullanmak zorundasın?", "options": ["İstediğin kadar", "Tam olarak 2", "En az 1", "Tam olarak 3"], "answer": 1, "explain": "Her zaman tam 2 gizli kart ve tam 3 ortak kart." },
+        { "q": "Board: A♥ K♥ 8♥ 4♥ 2♣, elinde Q♥ J♠ T♠ 9♦ var. Floşun var mı?", "options": ["Evet, kız floşu", "Evet, as floşu", "Hayır, elinde iki kupa olmalı", "Sadece bir kupa daha gelirse"], "answer": 2, "explain": "Elinde tek kupa varsa en fazla bir kupa kullanabilirsin. Board'dan üç kupa + elden bir kupa = dört kupa; floş değil." },
+        { "q": "Board: 7♣ 7♦ 7♥ K♠ 2♦. Hangi el en iyisi?", "options": ["A♠ A♦ Q♣ J♣", "7♠ 3♣ 4♦ 5♥", "K♣ K♦ 9♠ 8♠", "2♠ 2♥ 6♣ 5♣"], "answer": 1, "hands": ["As Ad Qc Jc", "7s 3c 4d 5h", "Kc Kd 9s 8s", "2s 2h 6c 5c"], "explain": "7♠ ve herhangi ikinci bir kart, board'daki 7♣ 7♦ 7♥ ile dörtlü (four of a kind) yapar. İki gizli + üç ortak kart, tamamen kurallara uygun. K-K sadece papazların yedili full house'unu yapar." },
+        { "q": "Pot-limit'te yapabileceğin en büyük raise nedir?", "options": ["İstediğin miktar", "Son bahsin iki katı", "Call ettikten sonraki pot kadar", "Tam olarak big blind kadar"], "answer": 2, "explain": "Önce call ettiğini düşün; o anki pot, üstüne ekleyebileceğin en yüksek miktardır." },
+        { "q": "Board: 9♠ 8♦ 3♣ 3♥ K♦, elinde 3♠ A♣ A♦ Q♥ var. En iyi elin ne?", "options": ["Full house, üçlüler ve aslar", "Üçlü (üç tane 3)", "İki çift, aslar ve üçlüler", "Tek as çifti"], "answer": 1, "explain": "3♠ + bir as, 3♣ 3♥ K♦ ile üç tane 3 yapar. Full house için 3♠ A♣ A♦ gerekirdi; bu üç gizli kart demek ve yasak." }
+      ]
+    },
+    "omahaHiLo": {
+      "name": "Omaha Hi-Lo",
+      "tagline": "Potun yarısı en iyi yüksek ele, yarısı en iyi düşük ele",
+      "summary": "Omaha Hi-Lo (Omaha Eight-or-better da denir) Omaha gibi oynanır ama pot genelde ikiye bölünür: en iyi yüksek el (high) bir yarıyı, şartı sağlayan en iyi düşük el (low) diğer yarıyı alır. Low sayılmak için 8 veya daha küçük, birbirinden farklı beş kart gerekir. İki yarıyı birden kazanmaya scoop denir.",
+      "rules": [
+        "Omaha gibi oynanır: 4 gizli kart, 5 ortak kart ve tam 2 gizli + 3 ortak kart kullanma zorunluluğu. Bu kural hem high hem low el için geçerlidir.",
+        "Showdown'da pot bölünür: yarısı en iyi high ele, yarısı en iyi low ele.",
+        "Low elin \"8 or better\" şartını sağlaması gerekir: hepsi 8 veya daha küçük, birbirinden farklı beş kart.",
+        "Low için as 1 sayılır (en küçük kart). Kent ve floş low ele zarar vermez.",
+        "Mümkün olan en iyi low A-2-3-4-5'tir; buna wheel denir.",
+        "Low'lar en büyük karttan başlayarak karşılaştırılır: 7-5-4-2-A, 8-4-3-2-A'yı yener çünkü 7, 8'den küçüktür.",
+        "Low ancak board'da 8 veya daha küçük en az üç farklı kart varsa mümkündür. Kimsenin geçerli low'u yoksa high el potun tamamını alır.",
+        "High ve low için farklı iki gizli kart çifti kullanabilirsin.",
+        "İki yarıyı birden almak scoop'tur ve oyunun asıl hedefidir. Genelde fixed-limit oynanır (pot-limit de yaygındır)."
+      ],
+      "differences": [
+        "Pot bir high el ile bir low el arasında bölünebilir. Hold'em'de her şeyi tek el kazanır.",
+        "Low ellerin 8-or-better şartını sağlaması gerekir.",
+        "Omaha'daki gibi tam 2 gizli + 3 ortak kart; high ve low için ayrı ayrı.",
+        "A-2 içeren eller en değerli başlangıç elleridir çünkü en iyi low'ları yaparlar.",
+        "Genelde fixed-limit: bahisler sabit küçük ve büyük miktarlarla yapılır."
+      ],
+      "tips": [
+        "Scoop'u hedefle. Potun sadece yarısını kazanabilecek eller pahalıdır.",
+        "A-2'nin yanında aynı renk bir as ya da birkaç küçük kart daha varsa bu birinci sınıf bir başlangıçtır.",
+        "Quarter'lanmaya dikkat et: low'u iki oyuncu paylaşırsa her biri potun sadece dörtte birini alır."
+      ],
+      "walkthrough": {
+        "title": "Bölünen pot",
+        "steps": [
+          { "title": "Blind'lar ve limitler", "text": "Fixed-limit oyun: preflop ve flop'ta bahisler 2, turn ve river'da 4. Bora 1, Cem 2 koyar." },
+          { "title": "Herkese dört kart", "text": "Ada'ya A♥ 2♦ 3♣ K♦ gelir. A-2, low yarısı için hayalindeki başlangıç: en küçük iki kart." },
+          { "title": "Preflop", "text": "Ada 4'e raise yapar. Bora ve Cem call eder. Pot: 12." },
+          { "title": "Flop: K♣ 7♦ 4♠", "text": "Board'da 8 veya altı sadece iki kart var (7 ve 4). Low için board'da üç küçük kart gerekir; yani henüz low mümkün değil. Ada'nın high için papaz çifti de var." },
+          { "title": "Flop bahsi", "text": "Bora 2 bet yapar. Cem pes edip fold eder. Ada call eder: board'a bir küçük kart daha gelirse güçlü bir low'u olur. Pot: 16." },
+          { "title": "Turn: 5♥", "text": "Üçüncü küçük kart! Ada, A♥ 2♦ ile 7♦ 5♥ 4♠'ü kullanır: low'u 7-5-4-2-A. Bunu çok az el yenebilir." },
+          { "title": "Turn bahsi", "text": "Artık büyük bahis (4) geçerli. Bora 4 bet yapar, Ada 8'e raise yapar, Bora call eder. Pot: 32." },
+          { "title": "River: Q♦", "text": "Bora 4 bet yapar, Ada call eder. Pot: 40." },
+          { "title": "Showdown: iki kazanan", "text": "High: Bora'nın K♠ K♥ + K♣ Q♦ 7♦'si üç papaz, en iyi high el. Low: Ada'nın 7-5-4-2-A'sı. Bora'nın elinde 8 veya altı hiç kart yok, yani low yapamaz." },
+          { "title": "Pot bölünür", "text": "Her biri 20 alır. Ada'nın en iyi high eli de olsaydı 40'ın tamamını alırdı: buna scoop denir." }
+        ]
+      },
+      "quiz": [
+        { "q": "\"8 or better\" ne demek?", "options": ["High el en az bir sekizli çifti olmalı", "Low elde hepsi 8 veya altı, farklı beş kart olmalı", "Elinde bir 8 olmalı", "Sadece 8 oyuncu oynayabilir"], "answer": 1, "explain": "Low yarısına katılmak için beş kartın hepsi 8 veya daha küçük ve birbirinden farklı olmalıdır." },
+        { "q": "Board: 2♣ 5♦ 9♠ K♥ Q♣. Kimse low yapabilir mi?", "options": ["Evet, A-3 ile", "Evet, herhangi bir asla", "Hayır, board'da 8 veya altı sadece iki kart var", "Sadece bir sonraki elde"], "answer": 2, "explain": "3 ortak kart kullanmak zorundasın ve hepsinin 8 veya altı olması gerekir. Burada sadece 2 ve 5 var." },
+        { "q": "Hangi low el en iyisi?", "options": ["7-5-4-2-A", "8-4-3-2-A", "7-6-3-2-A", "6-5-4-3-2"], "answer": 3, "hands": ["7c 5d 4h 2s Ah", "8c 4d 3h 2c As", "7d 6s 3c 2d Ac", "6c 5d 4h 3s 2c"], "explain": "Önce en büyük kartı karşılaştır: 6, 7 ve 8'den küçüktür. Ace-to-five low'da kent aleyhine sayılmaz." },
+        { "q": "Scoop nedir?", "options": ["Hem high hem low yarısını kazanmak", "Flop'tan önce fold etmek", "Potu eşit bölmek", "En iyi low'a sahip olmak"], "answer": 0, "explain": "İki yarıyı birden (ya da kimse low yapamadığında high'ı) kazanarak potun tamamını almak." },
+        { "q": "Board: A♠ 4♦ 7♣ K♥ 9♠, elinde 2♥ 3♥ Q♠ Q♦ var. Low'un ne?", "options": ["7-4-3-2-A", "9-4-3-2-A", "Kızlı 4-3-2-A", "Low'un yok"], "answer": 0, "explain": "Elinden 2♥ 3♥ + board'dan A♠ 4♦ 7♣ = 7-4-3-2-A, geçerli bir low." }
+      ]
+    },
+    "sevenCardStud": {
+      "name": "Seven Card Stud",
+      "tagline": "Ortak kart yok: rakiplerin açık kartlarını oku",
+      "summary": "Hold'em yaygınlaşmadan önceki klasik. Her oyuncunun kendine ait yedi kartı olur: üçü kapalı, dördü açık. Board yoktur; onun yerine rakiplerinin açık kartlarına bakar ve sakladıklarını tahmin edersin.",
+      "rules": [
+        "Ortak kart yoktur. Her oyuncu kendine ait 7 kart alır: 3'ü kapalı, 4'ü açık.",
+        "Dağıtımdan önce herkes bir ante (küçük zorunlu bahis) koyar. Blind yoktur.",
+        "3rd street: her oyuncuya iki kapalı ve bir açık kart.",
+        "En küçük açık kartı olan oyuncu bring-in denen küçük zorunlu bahsi koyar. Açık kartlar eşitse renk belirler (en düşük sinek, sonra karo, kupa, maça).",
+        "4th, 5th ve 6th street: herkese birer açık kart daha ve ardından bir bahis turu.",
+        "7th street (river) kapalı dağıtılır.",
+        "4th street'ten itibaren görünen en iyi ele sahip oyuncu ilk konuşur.",
+        "Fixed-limit: 3rd ve 4th street'te küçük bahis, 5th, 6th ve 7th street'te büyük bahis kullanılır.",
+        "Showdown'da 7 kartının en iyi 5'ini seçersin."
+      ],
+      "differences": [
+        "Ortak board yok: 7 kartın hepsi senin.",
+        "Kartlarının bir kısmını herkes görür; rakiplerini okuyabilirsin (onlar da seni).",
+        "Small ve big blind yerine ante ve bring-in; sabit bir dealer butonu sırası yoktur.",
+        "Konuşma sırası her street'te kimin en iyi açık kartları gösterdiğine göre değişir.",
+        "Fold edilen açık kartlar ölü kartlardır: onları hatırlamak hangi kartların gittiğini söyler."
+      ],
+      "tips": [
+        "Fold edilen kartları hatırla: floşun için gereken renkten üç kart fold edildiyse draw'ın çok zayıflar.",
+        "Gizli çiftler (kapalıda aslar gibi) güçlüdür çünkü kimse göremez.",
+        "Board'da büyük bir çift gösteren oyuncu güç gösterir: ona karşı dikkatli ol."
+      ],
+      "walkthrough": {
+        "title": "Gizli aslar",
+        "steps": [
+          { "title": "Ante'ler", "text": "Herkes ante olarak 1 fiş koyar. Pot: 3. Stud'da blind ve ortak kart yoktur." },
+          { "title": "3rd street", "text": "Herkese iki kapalı ve bir açık kart. Ada gizli A♥ A♦'sini görür (kesikli çerçeve, diğerlerinin bu kartları göremediği anlamına gelir) ve 9♣ gösterir. Bora 2♦, Cem T♥ gösterir." },
+          { "title": "Bring-in", "text": "En küçük açık kart bring-in koyar. Bu Bora'nın 2♦'u; 2 fiş koyar." },
+          { "title": "Bahsi tamamlama", "text": "Cem 4'e complete yapar (tam bir küçük bahis). Ada gücünü saklamak için sadece call eder. Bora da call eder. Pot: 15." },
+          { "title": "4th street", "text": "Yeni açık kartlar: Ada K♦, Bora 5♥, Cem 7♦. Görünen en iyi el Ada'nın K-9'u; ilk o konuşur ve 4 bet yapar. Bora fold eder, Cem call eder." },
+          { "title": "5th street", "text": "Ada 9♥ alır (artık aslar ve dokuzlular var), Cem T♣ alır. Cem'in açıktaki onlu çifti Ada'nın görünen dokuzlularını yener; ilk o konuşur ve büyük bahis olan 8'i bet yapar. Ada call eder." },
+          { "title": "6th street", "text": "Ada 2♠, Cem 3♦. Bir şey değişmez. İkisi de check yapar." },
+          { "title": "7th street", "text": "Son kart kapalı gelir: Ada 3♣, Cem Q♥. Cem 8 bet yapar, Ada call eder. Pot: 55." },
+          { "title": "Showdown", "text": "Cem K♠ K♣ açar: iki çift, papazlar ve onlular. Ada aslar ve dokuzluları gösterir. İki çifte karşı iki çift: büyük çifti yüksek olan kazanır, as da papazı yener." },
+          { "title": "Ada 55 kazanır", "text": "Asları baştan sona gizli kaldı. Stud'da gördüğün kartların arkasında ne saklanabileceğini düşün." }
+        ]
+      },
+      "quiz": [
+        { "q": "Seven Card Stud'da sona kadar oynayan bir oyuncu kaç kart alır?", "options": ["5", "6", "7", "9"], "answer": 2, "explain": "Yedi: 3'ü kapalı (baştaki 2 ve son kart) ve 4'ü açık." },
+        { "q": "3rd street'te bring-in'i kim koyar?", "options": ["Dealer", "En küçük açık kart", "En büyük açık kart", "Dealer'ın solundaki oyuncu"], "answer": 1, "explain": "En küçük açık kartı olan oyuncu bahsi başlatmak zorundadır (Razz'da tersi: en büyük açık kart)." },
+        { "q": "7 kartından kaçı kapalıdır?", "options": ["2", "3", "4", "Hiçbiri"], "answer": 1, "explain": "İlk iki kart ve 7th street kartı kapalıdır." },
+        { "q": "4th street'ten itibaren ilk kim konuşur?", "options": ["Her zaman bring-in koyan", "Görünen en iyi ele sahip oyuncu", "En çok fişi olan", "Dealer"], "answer": 1, "explain": "O street'te en güçlü açık kartları gösteren oyuncu ilk konuşur." },
+        { "q": "Hangi 7 kart en iyi 5 kartlık eli yapar?", "options": ["A♠ A♦ K♣ K♥ 4♠ 9♦ 2♣", "5♣ 6♦ 7♥ 8♠ 9♣ K♦ 2♥", "Q♥ Q♣ Q♦ 3♠ 7♣ 8♦ J♥", "A♣ J♣ 8♣ 4♣ 2♦ K♦ 6♠"], "answer": 1, "hands": ["As Ad Kc Kh 4s 9d 2c", "5c 6d 7h 8s 9c Kd 2h", "Qh Qc Qd 3s 7c 8d Jh", "Ac Jc 8c 4c 2d Kd 6s"], "explain": "5-6-7-8-9 bir kenttir (straight); üç kızı ve iki çifti yener. Son elde sadece dört sinek var, yani floş yok." }
+      ]
+    },
+    "razz": {
+      "name": "Razz",
+      "tagline": "En düşük elin kazandığı Stud",
+      "summary": "Razz, tersine çevrilmiş Seven Card Stud'dur: potun tamamını en düşük el kazanır. As küçük sayılır, kent ve floş hesaba katılmaz; bu yüzden mümkün olan en iyi el 5-4-3-2-A'dır. Asıl korkulan şey çiftlerdir.",
+      "rules": [
+        "Tıpkı Seven Card Stud gibi dağıtılır: ante'ler, 2 kapalı + 1 açık kart, sonra 4th-6th street açık ve 7th street kapalı.",
+        "Potun tamamını EN DÜŞÜK 5 kartlık el kazanır. Şart yoktur: her zaman bir low kazanır.",
+        "As her zaman küçüktür (1 sayılır).",
+        "Kent ve floş yok sayılır. 5-4-3-2-A (wheel) mümkün olan en iyi eldir.",
+        "Çiftler kötüdür: beş farklı kart istersin. Çift içeren bir el, çiftsiz her ele kaybeder.",
+        "En büyük karttan aşağı doğru karşılaştırılır: 7-6-5-4-3, 8-4-3-2-A'yı yener çünkü 7, 8'den küçüktür.",
+        "Bring-in'i EN BÜYÜK açık kart koyar (papaz en kötü karttır).",
+        "4th street'ten itibaren görünen EN DÜŞÜK el ilk konuşur.",
+        "Genelde fixed-limit oynanır."
+      ],
+      "differences": [
+        "En yüksek değil, en düşük el kazanır.",
+        "As küçüktür; sıralamada kent ve floş diye bir şey yoktur.",
+        "Ortak kart yoktur: bir stud oyunudur.",
+        "Bring-in ve konuşma sırası Seven Card Stud'a göre terstir.",
+        "Hold'em'de iyi olan çiftler burada elini mahveder."
+      ],
+      "tips": [
+        "8 veya altı, birbirinden farklı üç kartla başla; aksi hâlde genelde fold.",
+        "Papaz gibi büyük bir açık kart (brick) sana zarar verir ve herkes görür.",
+        "Diğerlerinin gösterdiği küçük kartları izle: onlar artık sana gelemeyecek kartlar."
+      ],
+      "walkthrough": {
+        "title": "Dibe doğru yarış",
+        "steps": [
+          { "title": "Ante'ler", "text": "Herkes 1 ante koyar. Pot: 3. Dağıtım Seven Card Stud ile aynıdır." },
+          { "title": "3rd street", "text": "Ada'nın kapalıda A♠ 3♦'ü var ve 5♣ gösteriyor: üç mükemmel küçük kart. Bora Q♠, Cem 6♠ gösterir." },
+          { "title": "Bring-in: en büyük kart", "text": "Razz'da bring-in'i EN BÜYÜK açık kart öder; Stud'un tersi. Bora'nın Q♠'si masadaki en kötü kart, o yüzden 2 koyar." },
+          { "title": "Tamamlama", "text": "Cem 4'e complete yapar, Ada call eder, Bora fold eder. Pot: 13." },
+          { "title": "4th street", "text": "Ada 2♥ alır: A-2-3-5, dört küçük kart. Cem 3♠ alır. Görünen en düşük el Ada'nın 5-2'si; ilk o konuşur, 4 bet yapar, Cem call eder." },
+          { "title": "5th street", "text": "Ada K♣ alır, bir brick. Cem 8♣ alır. Cem'in 8-6-3'ü artık Ada'nın K-5-2'sinden iyi görünür; ilk o konuşur ve 8 bet yapar. Ada call eder: hâlâ dört harika küçük kartı var." },
+          { "title": "6th street", "text": "Ada 7♠ alır ve eli tamamlanır: 7-5-3-2-A. Cem 8♥ alır ve sekizlisi çift olur; Razz'da kötü. Ada'nın açık kartları artık daha düşük; 8 bet yapar, Cem call eder." },
+          { "title": "7th street", "text": "Kapalı kartlar: Ada 8♦, Cem T♦. Ada 8 bet yapar, Cem call eder. Pot: 69." },
+          { "title": "Showdown", "text": "Cem'in en iyisi 8-6-4-3-2. Ada'nınki 7-5-3-2-A. En büyük kartları karşılaştır: 7, 8'den küçük; Ada 69'un tamamını kazanır. Cem'in iki maçasının hiçbir önemi yok." }
+        ]
+      },
+      "quiz": [
+        { "q": "Razz'da mümkün olan en iyi el hangisi?", "options": ["A-K-Q-J-T", "Karışık renk 2-3-4-5-7", "A-2-3-4-5", "A-A-2-2-3"], "answer": 2, "explain": "As küçüktür ve kent sayılmaz; bu yüzden A-2-3-4-5 kusursuz low'dur." },
+        { "q": "Razz'da hangi el kazanır?", "options": ["8-5-4-3-2", "7-6-5-4-3", "9-4-3-2-A", "K-4-3-2-A"], "answer": 1, "hands": ["8c 5d 4h 3s 2c", "7c 6d 5h 4s 3c", "9s 4d 3h 2s Ac", "Kd 4c 3d 2h Ah"], "explain": "En büyük kartları karşılaştır: en küçük tepe kart 7. Kent olmasının hiçbir önemi yok." },
+        { "q": "Razz'da bring-in'i kim koyar?", "options": ["En küçük açık kart", "En büyük açık kart", "Dealer", "Kimse, Razz'da blind var"], "answer": 1, "explain": "Açıktaki en kötü Razz kartı (en büyük) bring-in öder." },
+        { "q": "Razz'da floş elini bozar mı?", "options": ["Evet, floş sayılır", "Hayır, renkler yok sayılır", "Sadece 7th street'te", "Sadece kupa floşuysa"], "answer": 1, "explain": "Razz ace-to-five low kullanır: kent ve floş yok sayılır." },
+        { "q": "Bu low'lardan hangisi en iyisi?", "options": ["6♥ 5♥ 4♥ 2♥ A♥", "6-5-4-3-2", "7-4-3-2-A", "5-5-4-3-2"], "answer": 0, "hands": ["6h 5h 4h 2h Ah", "6c 5d 4s 3h 2c", "7d 4s 3c 2d As", "5s 5d 4h 3c 2d"], "explain": "6-5-4-2-A ile 6-5-4-3-2: 6, 5 ve 4 eşit, sonra 2, 3'ü yener. Floş yok sayılır; beşli çifti olan el en kötüsü." }
+      ]
+    },
+    "fiveCardDraw": {
+      "name": "Five Card Draw",
+      "tagline": "Western filmlerinin klasiği",
+      "summary": "Var olan en basit poker: beş gizli kart, bazılarını değiştirmek için tek bir şans ve iki bahis turu. Ortak kart da açık kart da yoktur; rakibin eli hakkındaki tek ipucu kaç kart değiştirdiğidir.",
+      "rules": [
+        "Her oyuncuya 5 kart kapalı dağıtılır. Ortak kart yoktur.",
+        "Blind'lar (ya da ante'ler) potu başlatır.",
+        "İlk bahis turu: big blind'ın solundan başlar.",
+        "Draw: sırayla herkes 0 ile 5 arası kart atar ve aynı sayıda yeni kart alır. Beşini de tutmaya standing pat denir.",
+        "İkinci bahis turu: dealer'ın solundaki ilk aktif oyuncudan başlar.",
+        "Showdown: en iyi 5 kartlık poker eli kazanır.",
+        "Genelde fixed-limit oynanır: draw'dan sonra bahis miktarı iki katına çıkar.",
+        "Rakibin kaç kart çektiği, eli hakkındaki en iyi bilgindir."
+      ],
+      "differences": [
+        "Ortak kart yok: bütün kartlar senin ve gizli.",
+        "Flop, turn ve river'ın yerini tek bir draw turu alır.",
+        "Sadece iki bahis turu var.",
+        "Rakipler hakkındaki tek bilgin kaç kart değiştirdikleri ve nasıl bahis yaptıkları."
+      ],
+      "tips": [
+        "Çiftin varsa çifti tut ve üç kart çek. Yanına kicker tutmak genelde şansını düşürür.",
+        "Tek kart çeken biri çoğunlukla iki çift ya da kent/floş draw'ı tutar; üç kart çeken genelde tek çift tutar.",
+        "Ortadan eksik kent draw'ını (inside straight) kovalama: çok nadir tamamlanır."
+      ],
+      "walkthrough": {
+        "title": "Valeler güçleniyor",
+        "steps": [
+          { "title": "Blind'lar", "text": "Buton Ada'da. Bora small blind (1), Cem big blind (2) koyar. Fixed-limit: draw'dan önce bahisler 2, sonra 4." },
+          { "title": "Herkese beş kart", "text": "Ada'ya J♠ J♦ 8♣ 4♥ 2♠ gelir: vale çifti, sağlam bir başlangıç." },
+          { "title": "İlk bahis turu", "text": "Ada 4'e raise yapar. Bora ve Cem call eder. Pot: 12." },
+          { "title": "Draw'ı planlamak", "text": "Ada vale çiftini tutar. 8♣ 4♥ 2♠ işe yaramaz; üçünü de atacak." },
+          { "title": "Kart atma", "text": "Bora 1, Cem 2, Ada 3 kart atar. Faydalı bilgi: Bora'nın tek kartı bir floş ya da kent draw'ına, Cem'in iki kartı üçlüye işaret eder." },
+          { "title": "Yeni kartlar", "text": "Ada J♥ 9♦ 3♣ alır: üç vale! Rakiplerin yeni kartları gizli kalır." },
+          { "title": "İkinci bahis turu", "text": "Bora check yapar. Cem 4 bet yapar. Ada 8'e raise yapar. Bora floşu tutturamadı ve fold eder. Cem call eder. Pot: 28." },
+          { "title": "Showdown", "text": "Cem 6♣ 6♦ 6♥ açar: üç altılı. Ada'nın üç valesi daha yüksek." },
+          { "title": "Ada 28 kazanır", "text": "Çiftine üç kart çekerek kendine gelişmek için en iyi şansı verdi ve işe yaradı." }
+        ]
+      },
+      "quiz": [
+        { "q": "Five Card Draw'da kaç kart alırsın?", "options": ["2", "4", "5", "7"], "answer": 2, "explain": "Beş gizli kart; ortak kart yok." },
+        { "q": "Standing pat ne demek?", "options": ["Fold etmek", "Beş kartı da tutup hiç kart çekmemek", "Beş yeni kart çekmek", "All-in yapmak"], "answer": 1, "explain": "Pat kalan oyuncu elinden memnundur; genelde kent, floş ya da daha iyisi vardır." },
+        { "q": "Elinde 9♠ 9♦ K♣ 6♥ 2♣ var. Genelde ne yapılır?", "options": ["9-9'u tut, 3 çek", "9-9-K'yı tut, 2 çek", "5 kart çek", "Pat kal"], "answer": 0, "explain": "Sadece çifti tutup üç kart çekmek, üçlü ya da iki çift yapmak için en çok şansı verir." },
+        { "q": "Draw'dan sonra hangi el kazanır?", "options": ["Q♠ Q♦ 7♣ 7♥ 2♠", "8♣ 8♦ 8♥ 3♠ 2♦", "A♣ K♣ Q♣ J♣ 9♦", "K♠ K♥ A♦ 9♣ 4♠"], "answer": 1, "hands": ["Qs Qd 7c 7h 2s", "8c 8d 8h 3s 2d", "Ac Kc Qc Jc 9d", "Ks Kh Ad 9c 4s"], "explain": "Üç sekizli; iki çifti, tek çifti ve as yüksek eli yener (üçüncü el floş değil: 9♦ farklı renk)." },
+        { "q": "Bir rakip tam olarak bir kart çekiyor. Bu çoğunlukla ne anlama gelir?", "options": ["Hiçbir şeyi yok", "Tek çifti var", "İki çift ya da dört kartlık kent/floş draw'ı", "Dörtlü"], "answer": 2, "explain": "Tek kart, iki çiftle ya da kent veya floş beklerken çekilir." }
+      ]
+    },
+    "deuceToSevenTripleDraw": {
+      "name": "2-7 Triple Draw",
+      "tagline": "Üç draw'lı lowball; as yüksek sayılır",
+      "summary": "Deuce-to-Seven'da (2-7) klasik pokerin en kötü eli kazanır. As yüksektir; kent ve floş aleyhine sayılır, bu yüzden en iyi el karışık renkli 7-5-4-3-2'dir. Bu eli kurmak için üç kez kart değiştirirsin.",
+      "rules": [
+        "Lowball: en düşük el potu kazanır.",
+        "As HER ZAMAN yüksektir. A-2-3-4-5 burada kent değil, as yüksek bir eldir; yani kötüdür.",
+        "Kent ve floş aleyhine sayılır: 7-6-5-4-3 bir kenttir ve neredeyse her şeye kaybeder.",
+        "Mümkün olan en iyi el: en az iki farklı renkten 7-5-4-3-2; buna \"number one\" denir.",
+        "Çiftler kötüdür: çiftli her el, çiftsiz her ele kaybeder.",
+        "Her oyuncu 5 kart alır. Üç draw ve dört bahis turu vardır.",
+        "Blind'lar potu başlatır. Fixed-limit: ilk iki turda küçük bahis, son iki turda büyük bahis.",
+        "En büyük karttan aşağı karşılaştırılır: 8-6-5-4-3, 8-7-4-3-2'yi yener çünkü 6, 7'den küçüktür.",
+        "Standing pat (kart çekmemek) genelde tamamlanmış bir el demektir."
+      ],
+      "differences": [
+        "En yüksek değil, en düşük el kazanır.",
+        "As sadece yüksektir; kent ve floş elini bozar.",
+        "Ortak kart yok; flop, turn ve river yerine üç draw.",
+        "Sabit küçük ve büyük bahislerle dört bahis turu.",
+        "Razz'dan farkı: Razz'da as küçüktür ve kent/floş sayılmaz."
+      ],
+      "tips": [
+        "En önemli kart 2'dir: o olmadan en iyi elleri asla yapamazsın.",
+        "2 de dahil olmak üzere 7 veya altı, birbirinden farklı üç veya daha fazla kartla başla.",
+        "Rakip erkenden pat kalırsa hızla gelişmen gerekir."
+      ],
+      "walkthrough": {
+        "title": "Bir yedili kurmak",
+        "steps": [
+          { "title": "Blind'lar", "text": "Bora 1, Cem 2 koyar. İlk iki turda bahisler 2, son ikisinde 4." },
+          { "title": "Herkese beş kart", "text": "Ada'da 2♦ 4♣ 7♥ K♦ K♠ var. 2-4-7 low için harika bir başlangıç; papaz çifti işe yaramaz." },
+          { "title": "İlk bahis turu", "text": "Ada 4'e raise yapar. Bora fold eder. Cem call eder. Pot: 9." },
+          { "title": "Birinci draw", "text": "Cem 1, Ada 2 kart (iki papaz) çeker. Ada'ya 3♠ ve A♣ gelir. Dikkat: 2-7'de as YÜKSEKTİR; yani A-7-4-3-2 sadece as yüksek bir eldir." },
+          { "title": "İkinci bahis turu", "text": "Cem 2 bet yapar, Ada call eder. Pot: 13." },
+          { "title": "İkinci draw", "text": "Cem pat kalır: beş kartından memnun. Ada A♣'yi atar ve 9♥ alır: 9-7-4-3-2." },
+          { "title": "Üçüncü bahis turu", "text": "Artık büyük bahis: Cem 4 bet yapar, Ada call eder. Pot: 21." },
+          { "title": "Üçüncü draw", "text": "Cem yine pat kalır. Ada 9♥'yi atar ve 6♣ alır: 7-6-4-3-2. Çift yok, kent yok (5 eksik), floş yok. Çok güçlü bir el." },
+          { "title": "Son bahis turu", "text": "Cem 4 bet yapar, Ada 8'e raise yapar, Cem call eder. Pot: 37." },
+          { "title": "Showdown", "text": "Cem 8-6-5-4-3 açar. Ada'da 7-6-4-3-2 var. En büyük kart belirler: 7, 8'i yener; Ada 37 kazanır." }
+        ]
+      },
+      "quiz": [
+        { "q": "2-7 lowball'da mümkün olan en iyi el hangisi?", "options": ["A-2-3-4-5", "2-3-4-5-6", "7-5-4-3-2 (karışık renk)", "Hepsi kupa 7-5-4-3-2"], "answer": 2, "explain": "A-2-3-4-5 as yüksektir, 2-3-4-5-6 kenttir ve hepsi kupa olan floştur." },
+        { "q": "2-7'de as nasıl sayılır?", "options": ["Her zaman küçük", "Her zaman büyük", "İkisi de olur", "Desteden çıkarılır"], "answer": 1, "explain": "Deuce-to-seven'da as her zaman en büyük karttır; bu da low el için kötüdür." },
+        { "q": "2-7'de hangi el kazanır?", "options": ["7-6-5-4-3", "8-6-4-3-2", "A-5-4-3-2", "Hepsi maça 9-7-5-3-2"], "answer": 1, "hands": ["7c 6d 5h 4s 3c", "8d 6c 4h 3s 2d", "Ah 5c 4d 3h 2s", "9s 7s 5s 3s 2s"], "explain": "7-6-5-4-3 kenttir, A-5-4-3-2 as yüksektir, sonuncusu floştur. En iyi low 8-6'dır." },
+        { "q": "Triple Draw'da kaç draw vardır?", "options": ["1", "2", "3", "4"], "answer": 2, "explain": "Üç draw; her draw'dan önce ve sonuncudan sonra bir bahis turu." },
+        { "q": "Hangisi daha düşük (daha iyi): 8-6-5-4-3 mü, 8-7-4-3-2 mi?", "options": ["8-6-5-4-3", "8-7-4-3-2", "Eşitler", "İkisi de geçersiz"], "answer": 0, "explain": "İkisi de 8 ile başlar; sonraki kart belirler ve 6, 7'den küçüktür." }
+      ]
+    },
+    "shortDeck": {
+      "name": "Short Deck Hold'em",
+      "tagline": "36 kartlık desteyle Hold'em: floş full house'u yener",
+      "summary": "Short Deck (6+ Hold'em da denir) Hold'em gibi oynanır ama bütün 2'ler, 3'ler, 4'ler ve 5'ler desteden çıkarılır. Kart azalınca el sıralaması değişir: floş full house'tan daha nadir olur, bu yüzden daha değerlidir. Aksiyon çılgındır ve draw'lar sık tamamlanır.",
+      "rules": [
+        "Hold'em gibi oynanır: 2 gizli kart, flop, turn, river ve 4 bahis turu.",
+        "Destede 36 kart var: her renkten 6'dan asa kadar. 2'den 5'e kadar olan kartlar çıkarılır.",
+        "As, A-6-7-8-9 kentinde (en küçük kent) küçük olarak da kullanılabilir.",
+        "Floş full house'u yener; çünkü her renkten sadece dokuz kart olduğu için floş daha nadirdir.",
+        "Çoğu modern kuralda üçlü (three of a kind) de kenti yener. Bazı oyunlarda kent üçlünün üstünde kalır; masanın kuralını kontrol et.",
+        "Genelde blind yerine herkes ante öder (çoğu zaman ek bir button blind ile).",
+        "Genelde no-limit oynanır.",
+        "Hold'em'deki gibi 7 kartın en iyi 5'i kazanır."
+      ],
+      "differences": [
+        "36 kartlık deste: 2, 3, 4 ve 5 yok.",
+        "Floş full house'u yener.",
+        "A-6-7-8-9 bir kenttir (as küçük oynar).",
+        "Çoğu oyunda blind yerine ante.",
+        "Eller birbirine daha yakın: draw'lar Hold'em'dekinden çok daha sık gelir."
+      ],
+      "tips": [
+        "Oynamadan önce masandaki sıralamayı kontrol et: üçlü kenti yeniyor mu?",
+        "Floş draw'ları sandığından zayıftır: her renkten daha az kart kalmıştır.",
+        "Büyük çiftler değer kaybeder; ardışık kartlar değer kazanır."
+      ],
+      "walkthrough": {
+        "title": "Floşun full house'u yendiği an",
+        "steps": [
+          { "title": "Ante'ler", "text": "Herkes 1 ante koyar. Pot: 3. Destede sadece 36 kart var: 6'dan asa kadar." },
+          { "title": "Herkese iki kart", "text": "Ada: A♥ 9♣. Bora: K♦ K♣. Cem: J♠ T♠." },
+          { "title": "Preflop", "text": "Bora 6'ya raise yapar. Cem ve Ada call eder. Pot: 21." },
+          { "title": "Flop: 6♥ 7♦ 8♠", "text": "Ada'nın zaten kenti var: A-6-7-8-9, as küçük oynuyor. Bu kent sadece Short Deck'te vardır. 10 bet yapar, iki rakip de call eder. Pot: 51." },
+          { "title": "Turn: K♠", "text": "Bora'nın artık üç papazı var. Cem'in dört maçası var ve floş için bir maça daha lazım. Bora 20 bet yapar, herkes call eder. Pot: 111." },
+          { "title": "River: 7♠", "text": "Bora full house yapar (papazlar ve yediler), Cem floş yapar. Bora 30 bet yapar, Cem 63 ile all-in olur, Ada kentini fold eder ve Bora call eder." },
+          { "title": "Bora'nın full house'u", "text": "Bora K♦ K♣ açar: K-K-K-7-7. Normal Hold'em'de bu el floşu yener ve potu alırdı." },
+          { "title": "Cem'in floşu daha yüksek", "text": "Cem J♠ T♠ açar; K♠ 8♠ 7♠ ile floş. Short Deck'te floş full house'un üstündedir." },
+          { "title": "Cem 237 kazanır", "text": "Aynı kartlar, farklı kurallar, farklı kazanan. Hep hatırla: Short Deck'te floş full house'u yener." }
+        ]
+      },
+      "quiz": [
+        { "q": "Short Deck'te hangi kartlar çıkarılır?", "options": ["2'den 5'e", "2'den 6'ya", "Resimli kartlar", "Sadece 2'ler"], "answer": 0, "explain": "2'ler, 3'ler, 4'ler ve 5'ler çıkarılır: 36 kart kalır." },
+        { "q": "Short Deck'te hangisi daha yüksektir?", "options": ["Full house", "Floş", "Eşitler", "Renge göre değişir"], "answer": 1, "explain": "Her renkten dokuz kart olduğundan floş full house'tan daha nadirdir, bu yüzden daha üstündedir." },
+        { "q": "Short Deck'te A-6-7-8-9 kent midir?", "options": ["Evet, as küçük oynar", "Hayır, asla", "Sadece aynı renkse", "Sadece river'da"], "answer": 0, "explain": "2-5 olmadığı için as, 6'ya bağlanarak en küçük kenti yapar." },
+        { "q": "Board: 9♥ 8♥ 7♣ K♥ 6♦. Short Deck'te hangi el kazanır?", "options": ["K♣ K♦", "A♥ J♥", "T♠ J♦", "9♣ 9♦"], "answer": 1, "hands": ["Kc Kd", "Ah Jh", "Ts Jd", "9c 9d"], "explain": "A♥ J♥, 9♥ 8♥ K♥ ile floş yapar. T-J vale kenti, K-K ya da 9-9 üçlü yapar; floş hepsini yener." },
+        { "q": "Short Deck'te oyuncular blind yerine genelde ne öder?", "options": ["Hiçbir şey", "Ante", "Bring-in", "Çift big blind"], "answer": 1, "explain": "Çoğu Short Deck oyununda herkes ante öder, çoğu zaman bir de button blind olur." }
+      ]
+    },
+    "pineapple": {
+      "name": "Pineapple",
+      "tagline": "Atılacak bir fazla kartla Hold'em",
+      "summary": "Pineapple, küçük bir farkla Hold'em'dir: üç gizli kart alırsın ve birini atmak zorundasın. Standart Pineapple'da flop'tan önce atarsın; Crazy Pineapple'da flop bahsi bitene kadar üçünü de tutarsın. Sonrası tamamen Hold'em gibi oynanır.",
+      "rules": [
+        "Her oyuncuya 2 yerine 3 gizli kart dağıtılır.",
+        "Standart Pineapple: üç karttan birini flop'tan önce atarsın (genelde preflop bahis turu biter bitmez).",
+        "Crazy Pineapple: üç kartı flop boyunca tutar, flop bahis turundan sonra birini atarsın.",
+        "Kart attıktan sonra 2 gizli kartın kalır ve tamamen Hold'em gibi oynarsın: 2 kartın ve 5 ortak kartın her kombinasyonu.",
+        "Atılan kartlar kapalıdır ve oyun dışıdır (ölü kart).",
+        "Hold'em'deki gibi blind'lar ve dört bahis turu; genelde no-limit.",
+        "Showdown'da en iyi 5 kartlık el kazanır."
+      ],
+      "differences": [
+        "2 yerine 3 gizli kart; biri atılır.",
+        "Kart atma zamanı versiyona göre değişir (flop'tan önce ya da Crazy Pineapple'da flop bahsinden sonra).",
+        "Başlangıç elleri ortalamada daha güçlüdür, kazanan eller de öyle.",
+        "Kart atıldıktan sonra Hold'em'in bütün kuralları aynen geçerlidir."
+      ],
+      "tips": [
+        "Birlikte en iyi çalışan iki kartı tut: çiftler, aynı renk kartlar, ardışık kartlar.",
+        "Rakiplerinin Hold'em'dekinden daha iyi eller tutmasını bekle.",
+        "Crazy Pineapple'da hangi kartı tutacağına flop'a bakarak karar ver."
+      ],
+      "walkthrough": {
+        "title": "Doğru ikiliyi seçmek",
+        "steps": [
+          { "title": "Blind'lar", "text": "Buton Ada'da. Bora 1, Cem 2 koyar." },
+          { "title": "Herkese üç kart", "text": "Ada'ya A♥ Q♥ 7♣ gelir. Hangi kartı atacağını zaten biliyor." },
+          { "title": "Preflop", "text": "Ada 6'ya raise yapar. Bora call eder. Cem fold eder ve big blind'ını kaybeder. Pot: 14." },
+          { "title": "Kart atma", "text": "Ada 7♣'yi atar ve aynı renk A♥ Q♥'yi tutar. Bora da bir kartı kapalı atar ve 9♠ 9♦'yu tutar. Bundan sonrası düz Hold'em." },
+          { "title": "Flop: Q♦ T♥ 3♥", "text": "Ada'nın top pair'i (kızlar) ve en iyi floş draw'ı var. 8 bet yapar, Bora call eder. Pot: 30." },
+          { "title": "Turn: 2♣", "text": "Bir şey değişmez. İkisi de check yapar." },
+          { "title": "River: 8♥", "text": "Floş geldi: A♥ Q♥ T♥ 8♥ 3♥. Ada 20 bet yapar, Bora call eder. Pot: 70." },
+          { "title": "Showdown", "text": "Bora 9♠ 9♦ açar, dokuzlu çifti. Ada'nın as floşu kazanır." },
+          { "title": "Ada 70 kazanır", "text": "Q♥ yerine 7♣'yi tutsaydı hiç floşu olmazdı. Pineapple'da kart atmak ilk önemli kararındır." }
+        ]
+      },
+      "quiz": [
+        { "q": "Pineapple'da kaç gizli kartla başlarsın?", "options": ["2", "3", "4", "5"], "answer": 1, "explain": "Üç; birini atmak zorundasın." },
+        { "q": "Crazy Pineapple'da kartı ne zaman atarsın?", "options": ["Hiç bahis yapılmadan önce", "Preflop bahsinden sonra", "Flop bahis turundan sonra", "Showdown'da"], "answer": 2, "explain": "Crazy Pineapple'da flop'u üç kartla görür, flop bahsinden sonra birini atarsın." },
+        { "q": "Elinde K♠ K♦ 4♣ var. Hangi kartı atarsın?", "options": ["K♠", "K♦", "4♣", "Hiçbirini"], "answer": 2, "explain": "Papaz çiftini tut." },
+        { "q": "Kart atıldıktan sonra oyun nasıl oynanır?", "options": ["Omaha gibi", "Tamamen Hold'em gibi", "Stud gibi", "Razz gibi"], "answer": 1, "explain": "2 gizli kartla geri kalan her şey Texas Hold'em ile aynıdır." },
+        { "q": "Board: Q♦ T♥ 3♥ 2♣ 8♥. Tutulan hangi iki kart kazanır?", "options": ["9♠ 9♦", "A♥ Q♥", "Q♣ T♣", "J♠ 9♣"], "answer": 1, "hands": ["9s 9d", "Ah Qh", "Qc Tc", "Js 9c"], "explain": "A♥ Q♥ as floşu yapar. J-9 kız kenti yapar (Q-J-T-9-8); floş onu yener." }
+      ]
+    },
+    "badugi": {
+      "name": "Badugi",
+      "tagline": "Dört kart, dört renk, olabildiğince küçük",
+      "summary": "Badugi dört kartla oynanan bir lowball draw oyunudur. Hepsi farklı renk ve farklı değerde, olabildiğince küçük dört kart istersin. Böyle bir ele badugi denir. As küçüktür ve en iyi el, dört farklı renkten A-2-3-4'tür.",
+      "rules": [
+        "Her oyuncu 4 gizli kart alır. Triple Draw'daki gibi üç draw ve dört bahis turu vardır.",
+        "Blind'lar potu başlatır. Genelde fixed-limit: ilk iki turda küçük, son iki turda büyük bahis.",
+        "Hedef: hepsi farklı renkte VE hepsi farklı değerde kartlardan oluşan en düşük el.",
+        "Dört geçerli kart bir badugi'dir. As küçüktür; dört renkten A-2-3-4 mümkün olan en iyi eldir.",
+        "İki kart aynı renk ya da aynı değerdeyse sadece biri sayılır: 3 kartlık (ya da 2 veya 1 kartlık) elin olur.",
+        "4 kartlık her badugi 3 kartlık her eli, 3 kartlık her el de 2 kartlık her eli yener.",
+        "Aynı sayıda karttan oluşan eller en büyük karttan aşağı karşılaştırılır: 8-6-4-2, 9-3-2-A'yı yener.",
+        "Kentin hiçbir önemi yoktur.",
+        "Pat kalmak genelde tamamlanmış bir badugi demektir."
+      ],
+      "differences": [
+        "2 yerine 4 kart ve ortak kart yok.",
+        "En düşük el kazanır; poker el sıralamasına değil, renklere ve değerlere göre.",
+        "Üç draw ve dört bahis turu.",
+        "Renkler yeni bir şekilde önemli: aynı renkler elini küçültür."
+      ],
+      "tips": [
+        "Çok küçük kartlardan oluşan 3 kartlık bir el (A-2-3 gibi) iyi bir draw elidir.",
+        "Büyük bir badugi'yi (Q veya K içeren) erken turlarda daha iyisi için bozmak değebilir.",
+        "Rakiplerin kaç kart çektiğini say: pat kalan genelde badugi tutuyordur."
+      ],
+      "walkthrough": {
+        "title": "Ada dördüncü rengini buluyor",
+        "steps": [
+          { "title": "Blind'lar", "text": "Bora 1, Cem 2 koyar. Fixed-limit: ilk iki turda 2, son ikisinde 4." },
+          { "title": "Herkese dört kart", "text": "Ada'da A♠ 3♦ 5♥ K♥ var. 5♥ ve K♥ aynı renk, bu yüzden sadece A-3-5 sayılır: 3 kartlık bir el." },
+          { "title": "İlk bahis turu", "text": "Ada 4'e raise yapar. Bora fold eder. Cem, Q♠ 6♦ 4♣ 2♥ ile call eder: bir badugi ama yüksek bir tane. Pot: 9." },
+          { "title": "Birinci draw", "text": "Ada K♥'yi atar ve 8♥ alır: yine kupa, hâlâ 3 kart. Cem kızlı badugi'sini bozar, 1 kart çeker ve 9♣ alır (iki sinek): onun da artık 3 kartlık eli var." },
+          { "title": "İkinci bahis turu", "text": "Cem check yapar, Ada 2 bet yapar, Cem call eder. Pot: 13." },
+          { "title": "İkinci draw", "text": "Ada 8♥'yi atar ve 2♣ alır: A♠ 2♣ 3♦ 5♥, dört renk, dört değer. Badugi! Cem 9♣'yi atar ve 8♠ alır: 8-6-4-2, o da badugi." },
+          { "title": "Üçüncü bahis turu", "text": "Artık büyük bahisler. Cem 4 bet yapar, Ada 8'e raise yapar, Cem call eder. Pot: 29." },
+          { "title": "Üçüncü draw", "text": "İki oyuncu da pat kalır." },
+          { "title": "Son bahis turu", "text": "Cem check yapar, Ada 4 bet yapar, Cem call eder. Pot: 37." },
+          { "title": "Showdown", "text": "İkisinde de 4 kartlık badugi var; en büyük kartı karşılaştır: Ada'nın 5-3-2-A'sı, Cem'in 8-6-4-2'sine karşı. 5 daha küçük; Ada 37 kazanır." }
+        ]
+      },
+      "quiz": [
+        { "q": "Badugi nedir?", "options": ["Aynı renkten dört kart", "Farklı renk ve farklı değerde dört kart", "Herhangi dört küçük kart", "Bir çift ve iki küçük kart"], "answer": 1, "explain": "Dört rengin de dört değerin de birbirinden farklı olması gerekir." },
+        { "q": "Mümkün olan en iyi Badugi eli hangisi?", "options": ["Dört farklı renkten A-2-3-4", "Hepsi maça A-2-3-4", "Dört renkten K-Q-J-T", "Dört renkten 2-3-4-5"], "answer": 0, "explain": "As küçüktür; dört farklı renkten A-2-3-4 yenilemez." },
+        { "q": "Hangi el kazanır?", "options": ["A♠ 2♣ 3♦", "K♠ Q♥ J♦ T♣", "A♥ 2♥ 3♣ 4♦", "5♠ 5♥ 6♦ 7♣"], "answer": 1, "hands": ["As 2c 3d", "Ks Qh Jd Tc", "Ah 2h 3c 4d", "5s 5h 6d 7c"], "explain": "Dört renkten K-Q-J-T gerçek bir 4 kartlık badugi'dir. A♥ 2♥ 3♣ 4♦'te iki kupa var, yani sadece 3 kartlık el; beşli çifti de 3 kartlık el yapar. 4 kartlık her badugi, 3 kartlık her eli yener." },
+        { "q": "Elinde 2♠ 4♦ 7♥ 7♣ var. Kaç kart sayılır?", "options": ["4", "3", "2", "1"], "answer": 1, "explain": "İki yedili aynı değerde, sadece biri sayılır: 2-4-7, 3 kartlık bir el." },
+        { "q": "Hangi 4 kartlık badugi daha düşük (daha iyi): 8-6-4-2 mi, 9-3-2-A mı?", "options": ["8-6-4-2", "9-3-2-A", "Eşitler", "İkisi de badugi değil"], "answer": 0, "explain": "En büyük kartı karşılaştır: 8, 9'dan küçüktür." }
+      ]
+    },
+    "horse": {
+      "name": "H.O.R.S.E.",
+      "tagline": "Sırayla beş oyun: her şeyi bilenlerin sınavı",
+      "summary": "HORSE tek bir oyun değil, beş oyunluk bir rotasyondur: Hold'em, Omaha Hi-Lo, Razz, Seven Card Stud ve Stud Eight-or-better. Oyun düzenli aralıklarla değişir; hepsinde iyi olman gerekir. Her şey fixed-limit oynanır.",
+      "rules": [
+        "H = Limit Hold'em, O = Omaha Hi-Lo (8 or better), R = Razz, S = Seven Card Stud, E = Seven Card Stud Eight-or-better (Stud Hi-Lo).",
+        "Oyunlar her zaman H-O-R-S-E sırasıyla oynanır, sonra tekrar H'ye dönülür.",
+        "Oyun belirli bir sürenin sonunda değişir: genelde dealer butonunun masayı tam bir tur dönmesiyle ya da turnuvalarda bir seviye süresi bitince.",
+        "Beş oyunun hepsi küçük ve büyük bahisli fixed-limit oynanır.",
+        "Hold'em ve Omaha blind ve dealer butonu kullanır; üç stud oyunu ante ve bring-in kullanır.",
+        "Stud Eight-or-better, potu bölünen Seven Card Stud'dur: yarısı en iyi high'a, yarısı şartı sağlayan en iyi low'a (8 veya altı, farklı beş kart).",
+        "Fişlerin ve koltuğun aynı kalır; sadece oyun değişir.",
+        "Her yönden yeteneği ödüllendirir: bir oyundaki zayıflık uzun süre saklanamaz."
+      ],
+      "differences": [
+        "Tek oyun değil, sırayla oynanan beş oyun.",
+        "Hold'em dahil her oyunda fixed-limit bahis.",
+        "High oyunları (H, S), low oyunu (R) ve bölünen pot oyunlarını (O, E) içerir.",
+        "Her seferinde düşünce tarzını değiştirmelisin: Razz'da en düşük el, Stud'da en yüksek el kazanır."
+      ],
+      "tips": [
+        "Önce her oyunu tek başına öğren. Bu sitede Hold'em ve Seven Card Stud oynanabilir.",
+        "Her elden önce sor: şu an hangi oyundayız ve high mı low mu kazanıyor?",
+        "Hataların çoğu oyun değiştikten hemen sonra olur; her oyunun ilk ellerinde yavaşla."
+      ],
+      "walkthrough": {
+        "title": "HORSE'ta bir tam tur",
+        "steps": [
+          { "title": "Rotasyon", "text": "Aynı masa, aynı oyuncular, aynı fişler. Sadece oyun değişir: H → O → R → S → E, sonra tekrar H." },
+          { "title": "H: Limit Hold'em", "text": "Blind'lar, 2 gizli kart ve bir board; tıpkı Hold'em gibi ama her bahis sabit miktarda. Ada'nın top pair'i var: J♠ ve board'daki J♥." },
+          { "title": "O: Omaha Hi-Lo", "text": "Dört gizli kart, tam 2 + 3 ve bölünen pot. Ada'nın A♥ 2♦'si board'daki 7-5-4 ile güçlü bir low." },
+          { "title": "R: Razz", "text": "Şimdi stud oyunları başlıyor: ante, bring-in ve board yok. Razz'da en düşük el kazanır: Ada'nın A-3-5-2'si mükemmel." },
+          { "title": "S: Seven Card Stud", "text": "Tekrar en yüksek el. Ada'nın gizli asları ve açıktaki dokuzlu çifti iki çift yapar." },
+          { "title": "E: Stud Eight-or-better", "text": "Potu bölünen Stud. Ada'da A-2-3-4-5 var: en iyi low (ve high için bir kent bile). Bora'nın kızlar ve valeler full house'u high yarısını kazanır. Pot bölünür." },
+          { "title": "Başa dönüş", "text": "E'den sonra rotasyon Hold'em ile yeniden başlar. Dealer butonu ilerlemiştir." },
+          { "title": "Yine H", "text": "Ada Hold'em'de Q♥ Q♣ görür: bir high el; yine büyük olan iyidir. Her zaman sor: şu an hangi oyundayız?" }
+        ]
+      },
+      "quiz": [
+        { "q": "HORSE'taki O neyi temsil eder?", "options": ["Omaha (sadece high)", "Omaha Hi-Lo (8 or better)", "Open-face Chinese", "Over-the-top"], "answer": 1, "explain": "O, potu bölünen versiyon olan Omaha Eight-or-better'dır." },
+        { "q": "Oyunlar hangi sırayla oynanır?", "options": ["Rastgele", "H-O-R-S-E, sonra tekrar H'den", "Oyuncular her turda oylar", "E-S-R-O-H"], "answer": 1, "explain": "Sıra sabittir: Hold'em, Omaha Hi-Lo, Razz, Stud, Stud Eight-or-better." },
+        { "q": "HORSE'ta hangi bahis yapısı kullanılır?", "options": ["No-limit", "Pot-limit", "Fixed-limit", "Spread limit"], "answer": 2, "explain": "Beş oyunun hepsi fixed-limit oynanır." },
+        { "q": "HORSE'un hangi oyununda potun tamamını en düşük el kazanır?", "options": ["H", "O", "R", "S"], "answer": 2, "explain": "Razz saf low oyunudur. O ve E high ile low arasında bölünür." },
+        { "q": "Hangi oyunlarda pot bölünür?", "options": ["H ve S", "O ve E", "R ve S", "Beşinde de"], "answer": 1, "explain": "Omaha Hi-Lo ve Stud Eight-or-better potu high ile low arasında böler." }
+      ]
+    }
+  }
+}

@@ -1,0 +1,140 @@
+.variants-hero {
+  position: relative;
+  padding: 72px 0 8px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .variants-hero {
+    padding: 112px 0 16px;
+  }
+}
+
+.variants-hero .container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.variants-hero__title {
+  max-width: 14ch;
+}
+
+.variants-hero__suits {
+  position: absolute;
+  right: var(--gutter);
+  top: -12px;
+  display: none;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 5.5rem;
+  line-height: 1;
+  color: rgba(240, 228, 200, 0.06);
+  pointer-events: none;
+}
+
+.variants-hero__suits .is-red {
+  color: rgba(200, 55, 62, 0.12);
+}
+
+@media (min-width: 900px) {
+  .variants-hero__suits {
+    display: flex;
+  }
+}
+
+.variants-list.section {
+  padding-top: 32px;
+}
+
+.variants-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.variants-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 600;
+  isolation: isolate;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.variants-chip:hover {
+  border-color: var(--border-gold);
+}
+
+.variants-chip.is-active {
+  border-color: var(--gold);
+  color: #1a1408;
+  background: var(--gold-2);
+}
+
+.variants-chip__bg {
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(180deg, var(--gold-2), var(--gold));
+}
+
+.variants-chip.is-active:has(.variants-chip__bg) {
+  background: transparent;
+}
+
+.variants-chip__count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgba(240, 228, 200, 0.08);
+  font-size: 0.72rem;
+}
+
+.variants-chip.is-active .variants-chip__count {
+  background: rgba(26, 20, 8, 0.15);
+}
+
+.variants-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 640px) {
+  .variants-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .variants-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+}
+
+.variants-grid__item {
+  min-width: 0;
+}
+
+.variants-empty {
+  color: var(--muted);
+}

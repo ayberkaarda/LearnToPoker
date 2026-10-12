@@ -1,0 +1,679 @@
+{
+  "listEyebrow": "Poker variants",
+  "listTitle": "One deck, many games",
+  "listLead": "Hold'em is only the beginning. Every variant below is explained from scratch: its rules, how it differs from Hold'em, a hand played step by step and a short quiz. The ones marked \"Playable\" can be played right away against bots.",
+  "filterLabel": "Filter variants",
+  "filters": {
+    "all": "All",
+    "playable": "Playable",
+    "community": "Community cards",
+    "stud": "Stud",
+    "draw": "Draw"
+  },
+  "families": {
+    "community": "Community cards",
+    "stud": "Stud",
+    "draw": "Draw",
+    "mixed": "Mixed"
+  },
+  "limits": {
+    "no-limit": "No-limit",
+    "pot-limit": "Pot-limit",
+    "fixed-limit": "Fixed-limit",
+    "mixed": "Mixed limits"
+  },
+  "difficulty": {
+    "label": "Difficulty",
+    "1": "Easy",
+    "2": "Medium",
+    "3": "Advanced"
+  },
+  "playableBadge": "Playable",
+  "hiLoBadge": "Split pot",
+  "learnMore": "Learn it",
+  "emptyFilter": "No variant matches this filter.",
+  "meta": {
+    "holeCards": "Private cards",
+    "communityCards": "Community cards",
+    "limit": "Betting",
+    "family": "Family",
+    "none": "None",
+    "varies": "Varies"
+  },
+  "detail": {
+    "back": "All variants",
+    "rulesEyebrow": "Rules",
+    "rulesTitle": "How it is played",
+    "differencesEyebrow": "Compared with Hold'em",
+    "differencesTitle": "Differences from Hold'em",
+    "walkthroughEyebrow": "Sample hand",
+    "walkthroughLead": "Follow a full hand step by step. Use the arrows, the dots or your keyboard's ← → keys.",
+    "tipsEyebrow": "Tips",
+    "tipsTitle": "Good to know",
+    "quizEyebrow": "Quiz",
+    "quizTitle": "Check yourself",
+    "quizLead": "Five short questions. You get instant feedback after each answer.",
+    "ctaPlayTitle": "Ready to try it?",
+    "ctaPlayLead": "Play a few hands against bots. The coach explains every decision.",
+    "ctaSimilarTitle": "Not playable here yet",
+    "ctaSimilarLead": "This variant cannot be played on the site yet, but a close relative can:",
+    "similarCta": "Play {{name}}",
+    "playCta": "Play {{name}}"
+  },
+  "playCta": "Play",
+  "stepPlayer": {
+    "prev": "Previous step",
+    "next": "Next step",
+    "play": "Autoplay",
+    "pause": "Pause",
+    "restart": "Start over",
+    "stepOf": "Step {{current}} / {{total}}",
+    "goTo": "Go to step {{n}}",
+    "pot": "Pot",
+    "dealer": "Dealer button",
+    "folded": "Folded",
+    "stack": "Stack",
+    "discards": "Discarded",
+    "privateNote": "Dashed outline = private card (face down for the others)",
+    "tableLabel": "Sample hand table"
+  },
+  "actions": {
+    "blinds": "Blinds",
+    "ante": "Antes",
+    "deal": "Deal",
+    "preflop": "Preflop",
+    "flop": "Flop",
+    "turn": "Turn",
+    "river": "River",
+    "showdown": "Showdown",
+    "win": "Pot awarded",
+    "split": "Split pot",
+    "bringIn": "Bring-in",
+    "thirdStreet": "3rd street",
+    "fourthStreet": "4th street",
+    "fifthStreet": "5th street",
+    "sixthStreet": "6th street",
+    "seventhStreet": "7th street",
+    "firstBet": "Betting round 1",
+    "secondBet": "Betting round 2",
+    "thirdBet": "Betting round 3",
+    "fourthBet": "Betting round 4",
+    "draw": "Draw",
+    "discard": "Discard",
+    "draw1": "Draw 1",
+    "draw2": "Draw 2",
+    "draw3": "Draw 3",
+    "rotation": "Rotation",
+    "gameH": "H · Hold'em",
+    "gameO": "O · Omaha Hi-Lo",
+    "gameR": "R · Razz",
+    "gameS": "S · Stud",
+    "gameE": "E · Stud Eight-or-better"
+  },
+  "acts": {
+    "sb": "Small blind",
+    "bb": "Big blind",
+    "ante": "Ante",
+    "fold": "Fold",
+    "check": "Check",
+    "call": "Call",
+    "bet": "Bet",
+    "raise": "Raise",
+    "allin": "All-in",
+    "complete": "Complete",
+    "bringIn": "Bring-in",
+    "pat": "Stands pat",
+    "draw1": "Draws 1",
+    "draw2": "Draws 2",
+    "draw3": "Draws 3"
+  },
+  "quizUi": {
+    "progress": "Question {{current}} / {{total}}",
+    "correct": "Correct!",
+    "wrong": "Not quite.",
+    "next": "Next question",
+    "finish": "See my score",
+    "resultTitle": "Quiz complete",
+    "score": "{{score}} / {{total}} correct",
+    "perfect": "Perfect score. You really know this one.",
+    "good": "Nice work. Review the explanations for the ones you missed.",
+    "low": "Good start. Go through the rules once more and try again.",
+    "restart": "Try again",
+    "empty": "No questions yet."
+  },
+  "variants": {
+    "holdem": {
+      "name": "Texas Hold'em",
+      "tagline": "The world's most popular poker game",
+      "summary": "Each player gets two private cards and shares five community cards in the middle of the table. You make the best five-card hand from those seven cards. Easy to learn, hard to master: the perfect place to start.",
+      "rules": [
+        "Each player is dealt 2 private cards face down. These are your hole cards.",
+        "Two forced bets start every hand: the small blind and the big blind. The two players to the left of the dealer button post them.",
+        "There are four betting rounds: preflop, flop, turn and river.",
+        "The flop puts 3 community cards face up in the middle. The turn adds a 4th card and the river a 5th.",
+        "Community cards belong to everyone. Your hand is the best 5 cards out of your 2 hole cards plus the 5 board cards. You can use both hole cards, one, or none.",
+        "On your turn you can check (pass without betting), bet, call (match a bet), raise (increase it) or fold (give up the hand).",
+        "In no-limit you can bet any amount, up to all of your chips (all-in), at any time.",
+        "If two or more players are still in after the river, there is a showdown: the best 5-card hand wins the pot.",
+        "The dealer button moves one seat clockwise after every hand, so everyone takes turns posting the blinds."
+      ],
+      "differences": [
+        "This is the reference game: every other variant on this site is explained by comparing it to Hold'em.",
+        "Only 2 private cards, so hands are weaker on average than in Omaha. Top pair often wins.",
+        "No-limit betting: a single all-in can decide the hand at any moment.",
+        "There is no draw and no split pot. One high hand takes it all."
+      ],
+      "tips": [
+        "Play fewer hands, but play them firmly. Most beginners call far too often.",
+        "Position matters: acting last (on the button) lets you see what others do first.",
+        "Always ask yourself: what is the best possible hand on this board right now?"
+      ],
+      "walkthrough": {
+        "title": "Ada's heart flush",
+        "steps": [
+          { "title": "Blinds first", "text": "Ada has the dealer button. Bora (small blind) puts in 1 chip and Cem (big blind) puts in 2. These forced bets make sure there is always something to play for." },
+          { "title": "Two cards each", "text": "Everyone gets 2 hole cards face down. Ada looks at hers: A♥ K♥. Two big cards of the same suit, a very strong start." },
+          { "title": "Preflop betting", "text": "Ada raises to 6. Bora folds and loses his 1-chip small blind. Cem calls 6. Two players go to the flop." },
+          { "title": "The flop: K♦ 7♥ 2♥", "text": "Three community cards appear. Ada now has top pair (kings) with the best kicker (ace). She also holds four hearts: one more heart gives her a flush." },
+          { "title": "Flop betting", "text": "Cem checks. Ada bets 8 to get value from her pair and build the pot. Cem calls. The pot is now 29." },
+          { "title": "The turn: 9♠", "text": "A blank card that changes nothing. Both players check, so the river comes for free." },
+          { "title": "The river: 5♥", "text": "The fifth heart! Ada's best 5 cards are A♥ K♥ 7♥ 5♥ 2♥, an ace-high flush. Nobody can have a better flush, so it is called the nut flush." },
+          { "title": "River betting", "text": "Cem bets 15. Ada raises to 40 because her hand is almost certainly the best. Cem calls." },
+          { "title": "Showdown", "text": "Cem shows Q♠ Q♦: a pair of queens. Ada's flush beats it easily. Notice that Ada used both hole cards and three board cards." },
+          { "title": "Ada wins 109", "text": "Ada collects the whole pot. The lesson: in Hold'em you always pick the best 5 cards out of the 7 available, and suited hands can turn into flushes." }
+        ]
+      },
+      "quiz": [
+        { "q": "How many hole cards does each player get in Texas Hold'em?", "options": ["2", "3", "4", "5"], "answer": 0, "explain": "Two private cards. The other five cards are shared on the board." },
+        { "q": "The board is K♦ 7♥ 2♥ 9♠ 5♥. Which hole cards make the best hand?", "options": ["Q♠ Q♦", "A♥ 3♣", "7♣ 7♠", "K♣ K♠"], "answer": 3, "hands": ["Qs Qd", "Ah 3c", "7c 7s", "Kc Ks"], "explain": "K♣ K♠ plus the K♦ makes three kings, which beats three sevens. A♥ 3♣ only has four hearts, so no flush." },
+        { "q": "What is the river?", "options": ["The first three community cards", "The fourth community card", "The fifth and last community card", "The final showdown"], "answer": 2, "explain": "Flop = 3 cards, turn = 4th card, river = 5th card. The last betting round follows the river." },
+        { "q": "Who posts the big blind?", "options": ["The dealer", "The player directly left of the dealer", "The second player to the left of the dealer", "The player who won the last hand"], "answer": 2, "explain": "Directly left of the button is the small blind; next to that is the big blind." },
+        { "q": "Do you have to use both of your hole cards?", "options": ["Yes, always both", "No, any combination of 0, 1 or 2 hole cards is fine", "Only in no-limit games", "Only when you have a pair"], "answer": 1, "explain": "In Hold'em you take the best 5 out of 7. If the board itself is the best hand, you can play the board. Omaha is the game where exactly two are required." }
+      ]
+    },
+    "omaha": {
+      "name": "Omaha",
+      "tagline": "Four cards, but you must use exactly two",
+      "summary": "Omaha looks like Hold'em with four hole cards instead of two. The twist: your hand must use exactly two of your hole cards and exactly three board cards. Hands get much bigger, and that single rule catches out every beginner.",
+      "rules": [
+        "Each player is dealt 4 hole cards face down.",
+        "The structure is the same as Hold'em: blinds, then preflop, flop, turn and river, with 5 community cards.",
+        "The golden rule: your final hand uses EXACTLY 2 of your hole cards and EXACTLY 3 board cards. Never more, never fewer.",
+        "So four hearts on the board plus one heart in your hand is NOT a flush. You need two hearts in your hand.",
+        "Likewise, a pair on the board plus one matching card in your hand is not three of a kind: you would need two matching cards in hand.",
+        "Omaha is usually played pot-limit: the most you can bet or raise is the size of the pot (counting your call first).",
+        "Straights, flushes and full houses are common, so a single pair rarely wins.",
+        "At showdown, each player shows the best legal 2 + 3 combination; the best hand wins."
+      ],
+      "differences": [
+        "4 hole cards instead of 2.",
+        "Exactly 2 hole cards + exactly 3 board cards. In Hold'em any combination is allowed.",
+        "Usually pot-limit instead of no-limit, so the maximum bet grows with the pot.",
+        "Winning hands are much stronger: top pair is often worth very little.",
+        "Many more draws are possible, so pots are often played by three or more players."
+      ],
+      "tips": [
+        "Before every decision, physically count: two from my hand, three from the board.",
+        "Look for four cards that work together: two suited pairs or connected cards like K-Q-J-T.",
+        "Drawing to anything less than the best possible flush or straight is expensive in Omaha."
+      ],
+      "walkthrough": {
+        "title": "The one-spade trap",
+        "steps": [
+          { "title": "Blinds", "text": "Same start as Hold'em. Ada has the button, Bora posts 1, Cem posts 2. Everyone starts with 200 chips." },
+          { "title": "Four cards each", "text": "Ada gets A♠ K♥ Q♦ J♣. Four big cards look wonderful, but they are all different suits. Keep that in mind." },
+          { "title": "Preflop", "text": "Ada raises to 6. In pot-limit she could have raised to at most 7: after her call of 2 the pot would be 5, so she may raise by 5 more. Both opponents call. Pot: 18." },
+          { "title": "Flop: K♠ 7♠ 2♠", "text": "Three spades! Ada holds the A♠, so it is tempting to think she is drawing to the best flush. But she has only ONE spade, and Omaha needs two from the hand. She can never make a spade flush." },
+          { "title": "Flop betting", "text": "Ada bets 12 with her pair of kings (K♥ + K♠ on board). Bora and Cem both call. Pot: 54." },
+          { "title": "Turn: T♠", "text": "Now there are four spades and A-K-Q-J-T seems to be everywhere. Is it a straight? No: the board has only K and T, so Ada would need A, Q and J from her hand, which is three cards. No flush, no straight: still just a pair of kings." },
+          { "title": "Ada folds", "text": "Bora bets 40, Cem calls. Ada reads her hand correctly and folds. Many beginners would lose a big pot here." },
+          { "title": "River: 4♥", "text": "Bora bets 50 and Cem calls. Pot before the showdown: 234." },
+          { "title": "Showdown", "text": "Bora shows 9♠ 8♠: two spades in hand + K♠ T♠ 7♠ = king-high flush. Cem shows T♣ T♥: with the T♠ on board that is three tens. Both used exactly two hole cards." },
+          { "title": "Bora wins 234", "text": "The flush beats three of a kind. Ada saved her chips because she remembered the rule: exactly 2 from the hand, exactly 3 from the board." }
+        ]
+      },
+      "quiz": [
+        { "q": "How many of your hole cards must you use in Omaha?", "options": ["Any number", "Exactly 2", "At least 1", "Exactly 3"], "answer": 1, "explain": "Always exactly 2 hole cards and exactly 3 board cards." },
+        { "q": "The board is A♥ K♥ 8♥ 4♥ 2♣ and you hold Q♥ J♠ T♠ 9♦. Do you have a flush?", "options": ["Yes, a queen-high flush", "Yes, an ace-high flush", "No, you need two hearts in your hand", "Only if another heart comes"], "answer": 2, "explain": "With only one heart in your hand you can use at most one heart. Three board hearts + one hand heart = four hearts, not a flush." },
+        { "q": "The board is 7♣ 7♦ 7♥ K♠ 2♦. Which hand is best?", "options": ["A♠ A♦ Q♣ J♣", "7♠ 3♣ 4♦ 5♥", "K♣ K♦ 9♠ 8♠", "2♠ 2♥ 6♣ 5♣"], "answer": 1, "hands": ["As Ad Qc Jc", "7s 3c 4d 5h", "Kc Kd 9s 8s", "2s 2h 6c 5c"], "explain": "7♠ plus any second card, with 7♣ 7♦ 7♥ from the board, is four of a kind. Two hole cards + three board cards, perfectly legal. K-K only makes kings full of sevens." },
+        { "q": "In pot-limit, what is the largest raise you can make?", "options": ["Any amount", "Double the last bet", "The size of the pot after you have called", "Exactly the big blind"], "answer": 2, "explain": "First imagine you call; the pot at that moment is the maximum you can raise on top." },
+        { "q": "The board is 9♠ 8♦ 3♣ 3♥ K♦ and you hold 3♠ A♣ A♦ Q♥. What is your best hand?", "options": ["Full house, threes full of aces", "Three of a kind (threes)", "Two pair, aces and threes", "One pair of aces"], "answer": 1, "explain": "3♠ + A with 3♣ 3♥ K♦ gives three threes. A full house would need 3♠ A♣ A♦, which is three hole cards: not allowed." }
+      ]
+    },
+    "omahaHiLo": {
+      "name": "Omaha Hi-Lo",
+      "tagline": "Half the pot to the best high, half to the best low",
+      "summary": "Omaha Hi-Lo (also called Omaha Eight-or-better) is played like Omaha, but the pot is usually split in two: the best high hand takes one half and the best qualifying low hand takes the other. A low only counts if it has five different cards of 8 or lower. Winning both halves is called scooping.",
+      "rules": [
+        "Played like Omaha: 4 hole cards, 5 community cards, and you must use exactly 2 hole cards and 3 board cards. This applies to both the high and the low hand.",
+        "At showdown the pot is split: half to the best high hand, half to the best low hand.",
+        "A low hand must qualify with \"8 or better\": five cards of different ranks, all 8 or lower.",
+        "For the low the ace counts as 1 (the lowest card). Straights and flushes do not hurt a low hand.",
+        "The best possible low is A-2-3-4-5, called the wheel.",
+        "Lows are compared from the highest card down: 7-5-4-2-A beats 8-4-3-2-A because 7 is lower than 8.",
+        "A low is only possible if at least three different board cards are 8 or lower. If nobody has a qualifying low, the high hand wins the whole pot.",
+        "You may use different pairs of hole cards for your high and your low.",
+        "Winning both halves is a scoop. It is the real goal of the game. Usually played fixed-limit (pot-limit is also common)."
+      ],
+      "differences": [
+        "The pot can be split between a high hand and a low hand. In Hold'em one hand wins everything.",
+        "Low hands need the 8-or-better qualifier.",
+        "Exactly 2 hole cards + 3 board cards, as in Omaha, separately for high and low.",
+        "Hands with A-2 are the most valuable starting cards because they make the best lows.",
+        "Usually fixed-limit: bets come in fixed small and big sizes."
+      ],
+      "tips": [
+        "Aim to scoop. Hands that can win only half the pot are expensive to play.",
+        "A-2 with a second suited ace or a few more low cards is a premium start.",
+        "Watch out for being quartered: if two players share the low, each gets only a quarter of the pot."
+      ],
+      "walkthrough": {
+        "title": "A split pot",
+        "steps": [
+          { "title": "Blinds and limits", "text": "Fixed-limit game: bets are 2 on the preflop and flop, 4 on the turn and river. Bora posts 1, Cem posts 2." },
+          { "title": "Four cards each", "text": "Ada gets A♥ 2♦ 3♣ K♦. A-2 is the dream start for the low half: they are the two lowest cards." },
+          { "title": "Preflop", "text": "Ada raises to 4. Bora and Cem call. Pot: 12." },
+          { "title": "Flop: K♣ 7♦ 4♠", "text": "Only two board cards (7 and 4) are 8 or lower. A low needs three low board cards, so no low is possible yet. Ada also has a pair of kings for the high." },
+          { "title": "Flop betting", "text": "Bora bets 2. Cem gives up and folds. Ada calls: one more low card on the board gives her a strong low. Pot: 16." },
+          { "title": "Turn: 5♥", "text": "The third low card! Ada uses A♥ 2♦ with 7♦ 5♥ 4♠: her low is 7-5-4-2-A. Only a few hands can beat it." },
+          { "title": "Turn betting", "text": "Now the big bet (4) applies. Bora bets 4, Ada raises to 8, Bora calls. Pot: 32." },
+          { "title": "River: Q♦", "text": "Bora bets 4, Ada calls. Pot: 40." },
+          { "title": "Showdown: two winners", "text": "High: Bora's K♠ K♥ + K♣ Q♦ 7♦ is three kings, the best high hand. Low: Ada's 7-5-4-2-A. Bora has no cards of 8 or lower, so he cannot make a low at all." },
+          { "title": "The pot is split", "text": "Each takes 20. If Ada had also had the best high hand she would have taken all 40: that is a scoop." }
+        ]
+      },
+      "quiz": [
+        { "q": "What does \"8 or better\" mean?", "options": ["The high hand must be at least a pair of eights", "A low hand needs five different cards, all 8 or lower", "You need an 8 in your hand", "Only 8 players can play"], "answer": 1, "explain": "To qualify for the low half, all five cards must be different ranks of 8 or below." },
+        { "q": "The board is 2♣ 5♦ 9♠ K♥ Q♣. Can anyone make a low?", "options": ["Yes, with A-3", "Yes, with any ace", "No, only two board cards are 8 or lower", "Only on the next hand"], "answer": 2, "explain": "You must use 3 board cards, and they all need to be 8 or lower. Here only 2 and 5 are." },
+        { "q": "Which low hand is best?", "options": ["7-5-4-2-A", "8-4-3-2-A", "7-6-3-2-A", "6-5-4-3-2"], "answer": 3, "hands": ["7c 5d 4h 2s Ah", "8c 4d 3h 2c As", "7d 6s 3c 2d Ac", "6c 5d 4h 3s 2c"], "explain": "Compare the highest card first: 6 is lower than 7 and 8. In ace-to-five low, the straight does not count against you." },
+        { "q": "What is a scoop?", "options": ["Winning both the high and the low half", "Folding before the flop", "Splitting the pot equally", "Having the best low"], "answer": 0, "explain": "Taking the whole pot by winning both halves (or winning high when no low qualifies)." },
+        { "q": "The board is A♠ 4♦ 7♣ K♥ 9♠ and you hold 2♥ 3♥ Q♠ Q♦. What is your low?", "options": ["7-4-3-2-A", "9-4-3-2-A", "4-3-2-A with a queen", "You have no low"], "answer": 0, "explain": "2♥ 3♥ from your hand + A♠ 4♦ 7♣ from the board = 7-4-3-2-A, a qualifying low." }
+      ]
+    },
+    "sevenCardStud": {
+      "name": "Seven Card Stud",
+      "tagline": "No community cards: read what your opponents show",
+      "summary": "The classic before Hold'em took over. Every player gets their own seven cards: three face down and four face up. There is no board; instead you watch the face-up cards of your opponents and guess what they are hiding.",
+      "rules": [
+        "There are no community cards. Each player receives 7 cards of their own: 3 face down and 4 face up.",
+        "Everyone puts in an ante (a small forced bet) before the deal. There are no blinds.",
+        "3rd street: two cards face down and one card face up for each player.",
+        "The player with the lowest face-up card must post the bring-in, a small forced bet. If two upcards tie, suit decides (clubs lowest, then diamonds, hearts, spades).",
+        "4th, 5th and 6th street: one more face-up card each, followed by a betting round.",
+        "7th street (the river) is dealt face down.",
+        "From 4th street on, the player with the best visible hand acts first.",
+        "Fixed-limit: the small bet is used on 3rd and 4th street, the big bet on 5th, 6th and 7th.",
+        "At showdown you pick your best 5 cards out of 7."
+      ],
+      "differences": [
+        "No shared board: all 7 cards belong to you.",
+        "Some of your cards are visible to everyone, so you can read opponents (and they can read you).",
+        "Antes and a bring-in instead of small and big blinds; no fixed dealer-button order.",
+        "The acting order changes every street depending on who shows the best cards.",
+        "Folded upcards are dead cards: remembering them tells you which cards are gone."
+      ],
+      "tips": [
+        "Remember folded cards: if three of your flush cards were folded, your draw is much weaker.",
+        "Hidden pairs (like aces in the hole) are strong because nobody can see them.",
+        "Big pairs showing on board represent strength: be careful against them."
+      ],
+      "walkthrough": {
+        "title": "Hidden aces",
+        "steps": [
+          { "title": "Antes", "text": "Everyone puts in 1 chip as an ante. Pot: 3. Stud has no blinds and no community cards." },
+          { "title": "3rd street", "text": "Each player gets two cards face down and one face up. Ada sees her hidden A♥ A♦ (the dashed outline means the others cannot see them) and shows 9♣. Bora shows 2♦, Cem T♥." },
+          { "title": "Bring-in", "text": "The lowest upcard posts the bring-in. That is Bora's 2♦, so he puts in 2 chips." },
+          { "title": "Completing the bet", "text": "Cem completes to 4 (a full small bet). Ada just calls to hide her strength. Bora calls too. Pot: 15." },
+          { "title": "4th street", "text": "New upcards: Ada K♦, Bora 5♥, Cem 7♦. Ada's K-9 is the best visible hand, so she acts first: she bets 4. Bora folds, Cem calls." },
+          { "title": "5th street", "text": "Ada gets 9♥ (she now has aces and nines), Cem gets T♣. Cem's pair of tens showing beats Ada's visible nines, so he acts first and bets 8, the big bet. Ada calls." },
+          { "title": "6th street", "text": "Ada 2♠, Cem 3♦. Nothing changes. Both check." },
+          { "title": "7th street", "text": "The last card comes face down: Ada 3♣, Cem Q♥. Cem bets 8, Ada calls. Pot: 55." },
+          { "title": "Showdown", "text": "Cem turns over K♠ K♣: two pair, kings and tens. Ada shows aces and nines. Two pair against two pair: the higher top pair wins, and aces beat kings." },
+          { "title": "Ada wins 55", "text": "Her aces stayed hidden the whole time. In Stud, think about what can be hidden behind the cards you see." }
+        ]
+      },
+      "quiz": [
+        { "q": "How many cards does each player get in Seven Card Stud (if they play to the end)?", "options": ["5", "6", "7", "9"], "answer": 2, "explain": "Seven: 3 face down (2 at the start and the last one) and 4 face up." },
+        { "q": "Who posts the bring-in on 3rd street?", "options": ["The dealer", "The lowest face-up card", "The highest face-up card", "The player left of the dealer"], "answer": 1, "explain": "The player with the lowest upcard is forced to start the betting (in Razz it is the reverse: the highest upcard)." },
+        { "q": "How many of your 7 cards are face down?", "options": ["2", "3", "4", "None"], "answer": 1, "explain": "The first two cards and the 7th street card are face down." },
+        { "q": "Who acts first from 4th street on?", "options": ["Always the bring-in player", "The player with the best visible hand", "The player with the most chips", "The dealer"], "answer": 1, "explain": "Whoever shows the strongest face-up cards acts first on that street." },
+        { "q": "Which 7-card holding makes the best 5-card hand?", "options": ["A♠ A♦ K♣ K♥ 4♠ 9♦ 2♣", "5♣ 6♦ 7♥ 8♠ 9♣ K♦ 2♥", "Q♥ Q♣ Q♦ 3♠ 7♣ 8♦ J♥", "A♣ J♣ 8♣ 4♣ 2♦ K♦ 6♠"], "answer": 1, "hands": ["As Ad Kc Kh 4s 9d 2c", "5c 6d 7h 8s 9c Kd 2h", "Qh Qc Qd 3s 7c 8d Jh", "Ac Jc 8c 4c 2d Kd 6s"], "explain": "5-6-7-8-9 is a straight, which beats three queens and two pair. The last hand has only four clubs, so no flush." }
+      ]
+    },
+    "razz": {
+      "name": "Razz",
+      "tagline": "Stud where the lowest hand wins",
+      "summary": "Razz is Seven Card Stud turned upside down: the lowest hand wins the whole pot. Aces are low, and straights and flushes do not count, so the best possible hand is 5-4-3-2-A. Pairs are what you fear.",
+      "rules": [
+        "Dealt exactly like Seven Card Stud: antes, 2 cards down + 1 up, then 4th to 6th street face up and 7th street face down.",
+        "The LOWEST 5-card hand wins the whole pot. There is no qualifier: some low always wins.",
+        "The ace is always low (it counts as 1).",
+        "Straights and flushes are ignored. 5-4-3-2-A (the wheel) is the best possible hand.",
+        "Pairs are bad: you want five different ranks. A hand with a pair loses to any hand without one.",
+        "Compare from the highest card down: 7-6-5-4-3 beats 8-4-3-2-A because 7 is lower than 8.",
+        "The bring-in is posted by the HIGHEST upcard (a king is the worst card).",
+        "From 4th street on, the LOWEST visible hand acts first.",
+        "Usually fixed-limit."
+      ],
+      "differences": [
+        "The lowest hand wins, not the highest.",
+        "Ace is low; straights and flushes do not exist for ranking.",
+        "No community cards: it is a stud game.",
+        "Bring-in and acting order are reversed compared with Seven Card Stud.",
+        "Pairs, which are good in Hold'em, ruin your hand here."
+      ],
+      "tips": [
+        "Start with three different cards of 8 or lower; anything else is usually a fold.",
+        "A high face-up card like a king (a brick) hurts you, and everyone can see it.",
+        "Watch the low cards others show: they are cards you can no longer receive."
+      ],
+      "walkthrough": {
+        "title": "The race to the bottom",
+        "steps": [
+          { "title": "Antes", "text": "Everyone antes 1. Pot: 3. The dealing is the same as Seven Card Stud." },
+          { "title": "3rd street", "text": "Ada has A♠ 3♦ hidden and shows 5♣: three perfect low cards. Bora shows Q♠, Cem 6♠." },
+          { "title": "Bring-in: the highest card", "text": "In Razz the HIGHEST upcard pays the bring-in, the opposite of Stud. Bora's Q♠ is the worst card on the table, so he posts 2." },
+          { "title": "Completing", "text": "Cem completes to 4, Ada calls and Bora folds. Pot: 13." },
+          { "title": "4th street", "text": "Ada gets 2♥: A-2-3-5, four low cards. Cem gets 3♠. Ada's 5-2 showing is the lowest, so she acts first: she bets 4, Cem calls." },
+          { "title": "5th street", "text": "Ada gets K♣, a brick. Cem gets 8♣. Cem's 8-6-3 now looks better than Ada's K-5-2, so he acts first and bets 8. Ada calls: she still has four great low cards." },
+          { "title": "6th street", "text": "Ada catches 7♠ and has a made hand: 7-5-3-2-A. Cem gets 8♥, pairing his eight, which is bad in Razz. Ada's board is lower now, so she bets 8 and Cem calls." },
+          { "title": "7th street", "text": "Face-down cards: Ada 8♦, Cem T♦. Ada bets 8, Cem calls. Pot: 69." },
+          { "title": "Showdown", "text": "Cem's best is 8-6-4-3-2. Ada's is 7-5-3-2-A. Compare the highest cards: 7 is lower than 8, so Ada wins all 69. Cem's two spades do not matter at all." }
+        ]
+      },
+      "quiz": [
+        { "q": "What is the best possible hand in Razz?", "options": ["A-K-Q-J-T", "2-3-4-5-7 offsuit", "A-2-3-4-5", "A-A-2-2-3"], "answer": 2, "explain": "The ace is low and straights do not count, so A-2-3-4-5 is the perfect low." },
+        { "q": "Which hand wins in Razz?", "options": ["8-5-4-3-2", "7-6-5-4-3", "9-4-3-2-A", "K-4-3-2-A"], "answer": 1, "hands": ["8c 5d 4h 3s 2c", "7c 6d 5h 4s 3c", "9s 4d 3h 2s Ac", "Kd 4c 3d 2h Ah"], "explain": "Compare the highest card: 7 is the lowest top card. That it is a straight is irrelevant." },
+        { "q": "Who posts the bring-in in Razz?", "options": ["The lowest upcard", "The highest upcard", "The dealer", "Nobody, Razz uses blinds"], "answer": 1, "explain": "The worst Razz card showing (highest) pays the bring-in." },
+        { "q": "Does a flush hurt your hand in Razz?", "options": ["Yes, it counts as a flush", "No, suits are ignored", "Only on 7th street", "Only if it is a heart flush"], "answer": 1, "explain": "Razz uses ace-to-five low: straights and flushes are ignored." },
+        { "q": "Which of these lows is best?", "options": ["6♥ 5♥ 4♥ 2♥ A♥", "6-5-4-3-2", "7-4-3-2-A", "5-5-4-3-2"], "answer": 0, "hands": ["6h 5h 4h 2h Ah", "6c 5d 4s 3h 2c", "7d 4s 3c 2d As", "5s 5d 4h 3c 2d"], "explain": "6-5-4-2-A vs 6-5-4-3-2: tied on 6, 5 and 4, then 2 beats 3. The flush is ignored; the pair of fives is worst." }
+      ]
+    },
+    "fiveCardDraw": {
+      "name": "Five Card Draw",
+      "tagline": "The classic from western films",
+      "summary": "The simplest poker there is: five private cards, one chance to swap some of them, and two betting rounds. No community cards and no face-up cards: the only clue about an opponent's hand is how many cards they draw.",
+      "rules": [
+        "Each player is dealt 5 private cards face down. There are no community cards.",
+        "Blinds (or antes) start the pot.",
+        "First betting round: starting left of the big blind.",
+        "The draw: in turn, each player discards 0 to 5 cards and receives the same number of new ones. Keeping all five is called standing pat.",
+        "Second betting round: starting with the first active player left of the dealer.",
+        "Showdown: the best 5-card poker hand wins.",
+        "Usually fixed-limit: the bet size doubles after the draw.",
+        "How many cards an opponent draws is your best information about their hand."
+      ],
+      "differences": [
+        "No community cards: every card is yours and private.",
+        "A draw round replaces flop, turn and river.",
+        "Only two betting rounds.",
+        "Your only read on opponents is how many cards they change and how they bet."
+      ],
+      "tips": [
+        "With a pair, keep the pair and draw three. Keeping a kicker usually lowers your chances.",
+        "Drawing one card often means two pair or a straight/flush draw; drawing three usually means one pair.",
+        "Do not chase a straight draw open at only one end (inside straight): it hits rarely."
+      ],
+      "walkthrough": {
+        "title": "Jacks improve",
+        "steps": [
+          { "title": "Blinds", "text": "Ada has the button. Bora posts the small blind (1), Cem the big blind (2). Fixed-limit: bets are 2 before the draw and 4 after." },
+          { "title": "Five cards each", "text": "Ada gets J♠ J♦ 8♣ 4♥ 2♠: a pair of jacks, a solid start." },
+          { "title": "First betting round", "text": "Ada raises to 4. Bora and Cem both call. Pot: 12." },
+          { "title": "Planning the draw", "text": "Ada keeps her pair of jacks. The 8♣ 4♥ 2♠ do not help, so she will throw all three away." },
+          { "title": "Discards", "text": "Bora throws 1 card, Cem 2, Ada 3. Useful information: Bora's single card suggests a flush or straight draw, Cem's two suggests three of a kind." },
+          { "title": "New cards", "text": "Ada receives J♥ 9♦ 3♣: three jacks! Her opponents' new cards stay hidden." },
+          { "title": "Second betting round", "text": "Bora checks. Cem bets 4. Ada raises to 8. Bora missed his flush and folds. Cem calls. Pot: 28." },
+          { "title": "Showdown", "text": "Cem shows 6♣ 6♦ 6♥: three sixes. Ada's three jacks are higher." },
+          { "title": "Ada wins 28", "text": "By drawing three to her pair she gave herself the best chance to improve, and it worked." }
+        ]
+      },
+      "quiz": [
+        { "q": "How many cards do you get in Five Card Draw?", "options": ["2", "4", "5", "7"], "answer": 2, "explain": "Five private cards, no community cards." },
+        { "q": "What does standing pat mean?", "options": ["Folding", "Keeping all five cards and drawing none", "Drawing five new cards", "Betting all-in"], "answer": 1, "explain": "A pat player is happy with the hand, often a straight, flush or better." },
+        { "q": "You hold 9♠ 9♦ K♣ 6♥ 2♣. What is the usual play?", "options": ["Keep 9-9, draw 3", "Keep 9-9-K, draw 2", "Draw 5", "Stand pat"], "answer": 0, "explain": "Keeping only the pair and drawing three gives the most chances to make three of a kind or two pair." },
+        { "q": "After the draw, which hand wins?", "options": ["Q♠ Q♦ 7♣ 7♥ 2♠", "8♣ 8♦ 8♥ 3♠ 2♦", "A♣ K♣ Q♣ J♣ 9♦", "K♠ K♥ A♦ 9♣ 4♠"], "answer": 1, "hands": ["Qs Qd 7c 7h 2s", "8c 8d 8h 3s 2d", "Ac Kc Qc Jc 9d", "Ks Kh Ad 9c 4s"], "explain": "Three eights beat two pair, one pair and ace high (the third hand is not a flush: the 9♦ is a different suit)." },
+        { "q": "An opponent draws exactly one card. What does this most often mean?", "options": ["They have nothing", "They have one pair", "Two pair or a four-card straight/flush draw", "Four of a kind"], "answer": 2, "explain": "One card is drawn with two pair or with a draw to a straight or flush." }
+      ]
+    },
+    "deuceToSevenTripleDraw": {
+      "name": "2-7 Triple Draw",
+      "tagline": "Lowball with three draws, and the ace is high",
+      "summary": "In Deuce-to-Seven (2-7) the worst traditional poker hand wins. Aces are high, and straights and flushes count against you, so the best hand is 7-5-4-3-2 in mixed suits. You get three draws to build it.",
+      "rules": [
+        "Lowball: the lowest hand wins the pot.",
+        "The ace is ALWAYS high. A-2-3-4-5 is not a straight here, but an ace-high hand, which is bad.",
+        "Straights and flushes count against you: 7-6-5-4-3 is a straight and loses to almost everything.",
+        "The best possible hand: 7-5-4-3-2 of at least two suits, called \"number one\".",
+        "Pairs are bad: any hand with a pair loses to any hand without one.",
+        "Each player gets 5 cards. There are three draws and four betting rounds.",
+        "Blinds start the pot. Fixed-limit: small bet in the first two rounds, big bet in the last two.",
+        "Compare from the highest card down: 8-6-5-4-3 beats 8-7-4-3-2 because 6 is lower than 7.",
+        "Standing pat (not drawing) usually means a made hand."
+      ],
+      "differences": [
+        "The lowest hand wins instead of the highest.",
+        "Ace is high only; straights and flushes ruin your hand.",
+        "No community cards; three draws instead of flop, turn and river.",
+        "Four betting rounds with fixed small and big bets.",
+        "Different from Razz: in Razz the ace is low and straights/flushes do not count."
+      ],
+      "tips": [
+        "A 2 is the most important card: without it you can never have the best hands.",
+        "Start with three or more different cards of 7 or lower, including the 2.",
+        "When an opponent stands pat early, you need to improve quickly."
+      ],
+      "walkthrough": {
+        "title": "Building a seven",
+        "steps": [
+          { "title": "Blinds", "text": "Bora posts 1, Cem posts 2. Bets are 2 in the first two rounds and 4 in the last two." },
+          { "title": "Five cards each", "text": "Ada holds 2♦ 4♣ 7♥ K♦ K♠. 2-4-7 is a great start for a low; the pair of kings is useless." },
+          { "title": "First betting round", "text": "Ada raises to 4. Bora folds. Cem calls. Pot: 9." },
+          { "title": "First draw", "text": "Cem draws 1, Ada draws 2 (both kings). Ada receives 3♠ and A♣. Careful: the ace is HIGH in 2-7, so A-7-4-3-2 is only an ace-high hand." },
+          { "title": "Second betting round", "text": "Cem bets 2, Ada calls. Pot: 13." },
+          { "title": "Second draw", "text": "Cem stands pat: he is happy with his five cards. Ada throws the A♣ and gets 9♥: 9-7-4-3-2." },
+          { "title": "Third betting round", "text": "Now the big bet: Cem bets 4, Ada calls. Pot: 21." },
+          { "title": "Third draw", "text": "Cem stands pat again. Ada throws the 9♥ and catches 6♣: 7-6-4-3-2. No pair, no straight (the 5 is missing), no flush. A very strong hand." },
+          { "title": "Last betting round", "text": "Cem bets 4, Ada raises to 8, Cem calls. Pot: 37." },
+          { "title": "Showdown", "text": "Cem shows 8-6-5-4-3. Ada has 7-6-4-3-2. The top card decides: 7 beats 8, so Ada wins 37." }
+        ]
+      },
+      "quiz": [
+        { "q": "What is the best possible hand in 2-7 lowball?", "options": ["A-2-3-4-5", "2-3-4-5-6", "7-5-4-3-2 (mixed suits)", "7-5-4-3-2 all hearts"], "answer": 2, "explain": "A-2-3-4-5 is ace high, 2-3-4-5-6 is a straight and the all-hearts version is a flush." },
+        { "q": "How does the ace count in 2-7?", "options": ["Always low", "Always high", "Either", "It is removed from the deck"], "answer": 1, "explain": "In deuce-to-seven the ace is always the highest card, which makes it bad for a low hand." },
+        { "q": "Which hand wins in 2-7?", "options": ["7-6-5-4-3", "8-6-4-3-2", "A-5-4-3-2", "9-7-5-3-2 all spades"], "answer": 1, "hands": ["7c 6d 5h 4s 3c", "8d 6c 4h 3s 2d", "Ah 5c 4d 3h 2s", "9s 7s 5s 3s 2s"], "explain": "7-6-5-4-3 is a straight, A-5-4-3-2 is ace high and the last one is a flush. The 8-6 is the best low." },
+        { "q": "How many draws are there in Triple Draw?", "options": ["1", "2", "3", "4"], "answer": 2, "explain": "Three draws, with a betting round before each draw and one after the last." },
+        { "q": "Which is lower (better): 8-6-5-4-3 or 8-7-4-3-2?", "options": ["8-6-5-4-3", "8-7-4-3-2", "They tie", "Neither qualifies"], "answer": 0, "explain": "Both start with 8; the next card decides, and 6 is lower than 7." }
+      ]
+    },
+    "shortDeck": {
+      "name": "Short Deck Hold'em",
+      "tagline": "Hold'em with a 36-card deck: a flush beats a full house",
+      "summary": "Short Deck (also called 6+ Hold'em) is played like Hold'em, but all 2s, 3s, 4s and 5s are removed. With fewer cards, the hand rankings change: a flush becomes rarer than a full house, so it ranks higher. The action is wild and draws hit often.",
+      "rules": [
+        "Played like Hold'em: 2 hole cards, flop, turn, river and 4 betting rounds.",
+        "The deck has 36 cards: 6 through ace in each suit. Cards 2 to 5 are removed.",
+        "The ace can also play low in the straight A-6-7-8-9 (the lowest straight).",
+        "A flush beats a full house, because with only nine cards per suit flushes are rarer.",
+        "In most modern rules three of a kind also beats a straight. Some games keep straight above trips, so check the table's rules.",
+        "Usually everyone pays an ante instead of blinds (often with an extra button blind).",
+        "Usually played no-limit.",
+        "Best 5 cards out of 7 wins, as in Hold'em."
+      ],
+      "differences": [
+        "36-card deck: no 2, 3, 4 or 5.",
+        "A flush beats a full house.",
+        "A-6-7-8-9 is a straight (the ace plays low).",
+        "Antes instead of blinds in most games.",
+        "Hands run closer: draws come in much more often than in Hold'em."
+      ],
+      "tips": [
+        "Before playing, check the ranking used at your table: does trips beat a straight?",
+        "Flush draws are weaker than you think: there are fewer cards of each suit left.",
+        "Big pairs lose value; connected cards gain value."
+      ],
+      "walkthrough": {
+        "title": "When a flush beats a full house",
+        "steps": [
+          { "title": "Antes", "text": "Everyone antes 1. Pot: 3. The deck has only 36 cards: 6 through ace." },
+          { "title": "Two cards each", "text": "Ada: A♥ 9♣. Bora: K♦ K♣. Cem: J♠ T♠." },
+          { "title": "Preflop", "text": "Bora raises to 6. Cem and Ada call. Pot: 21." },
+          { "title": "Flop: 6♥ 7♦ 8♠", "text": "Ada has a straight already: A-6-7-8-9, with the ace playing low. That straight only exists in Short Deck. She bets 10 and both opponents call. Pot: 51." },
+          { "title": "Turn: K♠", "text": "Bora now has three kings. Cem has four spades and needs one more for a flush. Bora bets 20 and everyone calls. Pot: 111." },
+          { "title": "River: 7♠", "text": "Bora makes a full house (kings full of sevens), Cem makes a flush. Bora bets 30, Cem moves all-in for 63, Ada folds her straight and Bora calls." },
+          { "title": "Bora's full house", "text": "Bora shows K♦ K♣ for K-K-K-7-7. In regular Hold'em this would beat a flush and win the pot." },
+          { "title": "Cem's flush is higher", "text": "Cem shows J♠ T♠ with K♠ 8♠ 7♠ for a flush. In Short Deck the flush outranks the full house." },
+          { "title": "Cem wins 237", "text": "Same cards, different rules, different winner. Always remember: in Short Deck, flush beats full house." }
+        ]
+      },
+      "quiz": [
+        { "q": "Which cards are removed in Short Deck?", "options": ["2 to 5", "2 to 6", "Face cards", "Only the 2s"], "answer": 0, "explain": "2s, 3s, 4s and 5s are removed: 36 cards remain." },
+        { "q": "In Short Deck, which is higher?", "options": ["Full house", "Flush", "They are equal", "It depends on the suit"], "answer": 1, "explain": "With nine cards per suit a flush is rarer than a full house, so it ranks higher." },
+        { "q": "Is A-6-7-8-9 a straight in Short Deck?", "options": ["Yes, the ace plays low", "No, never", "Only if suited", "Only on the river"], "answer": 0, "explain": "With 2-5 gone, the ace connects to the 6 to form the lowest straight." },
+        { "q": "The board is 9♥ 8♥ 7♣ K♥ 6♦. Which hand wins in Short Deck?", "options": ["K♣ K♦", "A♥ J♥", "T♠ J♦", "9♣ 9♦"], "answer": 1, "hands": ["Kc Kd", "Ah Jh", "Ts Jd", "9c 9d"], "explain": "A♥ J♥ with 9♥ 8♥ K♥ makes a flush. T-J makes a jack-high straight and K-K or 9-9 make three of a kind; the flush beats them all." },
+        { "q": "What do players usually pay instead of blinds in Short Deck?", "options": ["Nothing", "Antes", "A bring-in", "A double big blind"], "answer": 1, "explain": "Most Short Deck games use antes from everyone, often plus a button blind." }
+      ]
+    },
+    "pineapple": {
+      "name": "Pineapple",
+      "tagline": "Hold'em with one extra card to throw away",
+      "summary": "Pineapple is Hold'em with a twist: you get three hole cards and must discard one of them. In standard Pineapple you discard before the flop; in Crazy Pineapple you keep all three until the flop betting is over. After that, it plays exactly like Hold'em.",
+      "rules": [
+        "Each player is dealt 3 hole cards instead of 2.",
+        "Standard Pineapple: you discard one of the three before the flop (usually right after the preflop betting round).",
+        "Crazy Pineapple: you keep all three through the flop and discard after the flop betting round.",
+        "After the discard you have 2 hole cards and play exactly like Hold'em: any combination of your 2 cards and the 5 board cards.",
+        "Discarded cards are face down and out of play (dead).",
+        "Blinds and four betting rounds as in Hold'em; usually no-limit.",
+        "The best 5-card hand wins at showdown."
+      ],
+      "differences": [
+        "3 hole cards instead of 2, with one discard.",
+        "The discard timing depends on the version (before the flop, or after the flop betting in Crazy Pineapple).",
+        "Starting hands are stronger on average, so winning hands are too.",
+        "After the discard, every Hold'em rule applies unchanged."
+      ],
+      "tips": [
+        "Keep the two cards that work best together: pairs, suited cards, connected cards.",
+        "Expect opponents to hold better hands than in Hold'em.",
+        "In Crazy Pineapple, use the flop to decide which card to keep."
+      ],
+      "walkthrough": {
+        "title": "Choosing the right two",
+        "steps": [
+          { "title": "Blinds", "text": "Ada is on the button. Bora posts 1, Cem posts 2." },
+          { "title": "Three cards each", "text": "Ada gets A♥ Q♥ 7♣. She already knows which card she will throw away." },
+          { "title": "Preflop", "text": "Ada raises to 6. Bora calls. Cem folds and loses his big blind. Pot: 14." },
+          { "title": "The discard", "text": "Ada discards the 7♣ and keeps the suited A♥ Q♥. Bora discards one card face down and keeps 9♠ 9♦. From now on it is plain Hold'em." },
+          { "title": "Flop: Q♦ T♥ 3♥", "text": "Ada has top pair (queens) and a draw to the best flush. She bets 8 and Bora calls. Pot: 30." },
+          { "title": "Turn: 2♣", "text": "Nothing changes. Both check." },
+          { "title": "River: 8♥", "text": "The flush arrives: A♥ Q♥ T♥ 8♥ 3♥. Ada bets 20, Bora calls. Pot: 70." },
+          { "title": "Showdown", "text": "Bora shows 9♠ 9♦, a pair of nines. Ada's ace-high flush wins." },
+          { "title": "Ada wins 70", "text": "Had she kept the 7♣ instead of the Q♥, she would have no flush at all. In Pineapple the discard is your first important decision." }
+        ]
+      },
+      "quiz": [
+        { "q": "How many hole cards do you start with in Pineapple?", "options": ["2", "3", "4", "5"], "answer": 1, "explain": "Three, and you must discard one." },
+        { "q": "When do you discard in Crazy Pineapple?", "options": ["Before any betting", "After the preflop betting", "After the flop betting round", "At the showdown"], "answer": 2, "explain": "In Crazy Pineapple you see the flop with three cards and discard after the flop betting." },
+        { "q": "You hold K♠ K♦ 4♣. Which card do you discard?", "options": ["K♠", "K♦", "4♣", "None"], "answer": 2, "explain": "Keep the pair of kings." },
+        { "q": "After the discard, how is the game played?", "options": ["Like Omaha", "Exactly like Hold'em", "Like Stud", "Like Razz"], "answer": 1, "explain": "With 2 hole cards the rest is identical to Texas Hold'em." },
+        { "q": "The board is Q♦ T♥ 3♥ 2♣ 8♥. Which two kept cards win?", "options": ["9♠ 9♦", "A♥ Q♥", "Q♣ T♣", "J♠ 9♣"], "answer": 1, "hands": ["9s 9d", "Ah Qh", "Qc Tc", "Js 9c"], "explain": "A♥ Q♥ makes an ace-high flush. J-9 makes a queen-high straight (Q-J-T-9-8), which the flush beats." }
+      ]
+    },
+    "badugi": {
+      "name": "Badugi",
+      "tagline": "Four cards, four suits, as low as possible",
+      "summary": "Badugi is a lowball draw game with four cards. You want four cards of different suits and different ranks, as low as possible. Such a hand is called a badugi. Aces are low, and the best hand is A-2-3-4 in four different suits.",
+      "rules": [
+        "Each player gets 4 private cards. There are three draws and four betting rounds, like Triple Draw.",
+        "Blinds start the pot. Usually fixed-limit: small bets in the first two rounds, big bets in the last two.",
+        "The goal: the lowest hand made of cards with all different suits AND all different ranks.",
+        "Four valid cards is a badugi. The ace is low, so A-2-3-4 of four suits is the best possible hand.",
+        "If two cards share a suit or a rank, only one of them counts: you have a 3-card hand (or 2 or 1 card).",
+        "Any 4-card badugi beats any 3-card hand, and any 3-card hand beats any 2-card hand.",
+        "Hands with the same number of cards are compared from the highest card down: 8-6-4-2 beats 9-3-2-A.",
+        "Straights do not matter.",
+        "Standing pat usually shows a made badugi."
+      ],
+      "differences": [
+        "4 cards instead of 2, and no community cards.",
+        "The lowest hand wins, judged by suits and ranks, not by poker hand rankings.",
+        "Three draws and four betting rounds.",
+        "Suits matter in a new way: duplicate suits make your hand smaller."
+      ],
+      "tips": [
+        "A 3-card hand with very low cards (like A-2-3) is a good drawing hand.",
+        "A high badugi (with a Q or K) can be worth breaking to draw for a better one, early on.",
+        "Count how many cards opponents draw: a pat player usually has a badugi."
+      ],
+      "walkthrough": {
+        "title": "Ada finds her fourth suit",
+        "steps": [
+          { "title": "Blinds", "text": "Bora posts 1, Cem posts 2. Fixed-limit: 2 in the first two rounds, 4 in the last two." },
+          { "title": "Four cards each", "text": "Ada has A♠ 3♦ 5♥ K♥. The 5♥ and K♥ share a suit, so only A-3-5 counts: a 3-card hand." },
+          { "title": "First betting round", "text": "Ada raises to 4. Bora folds. Cem calls with Q♠ 6♦ 4♣ 2♥, a badugi but a high one. Pot: 9." },
+          { "title": "First draw", "text": "Ada throws the K♥ and gets 8♥: another heart, still only 3 cards. Cem breaks his queen badugi, draws 1 and gets 9♣ (clubs twice): also a 3-card hand now." },
+          { "title": "Second betting round", "text": "Cem checks, Ada bets 2, Cem calls. Pot: 13." },
+          { "title": "Second draw", "text": "Ada throws the 8♥ and gets 2♣: A♠ 2♣ 3♦ 5♥, four suits, four ranks. A badugi! Cem throws the 9♣ and gets 8♠: 8-6-4-2, also a badugi." },
+          { "title": "Third betting round", "text": "Big bets now. Cem bets 4, Ada raises to 8, Cem calls. Pot: 29." },
+          { "title": "Third draw", "text": "Both players stand pat." },
+          { "title": "Last betting round", "text": "Cem checks, Ada bets 4, Cem calls. Pot: 37." },
+          { "title": "Showdown", "text": "Both have a 4-card badugi, so compare the highest card: Ada's 5-3-2-A against Cem's 8-6-4-2. 5 is lower, so Ada wins 37." }
+        ]
+      },
+      "quiz": [
+        { "q": "What is a badugi?", "options": ["Four cards of the same suit", "Four cards of different suits and different ranks", "Any four low cards", "A pair plus two low cards"], "answer": 1, "explain": "All four suits and all four ranks must be different." },
+        { "q": "What is the best possible Badugi hand?", "options": ["A-2-3-4 of four different suits", "A-2-3-4 all spades", "K-Q-J-T of four suits", "2-3-4-5 of four suits"], "answer": 0, "explain": "The ace is low; A-2-3-4 with four different suits is unbeatable." },
+        { "q": "Which hand wins?", "options": ["A♠ 2♣ 3♦", "K♠ Q♥ J♦ T♣", "A♥ 2♥ 3♣ 4♦", "5♠ 5♥ 6♦ 7♣"], "answer": 1, "hands": ["As 2c 3d", "Ks Qh Jd Tc", "Ah 2h 3c 4d", "5s 5h 6d 7c"], "explain": "K-Q-J-T in four suits is a real 4-card badugi. A♥ 2♥ 3♣ 4♦ has two hearts, so it is only a 3-card hand; the pair of fives also makes a 3-card hand. Any 4-card badugi beats any 3-card hand." },
+        { "q": "You hold 2♠ 4♦ 7♥ 7♣. How many cards count?", "options": ["4", "3", "2", "1"], "answer": 1, "explain": "The two sevens share a rank, so only one of them counts: 2-4-7 is a 3-card hand." },
+        { "q": "Which 4-card badugi is lower (better): 8-6-4-2 or 9-3-2-A?", "options": ["8-6-4-2", "9-3-2-A", "They tie", "Neither is a badugi"], "answer": 0, "explain": "Compare the highest card: 8 is lower than 9." }
+      ]
+    },
+    "horse": {
+      "name": "H.O.R.S.E.",
+      "tagline": "Five games in rotation: the all-rounder's test",
+      "summary": "HORSE is not a single game but a rotation of five: Hold'em, Omaha Hi-Lo, Razz, Seven Card Stud and Stud Eight-or-better. The game changes at regular intervals, so you need to be good at all of them. Everything is played fixed-limit.",
+      "rules": [
+        "H = Limit Hold'em, O = Omaha Hi-Lo (8 or better), R = Razz, S = Seven Card Stud, E = Seven Card Stud Eight-or-better (Stud Hi-Lo).",
+        "The games are always played in the order H-O-R-S-E, then back to H.",
+        "The game changes after a fixed period: commonly one full orbit of the dealer button, or after a time level in tournaments.",
+        "All five games are fixed-limit, with a small bet and a big bet.",
+        "Hold'em and Omaha use blinds and a dealer button; the three stud games use antes and a bring-in.",
+        "Stud Eight-or-better is Seven Card Stud with a split pot: half to the best high, half to the best qualifying low (five different cards 8 or lower).",
+        "Your chips and seat stay the same; only the game changes.",
+        "It rewards all-round skill: a weakness in one game cannot be hidden for long."
+      ],
+      "differences": [
+        "Not one game but five, played in turn.",
+        "Fixed-limit betting in every game, including Hold'em.",
+        "Includes high games (H, S), low games (R) and split games (O, E).",
+        "You must switch thinking each time: in Razz the lowest hand wins, in Stud the highest."
+      ],
+      "tips": [
+        "Learn each game on its own first. On this site, Hold'em and Seven Card Stud are playable.",
+        "Before every hand, ask: which game is it now, and does the high or the low win?",
+        "Most mistakes happen right after the switch, so slow down for the first hands of each game."
+      ],
+      "walkthrough": {
+        "title": "One orbit through HORSE",
+        "steps": [
+          { "title": "The rotation", "text": "Same table, same players, same chips. Only the game changes: H → O → R → S → E, then back to H." },
+          { "title": "H: Limit Hold'em", "text": "Blinds, 2 hole cards and a board, exactly like Hold'em, but every bet is a fixed size. Ada has top pair: J♠ with the J♥ on board." },
+          { "title": "O: Omaha Hi-Lo", "text": "Four hole cards, exactly 2 + 3, and a split pot. Ada's A♥ 2♦ with 7-5-4 on board is a strong low." },
+          { "title": "R: Razz", "text": "Now the stud games begin: antes, bring-in and no board. In Razz the lowest hand wins: Ada's A-3-5-2 is excellent." },
+          { "title": "S: Seven Card Stud", "text": "Back to the highest hand. Ada's hidden aces plus a pair of nines showing make two pair." },
+          { "title": "E: Stud Eight-or-better", "text": "Stud with a split pot. Ada has A-2-3-4-5: the best low (and even a straight for high). Bora's queens full of jacks wins the high half. They split the pot." },
+          { "title": "Back to the start", "text": "After E the rotation starts again with Hold'em. The dealer button has moved on." },
+          { "title": "H again", "text": "Ada looks down at Q♥ Q♣ in Hold'em: a high hand, so higher is better again. Always ask: which game is it now?" }
+        ]
+      },
+      "quiz": [
+        { "q": "What does the O stand for in HORSE?", "options": ["Omaha (high only)", "Omaha Hi-Lo (8 or better)", "Open-face Chinese", "Over-the-top"], "answer": 1, "explain": "O is Omaha Eight-or-better, the split-pot version." },
+        { "q": "In what order are the games played?", "options": ["Random", "H-O-R-S-E, then again from H", "Players vote each orbit", "E-S-R-O-H"], "answer": 1, "explain": "The order is fixed: Hold'em, Omaha Hi-Lo, Razz, Stud, Stud Eight-or-better." },
+        { "q": "What betting structure is used in HORSE?", "options": ["No-limit", "Pot-limit", "Fixed-limit", "Spread limit"], "answer": 2, "explain": "All five games are fixed-limit." },
+        { "q": "In which HORSE game does the lowest hand win the whole pot?", "options": ["H", "O", "R", "S"], "answer": 2, "explain": "Razz is the pure low game. O and E are split between high and low." },
+        { "q": "Which games use a split pot?", "options": ["H and S", "O and E", "R and S", "All five"], "answer": 1, "explain": "Omaha Hi-Lo and Stud Eight-or-better split the pot between high and low." }
+      ]
+    }
+  }
+}
