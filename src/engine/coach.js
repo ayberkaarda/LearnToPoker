@@ -2,6 +2,7 @@
 import { estimateEquity, currentHandInfo, drawAdvice } from './equity.js';
 import { describeHand } from './evaluator.js';
 import { totalPot } from './betting.js';
+import { callPotOdds } from './bots.js';
 
 /**
  * Advice for the human at state.awaiting (kind 'bet' or 'draw').
@@ -17,14 +18,14 @@ export function coachAdvice(state, heroIdx, samples = 300) {
   const reasons = [];
 
   if (aw?.kind === 'draw') {
-    const discard = drawAdvice(hero.cards);
+    const discard = drawAdvice(hero.cards).slice(0, aw.maxDiscard ?? 5);
     reasons.push({ key: discard.length === 0 ? 'coach.drawKeepAll' : 'coach.drawDiscard', params: { n: discard.length } });
     return { equity, opponents, potOdds: 0, handKey: handDesc?.key, handParams: handDesc?.params, suggestion: { type: 'draw', discard }, reasons, discard };
   }
 
   const actions = aw?.actions;
-  const toCall = actions?.toCall ?? 0;
-  const potOdds = toCall > 0 ? toCall / (pot + toCall) : 0;
+  // pot odds use what hero really pays (short stacks pay less) and only the pot hero can win
+  const { callAmt: toCall, pot: winPot, potOdds } = callPotOdds(state, heroIdx, actions);
   const fair = 1 / (opponents + 1);
   let suggestion;
 
@@ -33,7 +34,16 @@ export function coachAdvice(state, heroIdx, samples = 300) {
 
   if (!actions) return { equity, opponents, potOdds, handKey: handDesc?.key, handParams: handDesc?.params, suggestion: null, reasons };
 
-  if (actions.check) {
+  if (actions.bringIn) {
+    // stud bring-in: no free check and no fold; post the bring-in or complete to the small bet
+    if (equity > fair + 0.2 && actions.raise) {
+      suggestion = { type: 'bet', amount: actions.raise.min };
+      reasons.push({ key: 'coach.betForValue', params: {} });
+    } else {
+      suggestion = { type: 'call' };
+      reasons.push({ key: 'coach.callOk', params: {} });
+    }
+  } else if (actions.check) {
     if (equity > fair + 0.2 && actions.raise) {
       suggestion = { type: 'bet', amount: sizeBet(actions, pot, state) };
       reasons.push({ key: 'coach.betForValue', params: {} });
@@ -42,8 +52,8 @@ export function coachAdvice(state, heroIdx, samples = 300) {
       reasons.push({ key: 'coach.checkFree', params: {} });
     }
   } else {
-    reasons.push({ key: 'coach.potOdds', params: { toCall, pot, pct: Math.round(potOdds * 100) } });
-    if (equity < potOdds - 0.03) {
+    reasons.push({ key: 'coach.potOdds', params: { toCall, pot: winPot, pct: Math.round(potOdds * 100) } });
+    if (equity < potOdds - 0.03 && actions.fold) {
       suggestion = { type: 'fold' };
       reasons.push({ key: 'coach.foldBadOdds', params: {} });
     } else if (equity > fair + 0.25 && actions.raise) {

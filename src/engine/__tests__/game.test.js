@@ -106,10 +106,14 @@ describe('draw and stud specifics', () => {
     let s = createGame({ variantId: 'sevenCardStud', players: players(3), seed: 21 });
     s = runUntilInput(s);
     expect(s.log.filter((l) => l.type === 'ante').length).toBe(3);
-    const bi = s.log.find((l) => l.type === 'bringIn');
-    expect(bi).toBeTruthy();
     const ups = s.players.map((p) => p.cards.find((c) => c.faceUp));
     const lowest = ups.reduce((m, c, i) => (c.rank < ups[m].rank ? i : m), 0);
+    // the bring-in player is asked first (bring-in or complete)
+    expect(s.awaiting.playerIdx).toBe(lowest);
+    expect(s.awaiting.actions.bringIn).toBeTruthy();
+    s = runUntilInput(act(s, { type: 'call' }));
+    const bi = s.log.find((l) => l.type === 'bringIn');
+    expect(bi).toBeTruthy();
     expect(bi.playerIdx).toBe(lowest);
     expect(s.players.every((p) => p.cards.length === 3)).toBe(true);
     let guard = 0;

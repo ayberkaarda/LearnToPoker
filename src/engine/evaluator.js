@@ -151,20 +151,26 @@ export function compareHands(a, b) {
  * Lower score = better. Returns { ranks (desc, ace=1), score, qualifies8 }.
  */
 export function evaluateLowA5(cards) {
-  const vals = [...new Set(cards.map((c) => (c.rank === 14 ? 1 : c.rank)))].sort((a, b) => a - b);
-  if (vals.length < 5) {
-    // pairs forced: fill with duplicates (worse). Use all ranks with multiplicity.
-    const all = cards.map((c) => (c.rank === 14 ? 1 : c.rank)).sort((a, b) => a - b).slice(0, 5);
-    const desc = all.sort((a, b) => b - a);
-    return { ranks: desc, score: 1e6 + encodeLow(desc), qualifies8: false, paired: true };
-  }
-  const five = vals.slice(0, 5).sort((a, b) => b - a);
-  return { ranks: five, score: encodeLow(five), qualifies8: five[0] <= 8, paired: false };
+  if (cards.length > 5) return bestLowA5(cards);
+  const vals = cards.map((c) => (c.rank === 14 ? 1 : c.rank));
+  const desc = vals.slice().sort((a, b) => b - a);
+  const counts = new Map();
+  for (const r of vals) counts.set(r, (counts.get(r) || 0) + 1);
+  // group by count desc, then rank desc: the paired ranks matter most, then the kickers
+  const groups = [...counts.entries()].sort((a, b) => b[1] - a[1] || b[0] - a[0]);
+  const shape = groups.map((g) => g[1]).join('');
+  // lower category = better low: no pair < pair < two pair < trips < full house < quads
+  const LOW_CATEGORY = { 11111: 0, 2111: 1, 221: 2, 311: 3, 32: 4, 41: 5 };
+  const category = LOW_CATEGORY[shape] ?? (groups[0][1] >= 4 ? 5 : groups[0][1] === 3 ? 3 : groups.filter((g) => g[1] === 2).length >= 2 ? 2 : groups[0][1] === 2 ? 1 : 0);
+  const tiebreak = groups.map((g) => g[0]);
+  const paired = category > 0;
+  return { ranks: desc, category, score: category * 15 ** 5 + encodeLow(tiebreak, 5), qualifies8: !paired && desc.length === 5 && desc[0] <= 8, paired };
 }
 
-function encodeLow(desc) {
+/** Pack ranks (most significant first) into one number; `slots` pads to a fixed length. */
+function encodeLow(desc, slots = desc.length) {
   let s = 0;
-  for (const r of desc) s = s * 15 + r;
+  for (let i = 0; i < slots; i++) s = s * 15 + (desc[i] || 0);
   return s;
 }
 
@@ -184,11 +190,18 @@ export function bestLowA5(cards) {
  */
 export function evaluateLow27(cards) {
   const hi = evaluate5(cards);
-  // invert: high-hand category is bad. Score = category * big + tiebreak (lower ranks better)
   const desc = cards.map((c) => c.rank).sort((a, b) => b - a);
-  let s = hi.category * 1e6;
-  for (const r of desc) s = s * 15 + r;
-  return { ranks: desc, category: hi.category, score: s };
+  let category = hi.category;
+  let tiebreak = hi.tiebreak;
+  // the ace is always high in 2-7: A-5-4-3-2 is not a straight, only ace-high (or an ace-high flush)
+  const isWheel = desc.join(',') === '14,5,4,3,2';
+  if (isWheel) {
+    const isFlush = cards.every((c) => c.suit === cards[0].suit);
+    category = isFlush ? CATEGORY.FLUSH : CATEGORY.HIGH_CARD;
+    tiebreak = desc;
+  }
+  // invert the high-hand order: a lower category is better, then lower ranks (grouped: pairs first)
+  return { ranks: desc, category, score: category * 15 ** 5 + encodeLow(tiebreak, 5) };
 }
 
 export function bestLow27(cards) {

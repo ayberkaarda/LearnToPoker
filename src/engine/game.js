@@ -1,7 +1,7 @@
 // Generic poker hand state machine. Pure-ish: every function returns a NEW state (deep-cloned).
 // Drives Texas Hold'em, Omaha, Five-Card Draw and Seven-Card Stud via variant configs.
 
-import { createRng, newShuffledDeck } from './deck.js';
+import { createRng, newShuffledDeck, shuffle } from './deck.js';
 import { bestOf, bestOmaha, evaluate5, describeHand } from './evaluator.js';
 import {
   LIMIT,
@@ -9,6 +9,7 @@ import {
   legalActions,
   applyAction,
   computePots,
+  refundUncalled,
   inHand,
   canAct,
   commit,
@@ -61,6 +62,7 @@ export function createGame({ variantId, players, startingStack = 1000, seed = Da
       discardCount: null,
     })),
     deck: [],
+    discards: [],
     board: [],
     phase: PHASE.IDLE,
     streetIdx: -1,
@@ -124,6 +126,8 @@ export function startHand(prev) {
   if (seated < 2) throw new Error('not enough players with chips');
   state.dealerIdx = seatAfter(state, state.dealerIdx, (p) => !p.sittingOut);
   state.deck = newShuffledDeck(rngFor(state));
+  state.discards = [];
+  state.reshuffles = 0;
   state.board = [];
   state.streetIdx = -1;
   state.betting = null;
@@ -166,8 +170,24 @@ function postBlinds(state) {
 }
 
 function dealCard(state, faceUp = false) {
+  if (state.deck.length === 0) reshuffleDiscards(state);
   const c = state.deck.pop();
+  if (!c) throw new Error('deck exhausted');
   return { ...c, faceUp };
+}
+
+/** Draw games: when the stub runs out, the earlier discards are shuffled into a new stub. */
+function reshuffleDiscards(state) {
+  if (!state.discards?.length) return;
+  state.deck = shuffle(state.discards, rngFor(state));
+  state.reshuffles = (state.reshuffles || 0) + 1;
+  state.discards = [];
+}
+
+/** How many cards player idx may exchange right now. */
+function maxDiscardFor(state, idx) {
+  const limit = state.variant.maxDiscard ?? 5;
+  return Math.min(limit, state.players[idx].cards.length, state.deck.length + (state.discards?.length || 0));
 }
 
 function dealStreet(state) {
@@ -204,21 +224,36 @@ function dealStreet(state) {
   }
 }
 
-function upCardsEval(p) {
-  const ups = p.cards.filter((c) => c.faceUp);
-  if (ups.length >= 5) return bestOf(ups).score;
-  // partial: rank by pair/trips then high cards. Build pseudo evaluation.
+/**
+ * Rank of a stud player's face-up cards for deciding who acts first (at most 4 up cards:
+ * straights and flushes do not count). Returns [category, ...ranks] where category is
+ * 0 high card, 1 pair, 2 two pair, 3 trips, 4 quads; compare with compareShowing.
+ */
+export function showingRank(cards) {
+  const ups = cards.filter((c) => c.faceUp);
   const counts = {};
   for (const c of ups) counts[c.rank] = (counts[c.rank] || 0) + 1;
   const groups = Object.entries(counts)
     .map(([r, c]) => [Number(r), c])
     .sort((a, b) => b[1] - a[1] || b[0] - a[0]);
-  let score = 0;
-  for (const [r, c] of groups) score = score * 1000 + c * 15 + r;
-  const high = ups.map((c) => c.rank).sort((a, b) => b - a);
-  const top = high[0] || 0;
-  const topSuit = ups.find((c) => c.rank === top)?.suit || 'c';
-  return score * 100 + SUIT_ORDER[topSuit];
+  const top = groups[0]?.[1] || 0;
+  const pairs = groups.filter((g) => g[1] === 2).length;
+  let category = 0;
+  if (top >= 4) category = 4;
+  else if (top === 3) category = 3;
+  else if (pairs >= 2) category = 2;
+  else if (pairs === 1) category = 1;
+  return [category, ...groups.map((g) => g[0])];
+}
+
+/** Positive when showing hand a beats b, 0 on a tie. Suits never break ties. */
+export function compareShowing(a, b) {
+  const n = Math.max(a.length, b.length);
+  for (let i = 0; i < n; i++) {
+    const d = (a[i] || 0) - (b[i] || 0);
+    if (d) return d;
+  }
+  return 0;
 }
 
 function firstToAct(state, street) {
@@ -226,7 +261,8 @@ function firstToAct(state, street) {
   switch (street.firstToAct) {
     case 'afterBlinds': {
       const headsUp = state.players.filter((p) => !p.sittingOut).length === 2;
-      if (headsUp) return state.dealerIdx; // dealer is SB and acts first preflop
+      // heads-up the dealer is SB and acts first preflop, unless posting the blind put them all-in
+      if (headsUp) return canAct(state.players[state.dealerIdx]) ? state.dealerIdx : seatAfter(state, state.dealerIdx, canAct);
       return seatAfter(state, state.bbIdx, canAct);
     }
     case 'afterDealer':
@@ -247,14 +283,17 @@ function firstToAct(state, street) {
       return best;
     }
     case 'bestShowing': {
+      // highest showing hand acts first; ties go to the first such seat left of the dealer
       let best = -1;
-      let bestKey = -1;
-      for (const p of state.players) {
+      let bestKey = null;
+      for (let s = 1; s <= n; s++) {
+        const i = (state.dealerIdx + s) % n;
+        const p = state.players[i];
         if (!canAct(p)) continue;
-        const key = upCardsEval(p);
-        if (key > bestKey) {
+        const key = showingRank(p.cards);
+        if (best === -1 || compareShowing(key, bestKey) > 0) {
           bestKey = key;
-          best = p.id;
+          best = i;
         }
       }
       return best;
@@ -285,17 +324,15 @@ function beginBetting(state) {
     currentBet = v.blinds.bb;
     lastAggressor = state.bbIdx;
   }
+  let bringInIdx = -1;
   if (street.firstToAct === 'bringIn') {
-    const bi = state.players[first];
-    const amt = commit(bi, v.bringIn);
-    pushLog(state, { type: 'bringIn', playerIdx: first, amount: amt });
-    bi.lastAction = { type: 'bringIn', amount: amt };
-    currentBet = amt;
-    acted = [first];
-    lastAggressor = first;
-    first = nextActor(state.players, first);
+    // The lowest up card decides: post the bring-in or complete to the small bet (an awaited
+    // decision, see legalActions). A player already all-in from the ante cannot bring in;
+    // action then simply starts with the next seat that can act.
+    if (first !== -1 && canAct(state.players[first])) bringInIdx = first;
   }
-  state.betting = newRound({ firstIdx: first, currentBet, minRaise: betSize, betSize, lastAggressor, acted });
+  if (first !== -1 && !canAct(state.players[first])) first = nextActor(state.players, first);
+  state.betting = newRound({ firstIdx: first, currentBet, minRaise: betSize, betSize, lastAggressor, acted, bringInIdx, bringInAmount: v.bringIn || 0 });
   // Skip the round when nobody (or only one player who owes nothing) can act
   const actors = state.players.filter(canAct);
   if (first === -1 || actors.length === 0 || (actors.length === 1 && actors[0].bet >= currentBet)) {
@@ -312,6 +349,19 @@ function setAwaiting(state) {
       state.awaiting = null;
       return;
     }
+    if (!canAct(state.players[state.betting.toAct])) {
+      // never wait on a player who cannot act (all-in, folded, no chips)
+      const b = state.betting;
+      const nxt = nextActor(state.players, b.toAct);
+      const settled = state.players.every((p, i) => !canAct(p) || (p.bet === b.currentBet && b.acted.includes(i)));
+      if (nxt === -1 || settled) {
+        b.complete = true;
+        b.toAct = -1;
+        state.awaiting = null;
+        return;
+      }
+      b.toAct = nxt;
+    }
     state.awaiting = {
       kind: 'bet',
       playerIdx: state.betting.toAct,
@@ -323,7 +373,7 @@ function setAwaiting(state) {
       return;
     }
     const idx = state.drawQueue[0];
-    state.awaiting = { kind: 'draw', playerIdx: idx, maxDiscard: Math.min(5, state.deck.length) };
+    state.awaiting = { kind: 'draw', playerIdx: idx, maxDiscard: maxDiscardFor(state, idx) };
   } else state.awaiting = null;
 }
 
@@ -366,9 +416,11 @@ function showdownEval(state, p) {
 }
 
 function showdown(state) {
+  // Uncalled chips go back to their owner before any pot is built, so nobody "wins" their own refund.
+  const refunds = refundUncalled(state.players);
   const pots = computePots(state.players);
   const alive = state.players.filter(inHand);
-  const result = { pots: [], hands: {}, uncontested: alive.length === 1, winners: [] };
+  const result = { pots: [], hands: {}, uncontested: alive.length === 1, winners: [], refunds };
   const totalWon = {};
   if (alive.length === 1) {
     const w = alive[0];
@@ -395,8 +447,10 @@ function showdown(state) {
       }
       const share = Math.floor(pot.amount / winners.length);
       let remainder = pot.amount - share * winners.length;
-      // odd chip to first winner after dealer
-      const ordered = winners.slice().sort((a, b) => ((a - state.dealerIdx + 99 * state.players.length) % state.players.length) - ((b - state.dealerIdx + 99 * state.players.length) % state.players.length));
+      // odd chip(s) go to the first winner(s) left of the dealer; the dealer seat comes last
+      const n = state.players.length;
+      const dist = (i) => (i - state.dealerIdx - 1 + 2 * n) % n;
+      const ordered = winners.slice().sort((a, b) => dist(a) - dist(b));
       for (const w of ordered) {
         const extra = remainder > 0 ? 1 : 0;
         remainder -= extra;
@@ -467,18 +521,26 @@ export function act(prev, action) {
     const { betting, applied } = applyAction(state.players, state.betting, state.variant.limit, action);
     state.betting = betting;
     state.players[idx].lastAction = applied;
-    pushLog(state, { type: 'action', playerIdx: idx, action: applied.type, amount: applied.amount, raiseTo: applied.raiseTo ?? null, pot: totalPot(state.players) });
+    if (applied.type === 'bringIn') pushLog(state, { type: 'bringIn', playerIdx: idx, amount: applied.amount });
+    else pushLog(state, { type: 'action', playerIdx: idx, action: applied.type, amount: applied.amount, raiseTo: applied.raiseTo ?? null, pot: totalPot(state.players) });
     state.awaiting = null;
     if (!betting.complete) setAwaiting(state);
     return state;
   }
   if (state.awaiting.kind === 'draw') {
-    const discard = new Set(action.discard || []);
     const p = state.players[idx];
+    const own = new Set(p.cards.map((c) => c.id));
+    const discard = new Set((action.discard || []).filter((id) => own.has(id)));
+    const max = state.awaiting.maxDiscard ?? maxDiscardFor(state, idx);
+    if (discard.size > max) throw new Error(`may discard at most ${max} cards`);
     const kept = p.cards.filter((c) => !discard.has(c.id));
-    const count = p.cards.length - kept.length;
+    const thrown = p.cards.filter((c) => discard.has(c.id));
+    const count = thrown.length;
     const fresh = [];
     for (let k = 0; k < count; k++) fresh.push(dealCard(state, false));
+    // this player's own discards join the pile only after their replacements are dealt
+    if (!state.discards) state.discards = [];
+    state.discards.push(...thrown.map(({ faceUp, ...c }) => c));
     p.cards = [...kept, ...fresh];
     p.discardCount = count;
     p.lastAction = { type: 'draw', amount: count };

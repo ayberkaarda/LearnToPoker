@@ -15,6 +15,18 @@ function evalFor(variant, hole, board) {
 }
 
 /**
+ * Cards hero cannot see: the full deck minus hero's cards, the board and every face-up card on
+ * the table (stud), including the up cards of players who already folded (they are dead).
+ */
+export function unknownCards(state, heroIdx) {
+  const known = [...state.players[heroIdx].cards.map(strip), ...state.board.map(strip)];
+  state.players.forEach((p, i) => {
+    if (i !== heroIdx) known.push(...p.cards.filter((c) => c.faceUp).map(strip));
+  });
+  return without(fullDeck(), known);
+}
+
+/**
  * Estimate hero's probability of winning (ties count as 1/n) at showdown against all
  * players still in the hand, given what hero can see.
  * Returns { equity, samples, opponents }.
@@ -26,11 +38,8 @@ export function estimateEquity(state, heroIdx, samples = 200, seed = 1234) {
   if (opponents.length === 0) return { equity: 1, samples: 0, opponents: 0 };
   const heroCards = hero.cards.map(strip);
   const board = state.board.map(strip);
-  const known = [...heroCards, ...board];
-  // opponents' face-up cards (stud) are known
   const oppKnown = opponents.map((p) => p.cards.filter((c) => c.faceUp).map(strip));
-  for (const k of oppKnown) known.push(...k);
-  const unknown = without(fullDeck(), known);
+  const unknown = unknownCards(state, heroIdx);
   const rng = createRng(seed + state.handNumber * 31 + heroIdx);
 
   const targetBoard = v.type === 'community' ? 5 : 0;
