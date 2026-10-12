@@ -1,0 +1,224 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 23, 19, 0.55);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.nav--scrolled,
+.nav--open {
+  background: rgba(10, 23, 19, 0.84);
+  border-bottom-color: var(--border);
+}
+
+.nav--scrolled::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(214, 171, 76, 0.45), transparent);
+  pointer-events: none;
+}
+
+.nav-skip {
+  position: absolute;
+  left: 12px;
+  top: -48px;
+  z-index: 2;
+  padding: 8px 14px;
+  border-radius: var(--radius-s);
+  background: var(--gold);
+  color: #1a1408;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-skip:focus {
+  top: 10px;
+}
+
+.nav-inner {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.nav-brand {
+  text-decoration: none;
+  color: var(--text);
+  flex: 0 0 auto;
+}
+
+.nav-brand:hover {
+  color: var(--text);
+}
+
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.nav-logo__mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  border: 1px solid var(--border-gold);
+  background: radial-gradient(circle at 30% 25%, var(--felt-2), var(--felt) 60%, #123a2a);
+  color: var(--gold-2);
+  font-size: 1.05rem;
+  line-height: 1;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.nav-logo__to {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-2);
+}
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link {
+  position: relative;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+
+.nav-link:hover {
+  color: var(--text);
+  background: rgba(240, 228, 200, 0.05);
+}
+
+.nav-link.is-active {
+  color: var(--text);
+}
+
+.nav-link.is-active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-burger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 42px;
+  height: 42px;
+  padding: 0 11px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+}
+
+.nav-burger__line {
+  display: block;
+  height: 1.5px;
+  width: 100%;
+  border-radius: 2px;
+  background: var(--text);
+  transition: transform 0.3s var(--ease);
+}
+
+.nav--open .nav-burger__line:first-child {
+  transform: translateY(3.75px) rotate(45deg);
+}
+
+.nav--open .nav-burger__line:last-child {
+  transform: translateY(-3.75px) rotate(-45deg);
+}
+
+.nav-drawer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: calc(100vh - var(--nav-h));
+  height: calc(100dvh - var(--nav-h));
+  overflow-y: auto;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(42, 115, 80, 0.25), transparent 70%),
+    var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.nav-drawer__list {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+.nav-drawer__link {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-drawer__link:hover,
+.nav-drawer__link.is-active {
+  color: var(--gold-2);
+}
+
+.nav-drawer__index {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+}
+
+@media (min-width: 900px) {
+  .nav-links {
+    display: flex;
+  }
+  .nav-burger,
+  .nav-drawer {
+    display: none;
+  }
+}

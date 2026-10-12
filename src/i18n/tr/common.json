@@ -1,0 +1,77 @@
+{
+  "brand": "LearnToPoker",
+  "tagline": "Sıfırdan poker öğren — sakin, adım adım, gerçek parasız.",
+  "nav": {
+    "home": "Ana Sayfa",
+    "basics": "Temeller",
+    "variants": "Oyun Türleri",
+    "play": "Oyna",
+    "glossary": "Sözlük",
+    "menu": "Menü",
+    "openMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat",
+    "skip": "İçeriğe geç"
+  },
+  "cta": {
+    "startLearning": "Öğrenmeye Başla",
+    "playNow": "Hemen Oyna",
+    "next": "İleri",
+    "back": "Geri",
+    "restart": "Baştan Başla",
+    "continue": "Devam Et"
+  },
+  "suits": {
+    "s": "Maça",
+    "h": "Kupa",
+    "d": "Karo",
+    "c": "Sinek"
+  },
+  "ranks": {
+    "2": "İkili",
+    "3": "Üçlü",
+    "4": "Dörtlü",
+    "5": "Beşli",
+    "6": "Altılı",
+    "7": "Yedili",
+    "8": "Sekizli",
+    "9": "Dokuzlu",
+    "10": "Onlu",
+    "T": "Onlu",
+    "J": "Vale",
+    "Q": "Kız",
+    "K": "Papaz",
+    "A": "As",
+    "11": "Vale",
+    "12": "Kız",
+    "13": "Papaz",
+    "14": "As"
+  },
+  "cardName": "{{suit}} {{rank}}",
+  "cardBack": "Kapalı kart",
+  "hands": {
+    "highCard": "High Card (Yüksek Kart)",
+    "pair": "Pair (Bir Çift)",
+    "twoPair": "Two Pair (İki Çift)",
+    "threeOfAKind": "Three of a Kind (Üçlü)",
+    "straight": "Straight (Kent)",
+    "flush": "Flush (Renk)",
+    "fullHouse": "Full House (Ful)",
+    "fourOfAKind": "Four of a Kind (Kare)",
+    "straightFlush": "Straight Flush (Sıralı Renk)",
+    "royalFlush": "Royal Flush (Floş Royal)"
+  },
+  "footer": {
+    "tagline": "Poker'i hiç bilmeyenler için sakin, görsel ve uygulamalı bir okul.",
+    "learn": "Öğren",
+    "practice": "Pratik",
+    "disclaimer": "Bu site yalnızca eğitim amaçlıdır. Gerçek parayla oyun, bahis veya ödeme yoktur; tüm fişler sanaldır.",
+    "responsible": "Kumar bağımlılık yapabilir. Gerçek parayla oynamayı düşünüyorsan sınırlarını bil ve yaşına uygun yasalara uy.",
+    "rights": "Tüm hakları saklıdır.",
+    "language": "Dil"
+  },
+  "lang": {
+    "tr": "Türkçe",
+    "en": "English",
+    "label": "Dil seçimi"
+  }
+}

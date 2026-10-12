@@ -1,0 +1,18 @@
+.card2d {
+  display: inline-block;
+  flex: 0 0 auto;
+  height: auto;
+  aspect-ratio: 250 / 350;
+  vertical-align: middle;
+  overflow: visible;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 14px rgba(0, 0, 0, 0.22));
+  user-select: none;
+}
+
+.card2d--sm { width: 44px; }
+.card2d--md { width: 64px; }
+.card2d--lg { width: 92px; }
+
+.card2d text {
+  font-variation-settings: 'opsz' 72;
+}

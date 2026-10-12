@@ -1,0 +1,23 @@
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 40px;
+  max-width: 760px;
+}
+
+.section-head--center {
+  align-items: center;
+  text-align: center;
+  margin-inline: auto;
+}
+
+.section-head--center .section-head__lead {
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .section-head {
+    margin-bottom: 56px;
+  }
+}
