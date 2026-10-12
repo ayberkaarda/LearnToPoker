@@ -247,5 +247,14 @@
     "newHand": "New hand",
     "close": "Look at the table",
     "rebuy": "Rebuy ({{amount}})"
+  },
+  "refundLog": "{{name}} got back {{amount}} uncalled chips",
+  "srTable": {
+    "title": "Table in text",
+    "yourCards": "Your cards: {{cards}}",
+    "board": "Board: {{cards}}",
+    "player": "{{name}} ({{chips}}): {{cards}}",
+    "hidden": "{{count}} face-down cards",
+    "noCards": "no cards"
   }
 }

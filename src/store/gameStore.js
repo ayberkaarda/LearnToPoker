@@ -161,18 +161,21 @@ export const useGameStore = create((set, get) => ({
   },
 
   advance: () => {
+    if (get().setupOpen) return;
     const g = get().game;
     if (!g) return;
     get()._commit(advanceGame(g));
   },
 
   humanAct: (action) => {
+    if (get().setupOpen) return;
     const g = get().game;
     if (!isHumanTurn(g)) return;
     get()._commit(act(g, action));
   },
 
   toggleDiscard: (cardId) => {
+    if (get().setupOpen) return;
     const g = get().game;
     if (!isHumanTurn(g) || g.awaiting.kind !== 'draw') return;
     const sel = get().drawSelection;
@@ -181,12 +184,14 @@ export const useGameStore = create((set, get) => ({
   },
 
   submitDraw: () => {
+    if (get().setupOpen) return;
     const { game, drawSelection } = get();
     if (!isHumanTurn(game) || game.awaiting.kind !== 'draw') return;
     get()._commit(act(game, { type: 'draw', discard: drawSelection }));
   },
 
   newHand: () => {
+    if (get().setupOpen) return;
     const g = get().game;
     if (!g || g.phase !== PHASE.COMPLETE || !canStartNextHand(g)) return;
     get()._commit(startHand(g));
@@ -194,6 +199,7 @@ export const useGameStore = create((set, get) => ({
   },
 
   rebuy: () => {
+    if (get().setupOpen) return;
     const g = get().game;
     if (!g || g.players[0].stack > 0) return;
     const next = structuredClone(g);
@@ -247,6 +253,12 @@ function cardsText(t, ids) {
     .join(', ');
 }
 
+/** "X got back N uncalled chips" lines for `result.refunds` ([{playerIdx, amount}]), if any. */
+export function refundTexts(t, game, result) {
+  const list = Array.isArray(result?.refunds) ? result.refunds : [];
+  return list.filter((r) => r && r.amount > 0).map((r) => t('refundLog', { name: playerName(t, game, r.playerIdx), amount: r.amount }));
+}
+
 /** Plain-language sentence for one feed item. */
 export function explainFeedItem(t, game, item) {
   const e = item.entry;
@@ -280,9 +292,11 @@ export function explainFeedItem(t, game, item) {
       return e.count === 0 ? t('log.drawNone', { name: name(e.playerIdx) }) : t('log.draw', { name: name(e.playerIdx), count: e.count });
     case 'showdown': {
       const r = e.result;
+      // Refunds come either as separate 'refund' log entries or only on the result.
+      const refundLines = game?.log?.some((x) => x.type === 'refund') ? [] : refundTexts(t, game, r);
       if (r.uncontested) {
         const w = r.winners[0];
-        return t('log.uncontested', { name: name(w.playerIdx), amount: w.amount });
+        return [t('log.uncontested', { name: name(w.playerIdx), amount: w.amount }), ...refundLines].join(' ');
       }
       const lines = r.winners.map((w) =>
         t('log.showdown', { name: name(w.playerIdx), amount: w.amount, hand: handText(t, r.hands[w.playerIdx]?.description) })
@@ -291,8 +305,10 @@ export function explainFeedItem(t, game, item) {
         const split = r.pots.find((p) => p.winners.length > 1);
         lines.push(t('log.showdownSplit', { names: split.winners.map(name).join(', ') }));
       }
-      return lines.join(' ');
+      return [...lines, ...refundLines].join(' ');
     }
+    case 'refund':
+      return t('refundLog', { name: name(e.playerIdx), amount: e.amount });
     default:
       return '';
   }

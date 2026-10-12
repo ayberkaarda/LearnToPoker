@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import Card2D from '../cards/Card2D.jsx';
 import { reviewHand } from '../engine/coach.js';
-import { useGameStore, PHASE, handText, playerName, formatParams, canStartNextHand } from '../store/gameStore.js';
+import { useGameStore, PHASE, handText, playerName, formatParams, canStartNextHand, refundTexts } from '../store/gameStore.js';
 import './HandSummary.css';
 
 export default function HandSummary() {
@@ -14,6 +14,8 @@ export default function HandSummary() {
   const newHand = useGameStore((s) => s.newHand);
   const rebuy = useGameStore((s) => s.rebuy);
   const openSetup = useGameStore((s) => s.openSetup);
+  const startingStack = useGameStore((s) => s.config.startingStack);
+  const blocked = useGameStore((s) => s.setupOpen);
 
   const notes = useMemo(() => (game?.phase === PHASE.COMPLETE ? reviewHand(game, 0) : []), [game]);
   if (!open || !game || game.phase !== PHASE.COMPLETE || !game.result) return null;
@@ -23,9 +25,12 @@ export default function HandSummary() {
   shown.sort((a, b) => b.h.score - a.h.score);
   const busted = game.players[0].stack <= 0;
   const canContinue = canStartNextHand(game);
+  const refunds = Array.isArray(r.refunds)
+    ? refundTexts(t, game, r)
+    : (game.log || []).filter((e) => e.type === 'refund').map((e) => t('refundLog', { name: playerName(t, game, e.playerIdx), amount: e.amount }));
 
   return (
-    <div className="hsum" role="dialog" aria-modal="false" aria-labelledby="hsum-title">
+    <div className="hsum" role="dialog" aria-modal="false" aria-labelledby="hsum-title" inert={blocked ? '' : undefined} aria-hidden={blocked || undefined}>
       <motion.div className="hsum__card" initial={{ opacity: 0, y: 16, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.3 }}>
         <header className="hsum__head">
           <span className="hsum__eyebrow">{t('summary.handN', { n: game.handNumber })}</span>
@@ -54,6 +59,14 @@ export default function HandSummary() {
             );
           })}
         </ul>
+
+        {refunds.length > 0 && (
+          <ul className="hsum__notes">
+            {refunds.map((line, i) => (
+              <li key={i}>{line}</li>
+            ))}
+          </ul>
+        )}
 
         {game.board.length > 0 && (
           <div className="hsum__block">
@@ -105,7 +118,7 @@ export default function HandSummary() {
           </button>
           {busted ? (
             <button type="button" className="btn btn--primary btn--sm" onClick={rebuy}>
-              {t('summary.rebuy')}
+              {t('summary.rebuy', { amount: startingStack })}
             </button>
           ) : canContinue ? (
             <button type="button" className="btn btn--primary btn--sm" onClick={newHand}>

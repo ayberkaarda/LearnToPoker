@@ -14,6 +14,7 @@ const ICON = {
   action: '›',
   draw: '↻',
   showdown: '★',
+  refund: '↩',
 };
 
 function GameLog() {

@@ -139,7 +139,10 @@ export default function ActionBar() {
   const game = useGameStore((s) => s.game);
   const mode = useGameStore((s) => s.config.mode);
   const stack = useGameStore((s) => s.config.startingStack);
-  const advice = useGameStore((s) => (s.coachOn ? s.advice : null));
+  const coachOn = useGameStore((s) => s.coachOn);
+  const storedAdvice = useGameStore((s) => s.advice);
+  const adviceKey = useGameStore((s) => s.adviceKey);
+  const blocked = useGameStore((s) => s.setupOpen);
   const advance = useGameStore((s) => s.advance);
   const humanAct = useGameStore((s) => s.humanAct);
   const newHand = useGameStore((s) => s.newHand);
@@ -148,6 +151,9 @@ export default function ActionBar() {
 
   if (!game) return <div className="ab" />;
   const human = isHumanTurn(game);
+  // Only use advice computed for this exact decision (same key as CoachPanel).
+  const currentKey = `${game.handNumber}:${game.log.length}:${game.awaiting?.kind}`;
+  const advice = coachOn && human && adviceKey === currentKey ? storedAdvice : null;
   const complete = game.phase === PHASE.COMPLETE;
 
   let body;
@@ -194,7 +200,7 @@ export default function ActionBar() {
   }
 
   return (
-    <div className={`ab${human ? ' ab--turn' : ''}`}>
+    <div className={`ab${human ? ' ab--turn' : ''}`} inert={blocked ? '' : undefined} aria-hidden={blocked || undefined}>
       {human && <span className="ab__badge">{t('bar.yourTurn')}</span>}
       {body}
     </div>

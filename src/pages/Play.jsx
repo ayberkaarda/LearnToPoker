@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import i18n from '../i18n/index.js';
 import tr from '../i18n/tr/play.json';
 import en from '../i18n/en/play.json';
-import { visibleCards } from '../engine/game.js';
+import { visibleCards, potSize } from '../engine/game.js';
 import { coachAdvice } from '../engine/coach.js';
 import {
   useGameStore,
@@ -16,6 +16,8 @@ import {
   BOT_ROSTER,
   AUTO_BOT_MS,
   AUTO_DEAL_MS,
+  rankName,
+  playerName,
 } from '../store/gameStore.js';
 import TableScene, { hasWebGL, seatPercent } from '../three/TableScene.jsx';
 import PlayerSeat from '../components/PlayerSeat.jsx';
@@ -33,6 +35,17 @@ if (!i18n.hasResourceBundle('tr', 'play')) {
 
 const COACH_SAMPLES = 200;
 const STACKS = [500, 1000, 2000];
+const FOCUSABLE = 'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])';
+
+/** Tab stops inside `root` (one per radio group, like the browser does). */
+function tabStops(root) {
+  const els = Array.from(root.querySelectorAll(FOCUSABLE));
+  return els.filter((el) => {
+    if (el.type !== 'radio' || el.checked) return true;
+    const group = els.filter((o) => o.type === 'radio' && o.name === el.name);
+    return !group.some((o) => o.checked) && group[0] === el;
+  });
+}
 
 function SetupPanel({ notPlayable }) {
   const { t } = useTranslation('play');
@@ -44,6 +57,49 @@ function SetupPanel({ notPlayable }) {
   const [draft, setDraft] = useState(config);
   useEffect(() => setDraft((d) => ({ ...d, variantId: config.variantId })), [config.variantId]);
   const set = (patch) => setDraft((d) => ({ ...d, ...patch }));
+  const dialogRef = useRef(null);
+  // Read during the first render, before the background turns inert and drops focus.
+  const [opener] = useState(() => (typeof document !== 'undefined' ? document.activeElement : null));
+
+  // Modal focus: move focus in on open, keep Tab inside, Escape closes, restore focus on close.
+  useEffect(() => {
+    const root = dialogRef.current;
+    const first = root?.querySelector('input[type="radio"]:checked') || (root && tabStops(root)[0]);
+    first?.focus();
+    const onKey = (e) => {
+      if (!root) return;
+      if (e.key === 'Escape') {
+        if (useGameStore.getState().game) {
+          e.preventDefault();
+          useGameStore.getState().closeSetup();
+        }
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const stops = tabStops(root);
+      if (!stops.length) return;
+      const head = stops[0];
+      const tail = stops[stops.length - 1];
+      const active = document.activeElement;
+      const inside = root.contains(active);
+      const atHead = active === head || (active?.type === 'radio' && head.type === 'radio' && active.name === head.name);
+      if (!inside) {
+        e.preventDefault();
+        head.focus();
+      } else if (e.shiftKey && atHead) {
+        e.preventDefault();
+        tail.focus();
+      } else if (!e.shiftKey && active === tail) {
+        e.preventDefault();
+        head.focus();
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      if (opener && opener !== document.body && opener.isConnected && typeof opener.focus === 'function') opener.focus();
+    };
+  }, []);
 
   const start = () => {
     startGame(draft);
@@ -51,7 +107,7 @@ function SetupPanel({ notPlayable }) {
   };
 
   return (
-    <div className="play-setup" role="dialog" aria-modal="true" aria-labelledby="play-setup-title">
+    <div ref={dialogRef} className="play-setup" role="dialog" aria-modal="true" aria-labelledby="play-setup-title">
       <motion.div className="play-setup__card" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
         <h1 id="play-setup-title" className="play-setup__title">
           {t('setup.title')}
@@ -158,6 +214,42 @@ function Seats({ game, positions, showCards }) {
   });
 }
 
+function cardText(t, c) {
+  return t('common:cardName', { rank: rankName(t, c.rank), suit: t(`common:suits.${c.suit}`) });
+}
+
+/** Text version of what the 3D table shows, for screen readers (the canvas has no DOM cards). */
+function TableText({ game }) {
+  const { t } = useTranslation('play');
+  const complete = game.phase === PHASE.COMPLETE;
+  const pot = complete ? game.result?.pots.reduce((s, p) => s + p.amount, 0) ?? 0 : potSize(game);
+  const seatText = (p, i) => {
+    const cards = visibleCards(game, 0, p);
+    const up = cards.filter((c) => c.faceUp).map((c) => cardText(t, c));
+    const down = cards.length - up.length;
+    const parts = [...up];
+    if (down > 0) parts.push(t('srTable.hidden', { count: down }));
+    const status = p.folded ? t('seat.folded') : p.allIn ? t('seat.allIn') : null;
+    return t('srTable.player', {
+      name: playerName(t, game, i),
+      chips: t('seat.chips', { amount: p.stack }),
+      cards: (parts.length ? parts.join(', ') : t('srTable.noCards')) + (status ? ` (${status})` : ''),
+    });
+  };
+  const me = game.players[0];
+  return (
+    <div className="sr-only" aria-live="polite">
+      <h2>{t('srTable.title')}</h2>
+      <ul>
+        <li>{t('srTable.yourCards', { cards: me.cards.length ? me.cards.map((c) => cardText(t, c)).join(', ') : t('srTable.noCards') })}</li>
+        {game.board.length > 0 && <li>{t('srTable.board', { cards: game.board.map((c) => cardText(t, c)).join(', ') })}</li>}
+        <li>{t('table.potAmount', { amount: pot.toLocaleString() })}</li>
+        {game.players.map((p, i) => (i === 0 || p.sittingOut ? null : <li key={i}>{seatText(p, i)}</li>))}
+      </ul>
+    </div>
+  );
+}
+
 export default function Play() {
   const { t } = useTranslation('play');
   const { variant: param } = useParams();
@@ -234,7 +326,7 @@ export default function Play() {
     <motion.div className="page play" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}>
       <div className={`play__layout${sideOpen ? '' : ' play__layout--wide'}`}>
         <div className="play__main">
-          <div className="play__toolbar">
+          <div className="play__toolbar" inert={showSetup ? '' : undefined} aria-hidden={showSetup || undefined}>
             <div className="play__titles">
               <span className="play__variant">{variantName}</span>
               {game && <span className="play__hand">{t('toolbar.hand', { n: game.handNumber })}</span>}
@@ -268,7 +360,8 @@ export default function Play() {
             {game && webgl && (
               <>
                 <TableScene game={game} drawSelection={drawSelection} onLayout={onLayout} onFail={onFail} />
-                <div className="play__overlay">
+                <TableText game={game} />
+                <div className="play__overlay" inert={showSetup ? '' : undefined} aria-hidden={showSetup || undefined}>
                   <div className="play__pot">
                     <PotDisplay game={game} />
                   </div>
@@ -279,7 +372,7 @@ export default function Play() {
             {game && !webgl && (
               <div className="play__flat">
                 <div className="play__felt" aria-hidden="true" />
-                <div className="play__overlay">
+                <div className="play__overlay" inert={showSetup ? '' : undefined} aria-hidden={showSetup || undefined}>
                   <div className="play__pot play__pot--center">
                     <PotDisplay game={game} showBoard />
                   </div>
@@ -295,7 +388,7 @@ export default function Play() {
           <ActionBar />
         </div>
 
-        <aside className="play__side" aria-label={t('coachUi.title')} hidden={!sideOpen}>
+        <aside className="play__side" aria-label={t('coachUi.title')} hidden={!sideOpen} inert={showSetup ? '' : undefined} aria-hidden={showSetup || undefined}>
           <CoachPanel />
           <GameLog />
         </aside>

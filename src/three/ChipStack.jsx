@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useRef } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -77,6 +77,13 @@ export default function ChipStack({ amount, position, from, scale = 1 }) {
     if (m.instanceColor) m.instanceColor.needsUpdate = true;
     m.computeBoundingSphere();
   }, [chips]);
+
+  // GEO/MAT are shared module-level resources, so the mesh keeps dispose={null};
+  // the per-mesh instance buffers (matrix/color) are released here instead.
+  useEffect(() => {
+    const m = mesh.current;
+    return () => m?.dispose();
+  }, []);
 
   useFrame((_, dt) => {
     const g = group.current;

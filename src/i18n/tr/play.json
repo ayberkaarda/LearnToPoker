@@ -247,5 +247,14 @@
     "newHand": "Yeni el",
     "close": "Masaya bak",
     "rebuy": "Yeniden al ({{amount}})"
+  },
+  "refundLog": "{{name}} karşılanmayan {{amount}} çipi geri aldı",
+  "srTable": {
+    "title": "Masanın metin özeti",
+    "yourCards": "Senin kartların: {{cards}}",
+    "board": "Ortak kartlar: {{cards}}",
+    "player": "{{name}} ({{chips}}): {{cards}}",
+    "hidden": "{{count}} kapalı kart",
+    "noCards": "kart yok"
   }
 }
