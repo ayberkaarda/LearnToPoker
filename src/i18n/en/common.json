@@ -65,7 +65,7 @@
     "learn": "Learn",
     "practice": "Practice",
     "disclaimer": "This site is for education only. There is no real-money play, betting or payment; all chips are virtual.",
-    "responsible": "Gambling can be addictive. If you ever play for real money, know your limits and follow the laws where you live.",
+    "responsible": "Gambling can be addictive. Do not play for real money.",
     "rights": "All rights reserved.",
     "language": "Language"
   },
@@ -79,5 +79,13 @@
     "on": "On",
     "off": "Off",
     "auto": "Auto"
+  },
+  "gate": {
+    "title": "A short notice first",
+    "lead": "LearnToPoker is a learning site; we do not encourage gambling.",
+    "body": "Gambling is not a good thing: it can be addictive and cause financial and personal harm. There is no real money here; poker is taught purely as a game of strategy and skill, for education.",
+    "age": "By entering you confirm that you are over 18 and have read and understood this notice.",
+    "accept": "I understand — continue",
+    "leave": "Leave"
   }
 }

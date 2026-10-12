@@ -1,10 +1,11 @@
-import { Component, Suspense, lazy, useEffect } from 'react';
+import { Component, Suspense, lazy, useEffect, useState } from 'react';
 import { Link, Routes, Route, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AnimatePresence, MotionConfig } from 'framer-motion';
 import { useReducedMotion } from './motion/useMotionPreference.js';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
+import AgeGate, { readGateAccepted, storeGateAccepted } from './components/AgeGate.jsx';
 import Landing from './pages/Landing.jsx';
 
 const Basics = lazy(() => import('./pages/Basics.jsx'));
@@ -67,9 +68,14 @@ export default function App() {
   }, [i18n.language]);
   const isPlay = location.pathname.startsWith('/play');
   const reduceMotion = useReducedMotion();
+  const [accepted, setAccepted] = useState(readGateAccepted);
+  const accept = () => {
+    storeGateAccepted();
+    setAccepted(true);
+  };
   return (
     <MotionConfig reducedMotion={reduceMotion ? 'always' : 'never'}>
-    <div className={`app ${isPlay ? 'app--play' : ''}`}>
+    <div className={`app ${isPlay ? 'app--play' : ''} ${accepted ? '' : 'app--gated'}`.trim()} aria-hidden={accepted ? undefined : true} inert={accepted ? undefined : ''}>
       <ScrollToTop />
       <Nav />
       <main className="app__main" id="main">
@@ -92,6 +98,7 @@ export default function App() {
       </main>
       {!isPlay && <Footer />}
     </div>
+    {!accepted && <AgeGate onAccept={accept} />}
     </MotionConfig>
   );
 }

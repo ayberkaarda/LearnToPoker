@@ -1,0 +1,76 @@
+.agegate {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-curtain) + 10);
+  display: grid;
+  place-items: center;
+  padding: 20px var(--gutter);
+  overflow-y: auto;
+  background: rgba(11, 9, 8, 0.55);
+}
+
+.agegate__panel {
+  position: relative;
+  width: min(520px, 100%);
+  padding: 56px 32px 32px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--surface-2), var(--surface));
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow), var(--glow);
+}
+
+.agegate__lang {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.agegate__suit {
+  display: block;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--gold-2);
+  margin-bottom: 12px;
+}
+
+.agegate__title {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 5vw, 2.1rem);
+  font-weight: 700;
+  color: var(--gold-2);
+}
+
+.agegate__lead {
+  margin: 0 0 12px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.agegate__body {
+  margin: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.agegate__age {
+  margin: 0 0 24px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.agegate__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* the app behind the notice: blurred, untouchable */
+.app--gated {
+  filter: blur(18px) saturate(0.8);
+  pointer-events: none;
+  user-select: none;
+  max-height: 100vh;
+  overflow: hidden;
+}

@@ -65,7 +65,7 @@
     "learn": "Öğren",
     "practice": "Pratik",
     "disclaimer": "Bu site yalnızca eğitim amaçlıdır. Gerçek parayla oyun, bahis veya ödeme yoktur; tüm fişler sanaldır.",
-    "responsible": "Kumar bağımlılık yapabilir. Gerçek parayla oynamayı düşünüyorsan sınırlarını bil ve yaşına uygun yasalara uy.",
+    "responsible": "Kumar bağımlılık yapabilir. Gerçek parayla oynama.",
     "rights": "Tüm hakları saklıdır.",
     "language": "Dil"
   },
@@ -79,5 +79,13 @@
     "on": "Açık",
     "off": "Kapalı",
     "auto": "Otomatik"
+  },
+  "gate": {
+    "title": "Önce küçük bir uyarı",
+    "lead": "LearnToPoker bir öğrenme sitesidir; kumarı özendirmez.",
+    "body": "Kumar iyi bir şey değildir: bağımlılık yapabilir, maddi ve manevi zarar verebilir. Burada gerçek para yok; poker yalnızca bir strateji ve zekâ oyunu olarak, eğitim amacıyla anlatılıyor.",
+    "age": "Siteye girerek 18 yaşından büyük olduğunu ve bu uyarıyı okuyup anladığını onaylamış olursun.",
+    "accept": "Okudum, anladım — devam et",
+    "leave": "Ayrıl"
   }
 }
