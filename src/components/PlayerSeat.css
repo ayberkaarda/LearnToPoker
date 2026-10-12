@@ -176,10 +176,18 @@
   .seat__pers { display: none; }
 }
 
+/* Reduced motion: driven by the site motion setting (html[data-motion]). */
+html[data-motion="reduce"] .seat,
+html[data-motion="reduce"] .seat__tag,
+html[data-motion="reduce"] .seat--turn .seat__plate {
+  transition: none;
+  animation: none;
+}
+/* Before the setting is applied, follow the OS preference (initial default). */
 @media (prefers-reduced-motion: reduce) {
-  .seat,
-  .seat__tag,
-  .seat--turn .seat__plate {
+  html:not([data-motion]) .seat,
+  html:not([data-motion]) .seat__tag,
+  html:not([data-motion]) .seat--turn .seat__plate {
     transition: none;
     animation: none;
   }

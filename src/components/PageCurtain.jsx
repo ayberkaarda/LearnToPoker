@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useReducedMotion } from '../motion/useMotionPreference.js';
 
 const LIFT = [0.76, 0, 0.24, 1];
 

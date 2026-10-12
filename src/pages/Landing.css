@@ -785,20 +785,37 @@
 }
 
 /* ================================================================ Reduced motion */
+/* Reduced motion: driven by the site motion setting (html[data-motion]). */
+html[data-motion="reduce"] .landing-hero__spot,
+html[data-motion="reduce"] .landing-hero__sweep,
+html[data-motion="reduce"] .landing-hero__scroll::before,
+html[data-motion="reduce"] .landing-final__chip,
+html[data-motion="reduce"] .landing-fan__card {
+  animation: none;
+}
+html[data-motion="reduce"] .landing-hero__sweep {
+  display: none;
+}
+html[data-motion="reduce"] .landing-variant,
+html[data-motion="reduce"] .landing-variant__card,
+html[data-motion="reduce"] .landing-rank__meter span {
+  transition: none;
+}
+/* Before the setting is applied, follow the OS preference (initial default). */
 @media (prefers-reduced-motion: reduce) {
-  .landing-hero__spot,
-  .landing-hero__sweep,
-  .landing-hero__scroll::before,
-  .landing-final__chip,
-  .landing-fan__card {
+  html:not([data-motion]) .landing-hero__spot,
+  html:not([data-motion]) .landing-hero__sweep,
+  html:not([data-motion]) .landing-hero__scroll::before,
+  html:not([data-motion]) .landing-final__chip,
+  html:not([data-motion]) .landing-fan__card {
     animation: none;
   }
-  .landing-hero__sweep {
+  html:not([data-motion]) .landing-hero__sweep {
     display: none;
   }
-  .landing-variant,
-  .landing-variant__card,
-  .landing-rank__meter span {
+  html:not([data-motion]) .landing-variant,
+  html:not([data-motion]) .landing-variant__card,
+  html:not([data-motion]) .landing-rank__meter span {
     transition: none;
   }
 }

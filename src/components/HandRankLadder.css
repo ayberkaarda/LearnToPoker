@@ -19,7 +19,16 @@
 .handrank-ladder--compact .handrank-ladder-toggle { min-height: 46px; padding: 10px 12px; gap: 12px; }
 .handrank-ladder--compact .handrank-ladder-name { font-size: 1rem; }
 .handrank-ladder--compact .handrank-ladder-detail-inner { padding: 2px 12px 16px; }
-@media (prefers-reduced-motion: reduce) { .handrank-ladder-row { transition: none; } }
+/* Reduced motion: driven by the site motion setting (html[data-motion]). */
+html[data-motion="reduce"] .handrank-ladder-row {
+  transition: none;
+}
+/* Before the setting is applied, follow the OS preference (initial default). */
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion]) .handrank-ladder-row {
+    transition: none;
+  }
+}
 .handrank-ladder-row { position: relative; }
 .handrank-ladder-row--open { background: linear-gradient(90deg, rgba(122, 24, 38, .22), transparent 75%); }
 .handrank-ladder-row--open::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(var(--gold-2), var(--red-2)); box-shadow: 0 0 14px rgba(216, 57, 74, .7); }

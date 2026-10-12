@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
 import LanguageToggle from './LanguageToggle.jsx';
+import MotionToggle from './MotionToggle.jsx';
 import './Nav.css';
 
 export const NAV_LINKS = [
@@ -74,6 +75,7 @@ export default function Nav() {
         </nav>
 
         <div className="nav-actions">
+          <MotionToggle />
           <LanguageToggle />
           <button
             type="button"

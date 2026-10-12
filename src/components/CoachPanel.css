@@ -211,13 +211,23 @@
   color: var(--text);
 }
 
+/* Reduced motion: driven by the site motion setting (html[data-motion]). */
+html[data-motion="reduce"] .coach__spinner {
+  animation: none;
+}
+html[data-motion="reduce"] .coach__fill,
+html[data-motion="reduce"] .coach__knob,
+html[data-motion="reduce"] .coach__knob::after {
+  transition: none;
+}
+/* Before the setting is applied, follow the OS preference (initial default). */
 @media (prefers-reduced-motion: reduce) {
-  .coach__spinner {
+  html:not([data-motion]) .coach__spinner {
     animation: none;
   }
-  .coach__fill,
-  .coach__knob,
-  .coach__knob::after {
+  html:not([data-motion]) .coach__fill,
+  html:not([data-motion]) .coach__knob,
+  html:not([data-motion]) .coach__knob::after {
     transition: none;
   }
 }

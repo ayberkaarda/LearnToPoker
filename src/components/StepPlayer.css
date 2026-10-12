@@ -534,8 +534,13 @@
   transform-origin: left center;
 }
 
+/* Reduced motion: driven by the site motion setting (html[data-motion]). */
+html[data-motion="reduce"] .sp-seat.is-actor .sp-seat__plate {
+  animation: none;
+}
+/* Before the setting is applied, follow the OS preference (initial default). */
 @media (prefers-reduced-motion: reduce) {
-  .sp-seat.is-actor .sp-seat__plate {
+  html:not([data-motion]) .sp-seat.is-actor .sp-seat__plate {
     animation: none;
   }
 }

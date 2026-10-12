@@ -78,8 +78,21 @@
   .basics-actions, .basics-positions { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .basics-table-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
 }
+/* Reduced motion: driven by the site motion setting (html[data-motion]). */
+html[data-motion="reduce"] .basics-page *,
+html[data-motion="reduce"] .basics-page *::before,
+html[data-motion="reduce"] .basics-page *::after {
+  animation: none !important;
+  scroll-behavior: auto !important;
+}
+/* Before the setting is applied, follow the OS preference (initial default). */
 @media (prefers-reduced-motion: reduce) {
-  .basics-page *, .basics-page *::before, .basics-page *::after { animation: none !important; scroll-behavior: auto !important; }
+  html:not([data-motion]) .basics-page *,
+  html:not([data-motion]) .basics-page *::before,
+  html:not([data-motion]) .basics-page *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ---------------------------------------------------------------- Salon Noir layer */

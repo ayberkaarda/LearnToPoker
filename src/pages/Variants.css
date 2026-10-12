@@ -149,4 +149,13 @@
 .variants-hero__suits span:nth-child(3) { animation-delay: -4s; }
 .variants-hero__suits span:nth-child(4) { animation-delay: -6s; }
 @keyframes variants-float { to { transform: translateY(-14px) rotate(4deg); } }
-@media (prefers-reduced-motion: reduce) { .variants-hero__suits span { animation: none; } }
+/* Reduced motion: driven by the site motion setting (html[data-motion]). */
+html[data-motion="reduce"] .variants-hero__suits span {
+  animation: none;
+}
+/* Before the setting is applied, follow the OS preference (initial default). */
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion]) .variants-hero__suits span {
+    animation: none;
+  }
+}

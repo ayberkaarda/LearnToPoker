@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useReducedMotion } from '../motion/useMotionPreference.js';
 import './Section.css';
 
 const EASE = [0.16, 1, 0.3, 1];

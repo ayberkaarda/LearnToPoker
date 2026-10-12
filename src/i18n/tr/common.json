@@ -36,15 +36,15 @@
     "8": "Sekizli",
     "9": "Dokuzlu",
     "10": "Onlu",
+    "11": "Vale",
+    "12": "Kız",
+    "13": "Papaz",
+    "14": "As",
     "T": "Onlu",
     "J": "Vale",
     "Q": "Kız",
     "K": "Papaz",
-    "A": "As",
-    "11": "Vale",
-    "12": "Kız",
-    "13": "Papaz",
-    "14": "As"
+    "A": "As"
   },
   "cardName": "{{suit}} {{rank}}",
   "cardBack": "Kapalı kart",
@@ -73,5 +73,11 @@
     "tr": "Türkçe",
     "en": "English",
     "label": "Dil seçimi"
+  },
+  "motion": {
+    "label": "Animasyonlar",
+    "on": "Açık",
+    "off": "Kapalı",
+    "auto": "Otomatik"
   }
 }

@@ -100,8 +100,13 @@
   color: var(--gold-2);
 }
 
+/* Reduced motion: driven by the site motion setting (html[data-motion]). */
+html[data-motion="reduce"] .glog__item--latest {
+  animation: none;
+}
+/* Before the setting is applied, follow the OS preference (initial default). */
 @media (prefers-reduced-motion: reduce) {
-  .glog__item--latest {
+  html:not([data-motion]) .glog__item--latest {
     animation: none;
   }
 }

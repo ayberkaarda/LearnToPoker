@@ -36,15 +36,15 @@
     "8": "Eight",
     "9": "Nine",
     "10": "Ten",
+    "11": "Jack",
+    "12": "Queen",
+    "13": "King",
+    "14": "Ace",
     "T": "Ten",
     "J": "Jack",
     "Q": "Queen",
     "K": "King",
-    "A": "Ace",
-    "11": "Jack",
-    "12": "Queen",
-    "13": "King",
-    "14": "Ace"
+    "A": "Ace"
   },
   "cardName": "{{rank}} of {{suit}}",
   "cardBack": "Face-down card",
@@ -73,5 +73,11 @@
     "tr": "Türkçe",
     "en": "English",
     "label": "Language"
+  },
+  "motion": {
+    "label": "Motion",
+    "on": "On",
+    "off": "Off",
+    "auto": "Auto"
   }
 }

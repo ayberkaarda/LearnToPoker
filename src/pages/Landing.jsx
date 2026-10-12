@@ -1,6 +1,7 @@
 import { Component, Fragment, Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useReducedMotion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { useReducedMotion } from '../motion/useMotionPreference.js';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n/index.js';
 import tr from '../i18n/tr/landing.json';
@@ -240,13 +241,14 @@ function useTilt() {
 }
 
 function VariantTile({ v, index }) {
+  const reduce = useReducedMotion();
   const { t } = useTranslation('landing');
   const tilt = useTilt();
   const n = v.cards.length;
   return (
     <motion.div
       className={`landing-variant-wrap landing-variant-wrap--${index}`}
-      initial={{ opacity: 0, y: 40 }}
+      initial={reduce ? false : { opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
       transition={{ duration: 0.9, ease: EASE, delay: (index % 3) * 0.08 }}

@@ -441,8 +441,13 @@
   }
 }
 
+/* Reduced motion: driven by the site motion setting (html[data-motion]). */
+html[data-motion="reduce"] .play-setup__variant {
+  transition: none;
+}
+/* Before the setting is applied, follow the OS preference (initial default). */
 @media (prefers-reduced-motion: reduce) {
-  .play-setup__variant {
+  html:not([data-motion]) .play-setup__variant {
     transition: none;
   }
 }

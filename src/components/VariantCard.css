@@ -190,4 +190,13 @@
 .vcard__chip { border-radius: 4px; color: var(--muted); }
 .vcard__pip { width: 7px; height: 7px; border-radius: 0; transform: rotate(45deg); }
 .vcard__pip.is-on { background: var(--red-2); border-color: var(--red-2); box-shadow: 0 0 8px rgba(216, 57, 74, 0.6); }
-@media (prefers-reduced-motion: reduce) { .vcard__icon { transition: none; } }
+/* Reduced motion: driven by the site motion setting (html[data-motion]). */
+html[data-motion="reduce"] .vcard__icon {
+  transition: none;
+}
+/* Before the setting is applied, follow the OS preference (initial default). */
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion]) .vcard__icon {
+    transition: none;
+  }
+}

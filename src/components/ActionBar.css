@@ -250,9 +250,15 @@
   }
 }
 
+/* Reduced motion: driven by the site motion setting (html[data-motion]). */
+html[data-motion="reduce"] .ab__btn,
+html[data-motion="reduce"] .ab__drawcard {
+  transition: none;
+}
+/* Before the setting is applied, follow the OS preference (initial default). */
 @media (prefers-reduced-motion: reduce) {
-  .ab__btn,
-  .ab__drawcard {
+  html:not([data-motion]) .ab__btn,
+  html:not([data-motion]) .ab__drawcard {
     transition: none;
   }
 }

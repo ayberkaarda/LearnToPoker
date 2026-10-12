@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { isReducedMotion } from '../motion/useMotionPreference.js';
 
 const MAX_CHIPS = 40;
 const CHIP_R = 0.15;
@@ -116,7 +117,7 @@ export function chipLayout(amount) {
 }
 
 const tmp = new THREE.Object3D();
-const reduced = () => typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+const reduced = isReducedMotion;
 const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
 function DenomStack({ denom, chips }) {

@@ -2,15 +2,13 @@ import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { getCardTexture } from '../cards/drawCardFace.js';
+import { isReducedMotion } from '../motion/useMotionPreference.js';
 
 const EDGE_COLOR = '#e9dfc9';
 
 const edgeMaterial = new THREE.MeshStandardMaterial({ color: EDGE_COLOR, roughness: 0.75, metalness: 0 });
 
-const prefersReducedMotion = () =>
-  typeof window !== 'undefined' &&
-  window.matchMedia &&
-  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const prefersReducedMotion = isReducedMotion;
 
 const easeInOutCubic = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 

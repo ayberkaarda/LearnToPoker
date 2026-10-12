@@ -1,7 +1,8 @@
 import { Component, Suspense, lazy, useEffect } from 'react';
 import { Link, Routes, Route, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, MotionConfig } from 'framer-motion';
+import { useReducedMotion } from './motion/useMotionPreference.js';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 import Landing from './pages/Landing.jsx';
@@ -17,6 +18,11 @@ class ErrorBoundary extends Component {
 
   static getDerivedStateFromError() {
     return { hasError: true };
+  }
+
+  componentDidUpdate(prevProps) {
+    // Clear a caught error when the route changes, without remounting the page transitions.
+    if (this.state.hasError && prevProps.resetKey !== this.props.resetKey) this.setState({ hasError: false });
   }
 
   render() {
@@ -60,14 +66,16 @@ export default function App() {
       : 'LearnToPoker — Sıfırdan Poker Öğren';
   }, [i18n.language]);
   const isPlay = location.pathname.startsWith('/play');
+  const reduceMotion = useReducedMotion();
   return (
+    <MotionConfig reducedMotion={reduceMotion ? 'always' : 'never'}>
     <div className={`app ${isPlay ? 'app--play' : ''}`}>
       <ScrollToTop />
       <Nav />
       <main className="app__main" id="main">
-        <ErrorBoundary key={location.pathname} fallback={<PageError />}>
+        <ErrorBoundary resetKey={location.pathname} fallback={<PageError />}>
         <Suspense fallback={<Loading />}>
-          <AnimatePresence mode="wait" initial={false}>
+          <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Landing />} />
               <Route path="/basics" element={<Basics />} />
@@ -84,5 +92,6 @@ export default function App() {
       </main>
       {!isPlay && <Footer />}
     </div>
+    </MotionConfig>
   );
 }

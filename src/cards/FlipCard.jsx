@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useReducedMotion } from '../motion/useMotionPreference.js';
 import Card2D from './Card2D.jsx';
 import './FlipCard.css';
 

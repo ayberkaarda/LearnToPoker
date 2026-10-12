@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useReducedMotion } from '../motion/useMotionPreference.js';
 import { useTranslation } from 'react-i18next';
 import { FAMILY_ICONS } from '../content/variants.js';
 import './VariantCard.css';

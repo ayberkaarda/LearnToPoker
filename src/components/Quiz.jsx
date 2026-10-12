@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useReducedMotion } from '../motion/useMotionPreference.js';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n/index.js';
 import tr from '../i18n/tr/variants.json';

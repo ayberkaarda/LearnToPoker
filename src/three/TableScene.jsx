@@ -7,6 +7,7 @@ import FeltTable, { TABLE_RX, TABLE_RZ } from './FeltTable.jsx';
 import ChipStack from './ChipStack.jsx';
 import { visibleCards } from '../engine/game.js';
 import { PHASE, collectedPot } from '../store/gameStore.js';
+import { isReducedMotion } from '../motion/useMotionPreference.js';
 
 const HALF_PI = Math.PI / 2;
 export const DECK_POS = [-1.25, 0.04, -1.15];
@@ -30,7 +31,7 @@ export function seatPercent(i, n) {
   return [50 + Math.cos(a) * 40, 52 + Math.sin(a) * 33];
 }
 
-const reducedMotion = () => typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+const reducedMotion = isReducedMotion;
 
 export function hasWebGL() {
   try {
