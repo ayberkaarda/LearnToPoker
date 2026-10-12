@@ -141,7 +141,8 @@ function DenomStack({ denom, chips }) {
   // the per-mesh instance buffers (matrix/color) are released here instead.
   useEffect(() => {
     const m = mesh.current;
-    return () => m?.dispose();
+    // r3f writes the dispose={null} prop onto the instance, so call the class method directly.
+    return () => { if (m) THREE.InstancedMesh.prototype.dispose.call(m); };
   }, []);
 
   return <instancedMesh ref={mesh} args={[GEO, mats, PER_COLUMN * COLUMN_OFFSETS.length]} castShadow receiveShadow frustumCulled={false} dispose={null} />;
